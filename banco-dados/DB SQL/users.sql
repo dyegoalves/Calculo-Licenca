@@ -1,0 +1,1 @@
+INSERT INTO `users` VALUES (1,'Dyego dos Santos Alves','dyego.santos.alves@gmail.com','1467573284.jpg','$2y$10$AGHsxHWlzEEJVyEUb5tGs.iyt0iLdtUmOUrFNiGS2yyLx1ooKpv3S','DODyLTCyHUwZ3eRpCjpywFt0yBNKsUPkPNPJzjSSWAwFKEdkH2kAuflzfEub','2016-06-29 08:56:48','2016-07-04 06:09:15');

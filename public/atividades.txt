@@ -1,0 +1,22 @@
+03 - Indústria Metalúrgica.
+04 - Indústria Mecânica.
+05 - Indústria de Material Elétrico e de Comunicações.
+06 - Indústria de Material de Transporte.
+08 - Indústria do Mobiliário.
+09 - Indústria do Papel e Papelão.
+10 - Indústria da Borracha.
+11 - Indústria de Couro, Peles e Produtos Similares.
+12 - Indústria Química.
+13 - Indústria de Produtos Farmacêuticos e Veterinários.
+14 - Indústria de Perfumaria, Sabões e Velas.
+15 - Indústria de Produtos de Matérias Plásticas.
+16 - Indústria Têxtil.
+17 - Indústria do Vestuário, Calçados, Artefatos de Tecidos e de Couros.
+18 - Indústria de Produtos Alimentares.
+19 - Indústria de Bebidas e Álcool Etílico.
+20 - Indústria de Fumo.
+21 - Indústria Editorial e Gráfica.
+25 - Serviços de Utilidades Públicas.
+27 - Transportes e Terminais.
+32 - Resíduos.
+33 - Indústria de Componentes e Aparelhos Eletro eletrônicos.

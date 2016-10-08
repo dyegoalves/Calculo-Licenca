@@ -1,0 +1,87 @@
+html,body {
+    height:100%;
+}
+/**********************************  MENU TOP   *********************************************/
+.navbar-default     { background-color:#A6D6A7; font-size: 18px !important;}
+.navbar-default a   { color: #01662f !important;}
+.bt_menu ul a       { color: #01662f !important;}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
+{
+    background-color: #4CA04E;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover{
+    background-color: #4CA04E;
+}
+.navbar-default .navbar-nav  > a, a:hover{
+    background-color: #4CA04E !important;
+}
+
+/*****************************   CORPO DO CONTEUDO  ****************************************/
+.corpo{ padding-top: 70px;}
+.corpologin{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9dd53a+40,7cbc0a+54,a1d54f+77,a1d54f+77,80c217+99 */
+    background: #9dd53a; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #9dd53a 40%, #7cbc0a 54%, #a1d54f 77%, #a1d54f 77%, #80c217 99%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  #9dd53a 40%,#7cbc0a 54%,#a1d54f 77%,#a1d54f 77%,#80c217 99%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  #9dd53a 40%,#7cbc0a 54%,#a1d54f 77%,#a1d54f 77%,#80c217 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#80c217',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.h1-bkgcolor{
+    color: #ffffff;
+}
+
+/*****************************  RODAPÉ FOOTER  *********************************************/
+footer {
+    background-color:#A6D6A7; font-size: 18px !important;
+}
+footer  p   { color: rgba(3, 0, 1, 0.53) !important;}
+footer  h1  { color: #ffffff !important;}
+.footer{
+    position: absolute;
+    width:100%;
+    height: 50px;
+    bottom:0px
+}
+.container > p {
+    text-align: center;
+    color: #ffffff;
+}
+
+
+
+/* Medias Querys*/
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+    /*Rodape Tablets*/
+    .footer{
+        position: relative;
+        width:100%;
+        bottom:0px
+    }
+}
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    .footer{
+        position: relative;
+        width:100%;
+        bottom:0px
+    }
+}
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+    .footer{
+        position: relative;
+        width:100%;
+        bottom:0px
+    }
+}
+
+
+
+
+
+
+
+
+

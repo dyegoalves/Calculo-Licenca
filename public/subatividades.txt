@@ -1,0 +1,210 @@
+0301 – Siderurgia e fabricação de produtos siderúrgicos com redução de minérios, inclusive ferro.
+0302 – Produção de ferro e aço e suas ligas em qualquer forma, sem redução de minérios, com fusão.
+0303 – Produção de laminados de aço | inclusive ferro-ligas, a quente sem fusão.
+0304 – Produção de laminados de aço, inclusive ferro-ligas, a frio sem tratamento químico superficial ou galvanotécnico.
+0305 – Produção de laminados de aço, inclusive ferro-ligas, a frio, com tratamento químico superficial ou galvanotécnico.
+0306 – Produção de canos e tubos de ferro e aço, com fusão, tratamento químico superficial e/ou galvanotécnico.
+0307 – Produção de canos e tubos de ferro e aço, sem fusão, porém com tratamento químico ou galvanotécnico.
+0308 – Produção de canos e tubos de ferro e aço, sem fusão e sem tratamento químico superficial ou galvanotécnico.
+0309 – Produção de fundidos de ferro e aço, sem tratamento químico superficial e/ou galvanotécnico.
+0310 – Produção de fundidos de ferro e aço, com tratamento químico superficial e/ou galvanotécnico.
+0311 – Produção de forjados, arames e relaminados de aço, a quente, com tratamento químico superficial e/ou galvanotécnico.
+0312 – Produção de forjados, arames e relaminados de aço a frio, com tratamento químico superficial e/ou galvanotécnico.
+0313 – Produção de forjados, arames e relaminados de aço, a frio, sem tratamento químico superficial e galvanotécnico.
+0314 – Metalurgia dos metais não-ferrosos em formas primárias inclusive metais preciosos.
+0315 – Produção de ligas de metais não-ferrosos em formas primárias, inclusive de metais preciosos.
+0316 – Produção de laminados de metais e de ligas de metais não-ferrosos (placas, discos, chapas lisas ou corrugadas, bobinas, tiras e fitas, perfis, barras redondas, chatas ou quadradas, vergalhões), com fusão, exclusive canos, tubos e arames.
+0317 – Produção de laminados de metais e de ligas de metais não-ferrosos (placas, discos, chapas lisas ou corrugadas, bobinas, tiras e fitas, perfis, barras redondas, chatas ou quadradas, vergalhões), sem fusão, exclusive canos, tubos e arames.
+0318 – Produção de canos e tubos de metais não ferrosos, inclusive ligas, com fusão e com tratamento químico superficial e/ou galvanotécnico.
+0319 – Produção de canos e tubos de metais não-ferrosos, inclusive ligas, com fusão e sem tratamento químico superficial e/ou galvanotécnico.
+0320 – Produção de canos e tubos de metais não-ferrosos, inclusive ligas, sem fusão e com tratamento químico superficial e/ou galvanotécnico.
+0321 – Produção de canos e tubos de metais não-ferrosos, inclusive ligas, sem fusão e tratamento químico superficial e/ou galvanotécnico.
+0322 – Produção de formas, moldes e peças fundidas de metais não-ferrosos, inclusive ligas, com tratamento químico superficial e/ou galvanotécnico.
+0323 – Produção de formas, moldes e peças fundidas de metais não-ferrosos, inclusive ligas, sem tratamento químico superficial e/ou galvanotécnico.
+0324 – Produção de fios e arames de metais e de ligas de metais não-ferrosos.
+0325 – Relaminação de metais não-ferrosos, inclusive ligas.
+0326 – Produção de soldas e ânodos.
+0327 – Metalurgia dos metais preciosos.
+0328 – Metalurgia de pó, inclusive peças moldadas.
+0329 – Fabricação de estruturas metálicas, com tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão.
+0330 – Fabricação de estruturas metálicas, sem tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão.
+0331 – Fabricação de artefatos de trefilados de ferro e aço, e de metais não-ferrosos, exclusive móveis com tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão.
+0332 – Fabricação de artefatos de trefilados de ferro e aço, e de metais não-ferrosos, exclusive móveis sem tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão.
+0333 – Estamparia, funilaria e latoaria com tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão e/ou aplicação de verniz e/ou esmaltação.
+0334 – Estamparia, funilaria e latoaria sem tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão e/ou aplicação de verniz e/ou esmaltação.
+0335 – Serralheria, fabricação de tanque, reservatório e outros recipientes metálicos e de artigos de caldeireiro com tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão e/ou esmaltação.
+0336 – Serralheria, fabricação de tanques, reservatório e outros recipientes metálicos e de artigos de caldeireiro sem tratamento químico superficial e/ou galvanotécnico e/ou pintura por dispersão e/ou esmaltação.
+0337 – Fabricação de artigos de cutelaria, armas, ferramentas manuais e fabricação de artigos de metal para escritório, usos pessoal e doméstico, com tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão.
+0338 – Fabricação de artigos de cutelaria, armas, ferramentas manuais e fabricação de artigos de metal para escritório, usos pessoal e doméstico, sem tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão.
+0339 – Têmpera e cementação de aço, recozimento de arames e serviços de galvanotécnico.
+0340 – Fabricação de outros artigos de metal não especificado ou não classificados, com tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão e/ou aplicação de verniz e/ou esmaltação.
+0341 – Fabricação de outros artigos de metal não especificado ou não classificados, sem tratamento químico superficial e/ou galvanotécnico e/ou pintura por aspersão e/ou aplicação de verniz e/ou esmaltação.
+0342 – Fabricação de esquadrias de alumínio, ferro e acrílico.
+0343 – Metalurgia do alumínio, cobre, chumbo e estanho.
+0344 – Fabricação de ferragem (cadeados, fechaduras, dobradiças, ferrolhos, parafusos, guarnições e congêneres).
+0345 – Fabricação de canetas, canetas relógio e isqueiros metálicos.
+0346 – Fabricação de artigos de ourivesaria e joalheria sem tratamento químico.
+0347 – Fabricação de artigos de ourivesaria e joalheria com tratamento químico ou galvanotécnico.
+0348 – Montagem de estruturas Metálicas
+0349 – Polimento de peças metálicas
+0350 – Confecção de moldes em papel alumínio
+0351 – Demais atividades ligadas à produção de metalurgia, sem tratamento químico/galvanotécnico/pintura.
+0352 – Demais atividades ligadas à produção de metalurgia, com tratamento químico/galvanotécnico/pintura
+0401 – Fabricação de máquinas, aparelhos, peças e acessórios com uso de óleo e/ou tratamento galvanotécnico e/ou fundição.
+0402 – Fabricação de máquinas, aparelhos, peças e acessórios sem uso de óleo e/ou tratamento galvanotécnico e/ou fundição.
+0403 – Fabricação de máquinas, aparelhos e equipamentos hidráulicos e térmicos (carneiros e bombas hidráulicas, bombas centrífugas ou rotativas de baixa e alta pressão).
+0404 – Montagem de veículos automotores, motocicletas, bicicletas e outros, com tratamento químico ou galvanotécnico.
+0405 – Montagem de veículos automotores, motocicletas, bicicletas e outros, sem tratamento químico ou galvanotécnico.
+0406 – Montagem de aparelhos instrumentais de metrologia em geral (relógios, cronômetros, barômetros, taxímetros e hidrômetros).
+0407 – Demais atividades ligadas à indústria mecânica, sem tratamento químico/galvanotécnico/pintura.
+0408 – Demais atividades ligadas à indústria mecânica, com tratamento químico/galvano-técnico/pintura.
+0409 – Oficina de conversão de gás natural veicular.
+0501 – Fabricação de pilhas, baterias e acumuladores.
+0502 – Fabricação e montagem de painéis luminosos.
+0503 – Fabricação e/ou montagem de fios, cabos e condutores elétricos.
+0504 – Demais atividades da indústria de material elétrico/eletrônicos de comunicações.
+0601 – Fabricação de embarcações e estruturas flutuantes peças e acessórios.
+0602 – Fabricação de veículos rodoviários e/ou ferroviários, peças e acessórios.
+0603 – Fabricação de aeronaves, peças e acessórios..
+0604 – Demais atividades da indústria de material de transporte.
+0801 – Marcenaria, e fabricação de móveis e artigos do mobiliário.
+0802 – Confecção artigos de Espumas (travesseiros, almofadas, colchões e similares)
+0901 – Fabricação de celulose.
+0902 – Fabricação de pasta mecânica.
+0903 – Fabricação de papel em geral.
+0904 – Fabricação de artefatos de papel em geral não associado à produção de papel.
+0905 – Fabricação de artigos diversos de fibra prensada ou isolante, e exclusive peças e acessórios para máquinas e veículos.
+1001 – Beneficiamento da borracha natural
+1002 – Fabricação e recondicionamento de pneumáticos e câmaras-de-ar e fabricação de material para recondicionamento de pneumáticos.
+1003 – Fabricação de laminados e fios de borracha.
+1004 – Fabricação de espuma de borracha e de artefatos de espuma de borracha, inclusive látex e silicone.
+1005 – Fabricação de artefatos de borracha (peças e acessórios para veículos, máquinas e aparelhos, correias, canos, tubos, fabricação de carimbo, artigos para uso doméstico), exclusive artigos do vestuário.
+1101 – Secagem e salga de couros e peles.
+1102 – Curtimento e outras preparações de couros e peles.
+1201 – Produção de elementos químicos e de produtos químicos inorgânicos, orgânicos, organo-inorgânico, exclusive produtos derivados do processamento do petróleo, de rochas oleígenas, do carvão-de-pedra e de madeira.
+1202 – Fabricação de produtos derivados do processamento do petróleo, de rochas oleígenas e de carvão-de pedra.
+1203 – Fabricação de resinas e de fibras e fios artificiais e sintéticos e de borracha e látex sintéticos.
+1204 – Fabricação de pólvora, explosivos, detonantes, munição para caça e desportos , fósforos de segurança e artigos pirotécnicos.
+1205 – Produção de óleos, gorduras e ceras vegetais e animais, em bruto, de óleos essenciais vegetais e outros produtos de destilação de madeira, exclusive refinação de produtos alimentares.
+1206 – Fabricação de concentrados aromáticos naturais, artificiais e sintéticos, inclusive mescla, exceto para fins alientícios.
+1207 – Fabricação de preparos para limpeza e polimento, desinfetantes, inseticidas, germicidas, fungicidas.
+1208 – Fabricação de tintas, esmaltes, lacas, vernizes, impermeabilizantes, solventes e secantes.
+1209 – Fabricação e preparos de produtos de proteção contra-incêndio.
+1210 – Fabricação de material fotográfico, revelador e unidade de revelação.
+1211 – Fabricação de tintas para escrever, para desenho e impressão de solventes impermeabilizantes e secante
+1212 – Fabricação de artigos de grafita, eletrodos e refratário de grafita.
+1213 – Fabricação de materiais abrasivos, lixas e rebolos de esmeril.
+1214 – Fabricação de artefatos de vidro e espelho para fins industriais e uso em geral.
+1215 – Fabricação de adubos, fertilizantes e corretivos do solo.
+1216 – Fabricação de produtos químicos diversos.
+1217 – Fabricação de lentes oftálmicas, de material orgânico e/ou sintético e acessórios.
+1218 – Fabricação de material oftálmico e acessórios, com utilização de processos galvânicos.
+1219 – Fabricação de material oftálmico e acessórios, sem utilização de processos galvânicos.
+1220 – Demais atividades da indústria química, sem tratamento químico/galvanotécnico/pintura
+1221 – Refino e recuperação e refino de óleos minerais, vegetais e animais.
+1222 – Produção de biodiesel.
+1223 – Fabricação de gelo seco.
+1224 – Fabricação de produtos de resina de fibra de vidro.
+1225 – Recuperação de metais pesados com tratamento químico.
+1301 – Todas atividades industriais dedicadas à fabricação de produtos farmacêuticos e veterinários.
+1302 – Manipulação de produtos farmacêuticos e veterinários, não associado à fabricação
+1303 – Fabricação de produtos de higiene (absorventes, cotonetes, gases, bandagens e congêneres).
+1401 – Fabricação de produtos de perfumaria.
+1402 – Fabricação de sabões, detergentes e glicerina.
+1403 – Fabricação de velas.
+1501 – Fabricação de laminados plásticos.
+1502 – Fabricação de artigos de material plástico para usos industriais.
+1503 – Fabricação de artigos de material plástico para uso doméstico, pessoal, brinquedos, calçados, artigos do vestuário.
+1504 – Fabricação de móveis moldados de material plástico.
+1505 – Fabricação de artigos de material plástico para embalagem e acondicionamento, impressão ou não.
+1506 – Fabricação de manilhas, canos, tubos e conexões de material plástico para todos os fins.
+1507 – Fabricação de artigos diversos de material plástico ou não especificado ou não classificado.
+1508 – Fabricação e montagem de isqueiros, canetas, barbeadores e escovas descartáveis.
+1601 – Beneficiamento de fibras vegetais.
+1602 – Beneficiamento de fibras têxteis artificiais e sintéticas.
+1603 – Beneficiamento de matérias têxteis de origem animal.
+1604 – Fabricação de estopa, de materiais para estofos e recuperação de resíduos têxteis.
+1605 – Fiação e tecelagem.
+1606 – Malharia e fabricação de tecidos elásticos.
+1607 – Fabricação de tecidos impermeáveis e de acabamento especial (lona, tecidos encerados e oleados).
+1701 – Fabricação de calçados.
+1702 – Todas as atividades industriais ligadas à produção de artigos do vestuário, artefatos de tecidos e acessórios, não produzidos nas fiações e tecelagens.
+1703 – Fabricação de artefatos de couro, peles, sintéticos e similares.
+1801 – Matadouro e/ou abatedouro de bovinos, suínos, ovinos, caprinos e animais silvestres de médio porte.
+1802 – Matadouro e/ou abatedouro de aves, coelhos, outros animais e animais silvestres de pequeno porte.
+1803 – Matadouros, abatedouros, frigoríficos de fauna silvestre.
+1804 – Fabricação de refeições e conservas de frutas, de legumes e de outros vegetais, inclusive doces.
+1805 – Fabricação e beneficiamento de charqueados, embutidos, industrialização de conservas de carnes, produção de banhas de porco e outras gorduras de origem animal.
+1806 – Beneficiamento e armazenamento de pescado.
+1807 – Fabricação e refino de açúcar.
+1808 – Fabricação de produtos de padaria, confeitaria, pizzaria, pastelaria, massas alimentícia e biscoito.
+1809 – Refino e preparos de óleos e gorduras vegetais, pasteurização de leite, produção de manteiga de cacau e gorduras de origem animal, destinados à alimentação.
+1810 – Fabricação de vinagre.
+1811 – Fabricação de gelo.
+1812 – Fabricação de rações balanceadas e de alimentos preparados para animais, inclusive farinha de carne, sangue osso, peixe e pena.
+1813 – Fabricação de produtos alimentares, não especificados ou não classificados.
+1814 – Beneficiamento, armazenamento e envasamento de alimentos.
+1815 – Ionização de alimentos
+1816 – Fabricação de alimentos em conservas
+1817 – Fabricação de sorvete, picolé, tortas e coberturas.
+1818 – Beneficiamento e processamento de palmito
+1819 – Agroindústrias
+1820 – Extração de óleo oriundo do extrativismo vegetal
+1901 – Fabricação de aguardentes, licores, vinhos e outras bebidas alcoólicas.
+1902 – Fabricação de cervejas, chopes e maltes.
+1903 – Fabricação de bebidas não alcoólicas, inclusive engarrafamento e gaseificação de águas minerais.
+1904 – Fabricação de bebidas não alcoólicas, inclusive engarrafamento e gaseificação de águas minerais, com processo de lavagem
+1905 – Fabricação de concentrados aromáticos, naturais e artificiais para fins alimentícios.
+1906 – Demais atividades de bebidas, não associadas à fabricação.
+2001 – Preparação de fumo, fabricação de cigarros, charutos e cigarrilhas, e de outras atividades de elaboração do tabaco não especificados.
+2101 – Encadernação do material gráfico.
+2102 – Impressão e encadernação do material gráfico em geral
+2501 – Distribuição de gás canalizado
+2502 – Captação de água subterrânea.
+2503 – Tratamento de água
+2504 – Captação de água superficial
+2505 – Distribuição e abastecimento de água
+2506:LAU – Limpeza de corpos de água
+2701 – Transporte rodoviário de cargas perigosas
+2702 – Transporte ferroviário de cargas perigosas
+2703 – Transporte por oleodutos, gasodutos e minerodutos
+2704 – Transporte fluvial de carga perigosa
+2705 – Transporte e armazenamento de produtos químicos e/ou perigosos
+2706 – Transporte rodoviário em veículos tanques de combustíveis
+2707 – Transporte fluvial de combustível
+2708 – Porto rodofluvial de carga e descarga com armazenamento.
+2709 – Portos rodofluvial de carga e descarga sem armazenamento.
+2710 – Portos fluviais enquadrados como IP4(Instalação portuária pública de pequeno porte)
+2711 – Aeroportos
+2712 – Heliportos
+2713 – Terminal de minério
+2714 – Terminal de petróleo
+2715 – Terminal de produtos químicos
+2716 – Infra-estrutura aeroportuária fluvial
+3201 – Coleta e transporte de resíduos Classe I.
+3202 – Coleta e transporte de resíduo Classe II.
+3203 – Coleta e transporte rodoviário de esgoto sanitário.
+3204 – Coleta e transporte fluvial de esgoto sanitário.
+3205 – Coleta e transporte de resíduos líquidos
+3206 – Tratamento de Resíduos Sólidos | Incineração/crematório
+3207 – Tratamento de Resíduos Sólidos | Co-processamento.
+3208 – Tratamento de Resíduos Sólidos | Autoclavagem.
+3209 – Reciclagem de Resíduos Sólidos | Central de triagem, classificação e beneficiamento.
+3210 – Reciclagem de Resíduos Sólidos | Unidade de Compostagem.
+3211 – Armazenagem de Resíduos Sólidos Classe I | Central de Recolhimento e Armazenagem.
+3212 – Destino final de Resíduos Sólidos | Aterro Sanitário de Pequeno Porte
+3213 – Destino final de Resíduos Sólidos | Aterro Sanitário Classe II A.
+3214 – Destino final de Resíduos Sólidos | Aterro Sanitário Classe I.
+3215 – Destino final de Resíduos Sólidos | Aterro de Inertes.
+3216 – Transporte fluvial de resíduos sólidos (capacidade da balsa)
+3217 – Tratamento de esgoto sanitário.
+3218 – Captação e Tratamento de resíduos gasosos
+3219 – Beneficiamento de resíduos sólidos industriais, sem processo químico.
+3220 – Beneficiamento de resíduos líqüidos industriais
+3221 – Beneficiamento de resíduos sólidos industriais, com processo químico
+3301 – Fabricação e/ou montagem de componentes e aparelhos eletro-eletrônicos sem processo químico
+3302 – Fabricação e/ou montagem de componentes e aparelhos eletro-eletrônicos com processo químico
+3303 – Fabricação e/ou montagem de placas de circuito integrado
+3304 – Fabricação e/ou montagem de aparelhos de telefonia móvel.
+3305 – Fabricação e/ou montagem de eletrodomésticos e aparelhos elétricos.
+3306 – Fabricação e/ou montagem de equipamentos para telecomunicações e informática.
