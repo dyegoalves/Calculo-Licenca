@@ -8,6 +8,24 @@ body , button ,h1 , h2 , h3 , h4 , h5{
     letter-spacing: 0.05em;
 }
 
+
+button{
+    font-size: 12px !important;
+}
+
+#atualizarsub{
+
+    font-size: 10px !important;
+}
+
+#profile-button{
+
+    height: 30px !important;
+    padding-bottom: 40px !important;
+    padding-top: 10px !important;
+}
+
+
 /****************************
 *   FOR RESPONSIVENESS      *
 ****************************/

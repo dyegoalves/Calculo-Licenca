@@ -11,4 +11,10 @@ class Atividade extends Model
     ];
 
 
+    public function subatividade()
+    {
+        return $this->hasMany(Subatividade::class);
+    }
+
+
 }

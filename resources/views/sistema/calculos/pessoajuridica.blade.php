@@ -256,7 +256,7 @@
               </div>
 
                 <div class="col-md-2">
-                  <button  name="atualizarsub" type="button" class="btn btn-primary btn-sm">Atualizar Subatividade</button>
+                  <button  id="atualizarsub" name="atualizarsub" type="button" class="btn btn-primary btn-sm">Atualizar Subatividade</button>
                 </div>
             </div>
 

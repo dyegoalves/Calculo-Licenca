@@ -21,13 +21,14 @@
                 </div>
 
                 <div class="col-md-6">
-                  <input  type="file" class="form-control" name="imagem" value="{{ old('imagem') }}">
+                  <input  id="profile-button" type="file" class="form-control" name="imagem" value="{{ old('imagem') }}">
                   @if ($errors->has('imagem'))
                   <span class="help-block">
                   <strong>{{$errors->first('imagem')}}</strong>
                   </span>
                   @endif
                 </div>
+
 
                 <div class="col-md-2 col-md-offset-0">
                   <button type="submit" class=" btn btn-primary ">

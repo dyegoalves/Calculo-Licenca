@@ -5,45 +5,56 @@
  			$(this).addClass("parent");
  		};
  	})
+
  	 var menux = $('.ts-sidebar-menu li a.parent');
  	 $('<div class="more"><i class="fa fa-angle-down"></i></div>').insertBefore(menux);
- 	 $('.more').click(function () {
+
+     $('.more').click(function () {
         $("#inicio").removeClass('open');
         $(this).parent('li').toggleClass('open');
  	});
-	 $('.parent').click(function (e) {
+
+     $('.parent').click(function (e) {
 		e.preventDefault();
  		$(this).parent('li').toggleClass('open');
  	});
- 	 $('.menu-btn').click(function () {
+
+     $('.menu-btn').click(function () {
  		$('nav.ts-sidebar').toggleClass('menu-open');
  	});
-	 $('#zctb').DataTable();
-	 $("#input-43").fileinput({
+
+     $('#zctb').DataTable();
+
+    /* $("#input-43").fileinput({
 		showPreview: false,
 		allowedFileExtensions: ["jpeg", "png", "jpg", "gif"],
 		elErrorContainer: "#errorBlock43"
 			// you can configure `msgErrorClass` and `msgInvalidFileExtension` as well
-	});
+	 });*/
+
      $("#Abreviatura").click(function(){
          $('#alerta-abrev').remove();
      });
+
      var tempomsgatvsub = 'slow' ;
      $("#atv_codigo").click(function(){
         $('#atv_msgsucess').fadeOut(tempomsgatvsub , function(){
             $(this).remove();
         });
     });
+
      $("#atv_codigo").click(function(){
         $('#atv_msgerro').fadeOut(tempomsgatvsub, function(){
             $(this).remove();
         });
      });
+
      $("#subatv_codigo").click(function(){
          $('#msgsub').fadeOut( tempomsgatvsub,  function(){
              $(this).remove();
          });
      });
+
      $("#subatv_codigo").click(function(){
          $('#msgsuberro').fadeOut( tempomsgatvsub, function(){
              $(this).remove();
@@ -100,9 +111,6 @@
 
      });
      //Trocar de nomes do inputs de acordo com a atividades
-
-
-
 
   });
 

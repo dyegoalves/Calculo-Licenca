@@ -38,7 +38,7 @@ class CalculosController extends Controller
     public function listarsubatividade(Atividade $atividade, $idatividade)
     {
         $atividade = $atividade->find($idatividade);
-        $subatividade = $atividade->subatividades()->getQuery()->get(['id', 'codigo', 'descricao']);
+        $subatividade = $atividade->subatividade()->getQuery()->get(['id', 'codigo', 'descricao']);
         return Response::json($subatividade);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
+use App\Calculo;
 use App\User;
 use App\Empresa;
 use App\Porte;
@@ -16,6 +17,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use PDO;
+use Schema;
 
 class FerramentasController extends Controller
 {
@@ -194,6 +196,29 @@ class FerramentasController extends Controller
         if($model == 'Subatividade'){
             return Response::json(Subatividade::all());
         }
+    }
+
+
+
+    public function showdados()
+    {
+
+
+
+       //$empresa = Empresa::with('processo.calculo')->where('id', '=', 2)->get(['id', 'razaoSocial' , 'CNPJ']);
+
+        //$empresa  = Empresa::find(1);
+
+        //$empresa->processo;
+
+        //return Response::json(  $empresa->processo);
+
+        //$processo  = $empresa->processo()->getQuery()->get(['id', 'numero' , 'empresa_id']);
+        //$calculo   = $empresa->calculo()->getQuery()->get(['id', 'valor' , 'empresa_id']);
+        //$empresa   = Empresa::with('processo','calculo')->get();
+        //$columns   = Schema::getColumnListing('calculos'); // users table
+        //dd($columns); // dump the result and die
+
     }
 
 }
