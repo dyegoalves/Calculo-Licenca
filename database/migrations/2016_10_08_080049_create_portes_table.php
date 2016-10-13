@@ -14,7 +14,6 @@ class CreatePortesTable extends Migration
     {
         Schema::create('portes', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('tamanho');
             $table->timestamps();

@@ -199,20 +199,11 @@ class FerramentasController extends Controller
     }
 
 
-
     public function showdados()
     {
 
 
-
-       //$empresa = Empresa::with('processo.calculo')->where('id', '=', 2)->get(['id', 'razaoSocial' , 'CNPJ']);
-
-        //$empresa  = Empresa::find(1);
-
-        //$empresa->processo;
-
-        //return Response::json(  $empresa->processo);
-
+        // return Response::json($empresa->processo);
         //$processo  = $empresa->processo()->getQuery()->get(['id', 'numero' , 'empresa_id']);
         //$calculo   = $empresa->calculo()->getQuery()->get(['id', 'valor' , 'empresa_id']);
         //$empresa   = Empresa::with('processo','calculo')->get();
