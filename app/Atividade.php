@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Porte extends Model
+class Atividade extends Model
 {
-
     protected $fillable = [
-        'tamanho'
+        'codigo', 'descricao'
     ];
 
 

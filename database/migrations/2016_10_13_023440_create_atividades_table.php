@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePortesTable extends Migration
+class CreateAtividadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreatePortesTable extends Migration
      */
     public function up()
     {
-        Schema::create('portes', function (Blueprint $table) {
+        Schema::create('atividades', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-
             $table->increments('id');
-            $table->string('tamanho');
+            $table->string('codigo');
+            $table->string('descricao');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePortesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('portes');
+        Schema::drop('atividades');
     }
 }

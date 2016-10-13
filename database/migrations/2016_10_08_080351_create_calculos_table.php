@@ -9,7 +9,10 @@ class CreateCalculosTable extends Migration
 
     public function up()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+
         Schema::create('calculos', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->decimal('valor', 10,2);
             $table->integer('processo_id')->unsigned();
@@ -27,6 +30,8 @@ class CreateCalculosTable extends Migration
                 ->onDelete('cascade');
 
         });
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
     }
 

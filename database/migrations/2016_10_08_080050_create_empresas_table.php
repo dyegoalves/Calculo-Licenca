@@ -10,9 +10,16 @@ class CreateEmpresasTable extends Migration
      *
      * @return void
      */
+
+
     public function up()
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         Schema::create('empresas', function (Blueprint $table) {
+
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->string('razaoSocial');
             $table->string('nomeFantasia');
@@ -38,6 +45,8 @@ class CreateEmpresasTable extends Migration
                 ->onDelete('cascade');
 
         });
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
     }
 
     /**

@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/criarativiades' , 'FerramentasController@criarativiades');
         Route::get('/criarportes', 'FerramentasController@criarportes');
         Route::get('/criarppds', 'FerramentasController@criarppds');
+
         Route::get('/criartipoprecos', 'FerramentasController@criartipoprecos');
         Route::get('/criarsubatividades' , 'FerramentasController@criarsubatividades');
         Route::get('/showdadosmodels/{model}', 'FerramentasController@showdadosmodels');

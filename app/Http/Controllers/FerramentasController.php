@@ -37,41 +37,16 @@ class FerramentasController extends Controller
        $database = env("DB_DATABASE");
        $username = env("DB_USERNAME");
        $password = env("DB_PASSWORD");
-
-       /*
-       //Pegar os valores do arquivo local .env
-       $env = file_get_contents("../.env");
-       $linha = explode("\n", $env);
-       for($i = 0 ; $i <  count($linha) ; $i++)
-       {
-           list($variavel, $valor) = explode('=' , $linha[$i]);
-           $dadosarray[$variavel] = $valor;
-       }
-       json_encode($dadosarray);
-       */
-
        exec("cd .. && php artisan migrate");
-
        //Exporta os dados de Usuarios Cadastrados
        exec("mysql {$database} -u{$username} -p{$password} < sqls/users.sql");
-       //Criar as Tabelas do projeto calculo-licenca
-       exec("mysql {$database} -u{$username} -p{$password} < sqls/newbancoipaam.sql");
 
-       /*//deletar todas as tabelas do banco
-        exec("mysql ". env('DB_DATABASE')." -u ".env('DB_USERNAME') ." -p".env('DB_PASSWORD')." < sqls/droptables.sql");
-
-       /* //Criar a migrate do User
-       exec("cd .. && php artisan migrate");
-       //Exporta os dados de Usuarios Cadastrados
-       exec("mysql ". env('DB_DATABASE')." -u".env('DB_USERNAME')." -p".env('DB_PASSWORD')." < sqls/users.sql");
-       //Criar as Tabelas do projeto calculo-licenca
-       exec("mysql ". env('DB_DATABASE')." -u".env('DB_USERNAME')." -p".env('DB_PASSWORD')." < sqls/newbancoipaam.sql");*/
     }
     //criar atividades  - sem chaves estrangeiras
     public function criarativiades()
     {
         $atividade = new Atividade ;
-        $arquivo = "atividades.txt";
+        $arquivo = "dados/atividades.txt";
         $fhandler = fopen($arquivo, "r")
         or die("Erro ao abrir arquivo");
         $fstring = fread($fhandler, filesize($arquivo));
@@ -85,10 +60,12 @@ class FerramentasController extends Controller
             $dados =['codigos' => $codigo,'descricao'=> $decricao];
 
             $atividade->create([
-                'codigo' => $dados['codigos'], 'descricao' => $dados['codigos'].' - '.$dados['descricao']
+                'codigo' => $dados['codigos'],
+                'descricao' => $dados['codigos'].' - '.$dados['descricao']
             ]);
-
         }
+
+        return Response::json("Atividades cadastradas com sucesso");
 
     }
     //Criar portes - sem chaves estrangeiras
@@ -99,16 +76,18 @@ class FerramentasController extends Controller
         $porte->create(['tamanho' => "MEDIO"]);
         $porte->create(['tamanho' => "GRANDE"]);
         $porte->create(['tamanho' => "EXCEPCIONAL"]);
-    }
 
+        return Response::json("Portes cadastrados com sucesso");
+
+    }
     //Criar ppds - com chaves strangeiras
     public function criarppds(){
 
         function nivel ($porte_id){
             $ppd = new Ppd;
-            $ppd->create(['nivel' => 'P' , 'portes_id' => intval($porte_id)]);
-            $ppd->create(['nivel' => 'M' , 'portes_id' => intval($porte_id)]);
-            $ppd->create(['nivel' => 'G' , 'portes_id' => intval($porte_id)]);
+            $ppd->create(['nivel' => 'PEQUENO' ,  'porte_id' => intval($porte_id)]);
+            $ppd->create(['nivel' => 'MEDIO'   ,  'porte_id' =>   intval($porte_id)]);
+            $ppd->create(['nivel' => 'GRANDE'  ,  'porte_id' =>  intval($porte_id)]);
         }
         $porte_id = 1;
         nivel($porte_id);
@@ -120,12 +99,14 @@ class FerramentasController extends Controller
         nivel($porte_id);
         $porte_id = 5;
         nivel($porte_id);
+
+        return Response::json("ppdS cadastrados com sucesso");
     }
     //Criar tipoprecos - com chaves estrangeiras
     public function criartipoprecos()
     {
         $tipopreco = new Tipopreco;
-        $arquivo = "tipopreco.txt";
+        $arquivo = "dados/tipopreco.txt";
         $fhandler = fopen($arquivo, "r")
         or die("Erro ao abrir arquivo");
         $fstring = fread($fhandler, filesize($arquivo));
@@ -141,20 +122,24 @@ class FerramentasController extends Controller
                      'precoLI' => $precoLI,
                      'precoLO' => $precoLO,
             ];
+
             $tipopreco->create([
-                'precoLP' => $dados['precoLP'],
-                'precoLI' => $dados['precoLI'],
-                'precoLO' => $dados['precoLO'],
-                'ppds_id' => intval($idx+1),
+                'LP' => $dados['precoLP'],
+                'LI' => $dados['precoLI'],
+                'LO' => $dados['precoLO'],
+                'ppd_id' => intval($idx+1),
             ]);
         }
+        return Response::json("tipo preco cadastrados com sucesso");
     }
     //criar subatividade - com chaves estrangeiras
     public function criarsubatividades()
     {
         $subatividade = new Subatividade;
+
         $ppd_id = 1 ;
-        $arquivo = "subatividades.txt";
+
+        $arquivo = "dados/subatividades.txt";
         $fhandler = fopen($arquivo, "r")
         or die("Erro ao abrir arquivo");
         $fstring = fread($fhandler, filesize($arquivo));
@@ -163,19 +148,24 @@ class FerramentasController extends Controller
 
         for ($idx = 0; $idx < count($linha_array); $idx++) {
             $linha = $linha_array[$idx];
+
             list($codigo, $decricao) = explode('–',$linha);
 
             $dados =[
-                'codigos' => $codigo, 'descricao'=> $decricao
+                'codigo' => $codigo, 'descricao'=> $decricao
             ];
 
-            $atividades_id = ($codigo[0].$codigo[1]);
-            $atividades_id = DB::table('atividades')->where('codigo', $atividades_id)->first();
+            //Relacao do campo codigo subatividade com codigo da ativiadade.
+            $atividade_codigo_relacao = ($codigo[0].$codigo[1]);
+
+            $atividade_id = DB::table('atividades')
+                                ->where('codigo', $atividade_codigo_relacao)
+                                ->first();
 
             $subatividade->create([
-                'codigo' => $dados['codigos'],
-                'descricao' => $dados['codigos'].' - '.$dados['descricao'],
-                'atividades_id' => intval($atividades_id->id),
+                'codigo' => $dados['codigo'],
+                'descricao' => $dados['codigo'].' - '.$dados['descricao'],
+                'atividade_id' => intval($atividade_id->id),
                 'ppd_id' => intval($ppd_id)
             ]);
 

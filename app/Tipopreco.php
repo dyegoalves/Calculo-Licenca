@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Porte extends Model
+class Tipopreco extends Model
 {
-
     protected $fillable = [
-        'tamanho'
+        'LI' ,
+        'LP' ,
+        'LO' ,
+        'ppd_id',
     ];
-
-
 }
