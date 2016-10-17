@@ -26,16 +26,17 @@ class Empresa extends Model
 
     ];
 
+
+    //Relacao 1 .. N - Uma empresa pode ter varios processos
     public function processo()
     {
         return $this->hasMany(Processo::class);
     }
 
-
+    //Relacao 1 .. N - Uma empresa pode ter varios calculo
     public function calculo()
     {
         return $this->hasMany(Calculo::class);
     }
-
 
 }

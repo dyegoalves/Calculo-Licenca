@@ -39,6 +39,7 @@ class FerramentasController extends Controller
        $database = env("DB_DATABASE");
        $username = env("DB_USERNAME");
        $password = env("DB_PASSWORD");
+
        exec("cd .. && php artisan migrate");
        //Exporta os dados de Usuarios Cadastrados
        exec("mysql {$database} -u{$username} -p{$password} < sqls/users.sql");
