@@ -28,10 +28,10 @@ class CreateTipoprecosTable extends Migration
         });
 
         Schema::table('tipoprecos', function($table) {
-            $table->foreign('ppd_id')->references('id')->on('ppds')
-                ->onDelete('cascade');
+            $table->foreign('ppd_id')->references('id')->on('ppds');
 
         });
+
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
     }

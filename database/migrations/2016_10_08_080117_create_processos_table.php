@@ -18,15 +18,7 @@ class CreateProcessosTable extends Migration
 
             $table->increments('id');
             $table->string("numero");
-            $table->integer('empresa_id')->unsigned();
             $table->timestamps();
-
-        });
-
-
-        Schema::table('processos', function($table) {
-            $table->foreign('empresa_id')->references('id')->on('empresas')
-                  ->onDelete('cascade');
 
         });
 

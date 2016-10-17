@@ -23,9 +23,7 @@ class CreatePpdsTable extends Migration
         });
 
         Schema::table('ppds', function($table) {
-            $table->foreign('porte_id')->references('id')->on('portes')
-                ->onDelete('cascade');
-
+            $table->foreign('porte_id')->references('id')->on('portes');
         });
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');

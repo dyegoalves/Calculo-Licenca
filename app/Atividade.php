@@ -16,5 +16,9 @@ class Atividade extends Model
         return $this->hasMany(Subatividade::class);
     }
 
+    public function empreendimento()
+    {
+        return $this->hasOne(Empreendimento::class);
+    }
 
 }

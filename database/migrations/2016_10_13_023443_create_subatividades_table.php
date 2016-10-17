@@ -26,11 +26,8 @@ class CreateSubatividadesTable extends Migration
         });
 
         Schema::table('subatividades', function($table) {
-            $table->foreign('atividade_id')->references('id')->on('atividades')
-                ->onDelete('cascade');
-            $table->foreign('ppd_id')->references('id')->on('ppds')
-                ->onDelete('cascade');
-
+            $table->foreign('atividade_id')->references('id')->on('atividades');
+            $table->foreign('ppd_id')->references('id')->on('ppds');
         });
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');

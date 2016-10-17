@@ -15,6 +15,7 @@ class Empresa extends Model
         'email',
         'telefone',
         'celular',
+        'fax',
         'endereco',
         'numero',
         'complemento',
@@ -22,21 +23,14 @@ class Empresa extends Model
         'bairro',
         'cidade',
         'UF',
-        'porte_id',
-
     ];
 
 
-    //Relacao 1 .. N - Uma empresa pode ter varios processos
-    public function processo()
+    //Relacao 1 .. N - Uma empresa pode ter varios empreendimentos
+    public function empreendimento()
     {
-        return $this->hasMany(Processo::class);
+        return $this->hasMany(Empreendimento::class);
     }
 
-    //Relacao 1 .. N - Uma empresa pode ter varios calculo
-    public function calculo()
-    {
-        return $this->hasMany(Calculo::class);
-    }
 
 }

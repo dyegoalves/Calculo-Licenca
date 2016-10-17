@@ -10,5 +10,15 @@ class Ppd extends Model
         'nivel' , 'porte_id'
     ];
 
+    public function porte()
+    {
+        return $this->belongsTo(Porte::class);
+    }
+
+    public function subatividade()
+    {
+        return $this->hasMany(Subatividade::class);
+    }
+
 
 }

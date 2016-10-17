@@ -16,28 +16,25 @@ class CreateEmpreendimentosTable extends Migration
 
         Schema::create('empreendimentos', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-
             $table->increments('id');
-
             $table->string('basedecalculo01');
             $table->string('basedecalculo02');
-
+            $table->integer('processo_id')->unsigned();
             $table->integer('empresa_id')->unsigned();
-
+            $table->integer('porte_id')->unsigned();
             $table->integer('atividade_id')->unsigned();
-
             $table->integer('subatividade_id')->unsigned();
-
             $table->timestamps();
         });
 
         Schema::table('empreendimentos', function($table) {
-            $table->foreign('empresa_id')->references('id')->on('empresas')
-                ->onDelete('cascade');
-            $table->foreign('atividade_id')->references('id')->on('atividades')
-                ->onDelete('cascade');
-            $table->foreign('subatividade_id')->references('id')->on('subatividades')
-                ->onDelete('cascade');
+
+            $table->foreign('processo_id')->references('id')->on('processos');
+            $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->foreign('porte_id')->references('id')->on('portes');
+            $table->foreign('atividade_id')->references('id')->on('atividades');
+            $table->foreign('subatividade_id')->references('id')->on('subatividades');
+
         });
 
 

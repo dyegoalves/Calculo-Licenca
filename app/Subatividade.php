@@ -16,4 +16,14 @@ class Subatividade extends Model
         return $this->belongsTo(Atividade::class);
     }
 
+    public function empreendimento()
+    {
+        return $this->hasOne(Empreendimento::class);
+    }
+
+    public function ppd()
+    {
+        return $this->hasOne(Ppd::class);
+    }
+
 }

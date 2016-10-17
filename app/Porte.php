@@ -11,5 +11,14 @@ class Porte extends Model
         'tamanho'
     ];
 
+    public function empreendimento()
+    {
+       return $this->hasMany(Empreendimento::class);
+    }
+
+    public function ppd()
+    {
+        return $this->hasMany(Ppd::class);
+    }
 
 }

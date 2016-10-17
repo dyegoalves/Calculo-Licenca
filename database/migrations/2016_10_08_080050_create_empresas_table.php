@@ -28,6 +28,7 @@ class CreateEmpresasTable extends Migration
             $table->string('email');
             $table->string('telefone');
             $table->string('celular');
+            $table->string('fax');
             $table->string('endereco');
             $table->string('numero');
             $table->string('complemento');
@@ -35,15 +36,7 @@ class CreateEmpresasTable extends Migration
             $table->string('bairro');
             $table->string('cidade');
             $table->string('UF');
-            $table->integer('porte_id')->unsigned();
             $table->timestamps();
-        });
-
-        Schema::table('empresas', function($table) {
-
-            $table->foreign('porte_id')->references('id')->on('portes')
-                ->onDelete('cascade');
-
         });
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
