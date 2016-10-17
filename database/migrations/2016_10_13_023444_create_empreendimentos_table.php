@@ -28,7 +28,6 @@ class CreateEmpreendimentosTable extends Migration
         });
 
         Schema::table('empreendimentos', function($table) {
-
             $table->foreign('processo_id')->references('id')->on('processos');
             $table->foreign('empresa_id')->references('id')->on('empresas');
             $table->foreign('porte_id')->references('id')->on('portes');
@@ -36,8 +35,6 @@ class CreateEmpreendimentosTable extends Migration
             $table->foreign('subatividade_id')->references('id')->on('subatividades');
 
         });
-
-
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 

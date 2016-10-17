@@ -203,33 +203,11 @@ class FerramentasController extends Controller
     public function cad(){
 
 
-        /*
-          0 => "id"
-          1 => "basedecalculo01"
-          2 => "basedecalculo02"
-          3 => "processo_id"
-          4 => "empresa_id"
-          5 => "porte_id"
-          6 => "atividade_id"
-          7 => "created_at"
-          8 => "updated_at"
-        ]*/
-
-        $cad = new Empreendimento();
-        $cad->basedecalculo01 = "0.9";
-        $cad->basedecalculo02 = "100";
-        $cad->processo_id = 1;
-        $cad->porte_id = 4;
-        $cad->atividade_id = 2;
-
-
     }
 
 
     public function showdados()
     {
-
-        $this->cad();
 
 
         // return Response::json($empresa->processo);
