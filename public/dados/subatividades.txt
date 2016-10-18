@@ -1,7 +1,7 @@
 0301 – Siderurgia e fabricação de produtos siderúrgicos com redução de minérios, inclusive ferro. - 3
 0302 – Produção de ferro e aço e suas ligas em qualquer forma, sem redução de minérios, com fusão. - 2
 0303 – Produção de laminados de aço | inclusive ferro-ligas, a quente sem fusão. - 2
-0304 – Produção de laminados de aço, inclusive ferro-ligas, a frio sem tratamento químico superficial ou galvanotécnico.- 2
+0304 – Produção de laminados de aço, inclusive ferro-ligas, a frio sem tratamento químico superficial ou galvanotécnico. - 2
 0305 – Produção de laminados de aço, inclusive ferro-ligas, a frio, com tratamento químico superficial ou galvanotécnico. - 3
 0306 – Produção de canos e tubos de ferro e aço, com fusão, tratamento químico superficial e/ou galvanotécnico. - 3
 0307 – Produção de canos e tubos de ferro e aço, sem fusão, porém com tratamento químico ou galvanotécnico. - 3
@@ -184,7 +184,7 @@
 3201 – Coleta e transporte de resíduos Classe I. - 3
 3202 – Coleta e transporte de resíduo Classe II. - 2
 3203 – Coleta e transporte rodoviário de esgoto sanitário. - 3
-3204 – Coleta e transporte fluvial de esgoto sanitário. -3
+3204 – Coleta e transporte fluvial de esgoto sanitário. - 3
 3205 – Coleta e transporte de resíduos líquidos. - 2
 3206 – Tratamento de Resíduos Sólidos | Incineração/crematório. - 3
 3207 – Tratamento de Resíduos Sólidos | Co-processamento. - 3
