@@ -9,6 +9,7 @@ class Ppd extends Model
     protected $fillable = [
         'nivel' , 'porte_id'
     ];
+
     public function porte()
     {
         return $this->belongsTo(Porte::class);

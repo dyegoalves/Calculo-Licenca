@@ -197,19 +197,40 @@ class FerramentasController extends Controller
         }
     }
 
-    public function cad(){
-
+    public function cad()
+    {
 
     }
-
 
     public function showdados()
     {
 
+        //Empreendimento
+        $empreendimento = Empreendimento::find(2);
 
-        $ppd = Ppd::find(3);
+        //Empresa dados
+        $empresa =  $empreendimento->empresa;
 
-        return Response::json($ppd->subatividade);
+        //Dados sobre porte do Empreendimento
+        $porte = $empreendimento->porte;
+
+        //Dados sobre Atividades do Empreendimento
+        $atividade = $empreendimento->atividade;
+
+        //Dados sobre Subatividade do Empreendimento
+        $subatividade = $empreendimento->subatividade;
+
+        //Nivel do PPD da subatividade
+        $ppd_nivel = $subatividade->ppd->nivel;
+
+        //Busca porte ppd pelo nivel
+        $porteppd =  $porte->ppd()->where('nivel', $ppd_nivel)->get();;
+
+        $ppd  = Ppd::find($porteppd[0]->id);
+
+        $tipopreco =  $ppd->tipopreco;
+
+        dd($empresa , $atividade , $subatividade , $porte,  $porteppd , $tipopreco);
 
         // return Response::json($empresa->processo);
         //$processo  = $empresa->processo()->getQuery()->get(['id', 'numero' , 'empresa_id']);

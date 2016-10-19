@@ -23,13 +23,11 @@ class CreateTipoprecosTable extends Migration
             $table->string('LI');
             $table->string('LO');
             $table->integer('ppd_id')->unsigned();
-
             $table->timestamps();
         });
 
         Schema::table('tipoprecos', function($table) {
             $table->foreign('ppd_id')->references('id')->on('ppds');
-
         });
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
