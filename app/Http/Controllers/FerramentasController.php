@@ -141,8 +141,6 @@ class FerramentasController extends Controller
     {
         $subatividade = new Subatividade;
 
-        $ppd_id = 1 ;
-
         $arquivo = "dados/subatividades.txt";
         $fhandler = fopen($arquivo, "r")
         or die("Erro ao abrir arquivo");
@@ -153,15 +151,14 @@ class FerramentasController extends Controller
         for ($idx = 0; $idx < count($linha_array); $idx++) {
             $linha = $linha_array[$idx];
 
-            list($codigo, $decricao) = explode('–',$linha);
+            list($codigo, $decricao , $ppd_id) = explode(' – ',$linha);
 
             $dados =[
-                'codigo' => $codigo, 'descricao'=> $decricao
+                'codigo' => $codigo, 'descricao'=> $decricao , 'ppd_id' => $ppd_id
             ];
 
             //Relacao do campo codigo subatividade com codigo da ativiadade.
             $atividade_codigo_relacao = ($codigo[0].$codigo[1]);
-
             $atividade_id = DB::table('atividades')
                                 ->where('codigo', $atividade_codigo_relacao)
                                 ->first();
@@ -170,7 +167,7 @@ class FerramentasController extends Controller
                 'codigo' => $dados['codigo'],
                 'descricao' => $dados['codigo'].' - '.$dados['descricao'],
                 'atividade_id' => intval($atividade_id->id),
-                'ppd_id' => intval($ppd_id)
+                'ppd_id' => intval($dados['ppd_id'])
             ]);
 
         }
@@ -209,6 +206,10 @@ class FerramentasController extends Controller
     public function showdados()
     {
 
+
+        $ppd = Ppd::find(3);
+
+        return Response::json($ppd->subatividade);
 
         // return Response::json($empresa->processo);
         //$processo  = $empresa->processo()->getQuery()->get(['id', 'numero' , 'empresa_id']);
