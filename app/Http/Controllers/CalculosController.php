@@ -57,9 +57,41 @@ class CalculosController extends Controller
      * @param Subatividade $subatividade
      * @return $this
      */
-    public function fazercalculos(Request $request , Atividade  $atividade , Subatividade $subatividade)
+    public function fazercalculos(Request $request)
     {
-        /*//Regras de validacao
+
+        /*
+          array:27 [▼
+          "_token" => "KzDLhL5oYAspOppJzvYhSyeKpCA3owdEjFAhsm5z"
+          "num_processo" => ""
+          "escolhatipo" => "1"
+          "razaosocial" => ""
+          "nomefantasia" => ""
+          "cnpj" => ""
+          "numerodeinscricao" => ""
+          "email" => ""
+          "telefone" => ""
+          "celular" => ""
+          "fax" => ""
+          "endereco" => ""
+          "numero" => ""
+          "complemento" => ""
+          "cep" => ""
+          "bairro" => ""
+          "estado" => ""
+          "municipio" => ""
+          "atividade" => " "
+          "subatividade" => " "
+          "areaultiu" => ""
+          "numerodeempregados" => ""
+          "tipopreco" => ""
+          "portedaempresa" => ""
+          "ppd" => ""
+          "valordalicenca" => ""
+          "btncalcular" => ""
+        ]*/
+
+        //Regras de validacao
 
         $rules = array(
         'num_processo' => 'required',
@@ -86,24 +118,20 @@ class CalculosController extends Controller
         );
 
         $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
-
-
         $validator = Validator::make(Input::all(), $rules);
-
         if($validator->fails()) {
             return back()
                 ->withErrors($validator)
                 ->with(compact('selecsub'))
                 ->withInput();
-        }*/
+        }
 
         $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
         $portedaempresa = $this->calcularporte();
 
-
         return Redirect::route('calculos')
-            ->with(compact('portedaempresa', 'selecsub'))
-            ->withInput();
+               ->with(compact('portedaempresa', 'selecsub'))
+               ->withInput();
     }
 
     //Auxilio calcularporte
@@ -132,9 +160,6 @@ class CalculosController extends Controller
         return "EXCEPCIONAL";
     }
     //Calcular porte do empreendimento
-    /**
-     * @return string
-     */
     public function calcularporte()
     {
         $atvidadecodido = Atividade::find(intval(Input::get("atividade")));

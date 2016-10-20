@@ -200,13 +200,14 @@ class FerramentasController extends Controller
     public function cad()
     {
 
+
     }
 
     public function showdados()
     {
 
         //Empreendimento
-        $empreendimento = Empreendimento::find(2);
+        $empreendimento = Empreendimento::find(1);
 
         //Empresa dados
         $empresa =  $empreendimento->empresa;
@@ -230,7 +231,8 @@ class FerramentasController extends Controller
 
         $tipopreco =  $ppd->tipopreco;
 
-        dd($empresa , $atividade , $subatividade , $porte,  $porteppd , $tipopreco);
+
+        dd($empresa , $atividade , $subatividade , $porte,  $porteppd , $tipopreco );
 
         // return Response::json($empresa->processo);
         //$processo  = $empresa->processo()->getQuery()->get(['id', 'numero' , 'empresa_id']);

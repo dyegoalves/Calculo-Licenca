@@ -261,7 +261,7 @@
             </div>
 
 
-            <div name="input1" class="form-group{{ $errors->has('areaultiu') ? ' has-error' : '' }}">
+            <div name="input1" class="form-group{{ $errors->has('areaultiu  ') ? ' has-error' : '' }}">
               <label for="areaultiu" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
               <div class="col-md-4">
                 <input id="areaultiu" type="text" class="form-control input-sm" name="areaultiu" value="{{ old('areaultiu') }}">
