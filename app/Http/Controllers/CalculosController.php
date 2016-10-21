@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Atividade;
 use App\Empresa;
+use App\Porte;
+use App\Ppd;
 use Illuminate\Http\Request;
 use App\Processo;
 use App\Subatividade;
@@ -60,40 +62,11 @@ class CalculosController extends Controller
     public function fazercalculos(Request $request)
     {
 
-        /*
-          array:27 [▼
-          "_token" => "KzDLhL5oYAspOppJzvYhSyeKpCA3owdEjFAhsm5z"
-          "num_processo" => ""
-          "escolhatipo" => "1"
-          "razaosocial" => ""
-          "nomefantasia" => ""
-          "cnpj" => ""
-          "numerodeinscricao" => ""
-          "email" => ""
-          "telefone" => ""
-          "celular" => ""
-          "fax" => ""
-          "endereco" => ""
-          "numero" => ""
-          "complemento" => ""
-          "cep" => ""
-          "bairro" => ""
-          "estado" => ""
-          "municipio" => ""
-          "atividade" => " "
-          "subatividade" => " "
-          "areaultiu" => ""
-          "numerodeempregados" => ""
-          "tipopreco" => ""
-          "portedaempresa" => ""
-          "ppd" => ""
-          "valordalicenca" => ""
-          "btncalcular" => ""
-        ]*/
+
 
         //Regras de validacao
 
-        $rules = array(
+       /* $rules = array(
         'num_processo' => 'required',
         'razaosocial' => 'required',
         'nomefantasia' => 'required',
@@ -115,6 +88,9 @@ class CalculosController extends Controller
         'areaultiu' => 'required',
         'numerodeempregados' => 'required',
         'tipopreco' => 'required',
+        'portedaempresa' => 'required',
+        'valordalicenca' => 'required',
+        'ppd' => 'required',
         );
 
         $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
@@ -124,14 +100,50 @@ class CalculosController extends Controller
                 ->withErrors($validator)
                 ->with(compact('selecsub'))
                 ->withInput();
-        }
+        }*/
 
+
+
+        if($request->get("btncalcular") == "btncalcular" ){
+            $rules = array(
+
+                'atividade' => 'required',
+                'subatividade' => 'required',
+                'areaultiu' => 'required',
+                'numerodeempregados' => 'required',
+                'tipopreco' => 'required'
+
+            );
+
+            $validator = Validator::make(Input::all(), $rules);
+            if($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->with(compact('selecsub'))
+                    ->withInput();
+            }
+
+        //Subatividade
+        $subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
+        //PPD nivel
+        $ppd = $subatividade->ppd->nivel;
         $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
         $portedaempresa = $this->calcularporte();
-
+        $porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
+        $portemodel = Porte::find($porte->id);
+        $porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
+        $ppdmodel  = Ppd::find($porteppd[0]->id);
+        $tipo  = $request->get("tipopreco");
+        $valordalicenca = "R$ " . $ppdmodel->tipopreco[0]->$tipo;
         return Redirect::route('calculos')
-               ->with(compact('portedaempresa', 'selecsub'))
+               ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
                ->withInput();
+        }
+
+        if($request->get("btnsalvar") == "btnsalvar" ){
+
+
+        }
     }
 
     //Auxilio calcularporte
@@ -162,9 +174,9 @@ class CalculosController extends Controller
     //Calcular porte do empreendimento
     public function calcularporte()
     {
-        $atvidadecodido = Atividade::find(intval(Input::get("atividade")));
+        $atvidadecodido     = Atividade::find(intval(Input::get("atividade")));
         $subatividadecodigo = Subatividade::find(intval(Input::get("subatividade")));
-        $atvidadecodido = trim($atvidadecodido->codigo);
+        $atvidadecodido     = trim($atvidadecodido->codigo);
         $subatividadecodigo = trim($subatividadecodigo->codigo);
 
         if ($atvidadecodido == "04" && ($subatividadecodigo >= "0401" && $subatividadecodigo <= "0409"))

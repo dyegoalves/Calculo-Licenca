@@ -25,21 +25,20 @@
             </div>
             <br/>
             <h4 class="page-title">Dados da Empresa</h4>
-
             {{--Tipo pessoa--}}
             <div class="form-group">
               <div class="col-sm-12">
-                <label>Tipo de Pessoa    </label>
+                <label>Tipo de Pessoa    </label> <br/>
                 <div class=" radio radio-info radio-inline">
                   <input value="1" type="radio" id="inlineRadio1"  name="escolhatipo" checked>
-                  <label for="inlineRadio1">Pessoa Juridica?       </label>
+                  <label for="inlineRadio1">Pessoa Juridica?</label>     
                   <input value="2" type="radio" id="inlineRadio2"  name="escolhatipo">
                   <label for="inlineRadio2">Pessoa Fisíca?</label>
                 </div>
               </div>
             </div>
             <div class="form-group">
-            {{--Input Razao social--}}
+              {{--Input Razao social--}}
               <div class="col-md-3 {{ $errors->has('razaosocial') ? ' has-error' : '' }}">
                 <label for="razaosocial" >Razão Social *</label>
                 <input id="razaosocial" type="text" class=" form-control input-sm" name="razaosocial" value="{{ old('razaosocial') }}">
@@ -177,13 +176,10 @@
                 @endif
               </div>
               {{--Input Estados--}}
-
-               <div class=" col-md-3{{ $errors->has('estado') ? ' has-error' : '' }}">
-               <?php $estados = "Amazonas";?>
-
+              <div class=" col-md-3{{ $errors->has('estado') ? ' has-error' : '' }}">
+                <?php $estados = "Amazonas";?>
                 <label for="estado" >Estado *</label>
                 <input id="estado" type="text" class=" form-control input-sm" name="estado" value="{{old('estado')}}">
-
                 @if ($errors->has('estado'))
                 <span class="help-block">
                 <strong>{{ $errors->first('estado') }}</strong>
@@ -202,31 +198,29 @@
               </div>
             </div>
             <br/>
-
-
             <h4 class="page-title">Dados do Empreendimento e Calculos Lei No 3.785/2012 * </h4>
+
+            <div class="alert bg-warning ">
+              <strong>Atencao !</strong> È obrigatorio o preenchimento de todos os dados *.
+            </div>
 
             <div class="form-group{{ $errors->has('atividade') ? ' has-error' : '' }}">
               <label for="atividade" class="col-md-2 control-label">Atividade: </label>
               <div class="col-md-5">
                 <select  autocomplete="off" name="atividade" id="atividade" class="form-control input-sm">
-
-
-                    <option selected value=" "> </option>
-                    @if(isset($atividade))
-                    @foreach ($atividade as $key)
-                         <option value="{{$key->id}}"{{ (old("atividade") == $key->id ? " selected "  : " ") }}>{{ $key->descricao }}</option>
-                     @endforeach
-                    @endif
-
-                     {{--
-                     @if(isset($atividade))
-                           @foreach($atividade as $atv)
-                               <option value="{{ $atv->id }}">{{$atv->descricao }}</option>
-                           @endforeach
-                     @endif
-                     --}}
-
+                  <option selected value=" "> </option>
+                  @if(isset($atividade))
+                  @foreach ($atividade as $key)
+                  <option value="{{$key->id}}"{{ (old("atividade") == $key->id ? " selected "  : " ") }}>{{ $key->descricao }}</option>
+                  @endforeach
+                  @endif
+                  {{--
+                  @if(isset($atividade))
+                  @foreach($atividade as $atv)
+                  <option value="{{ $atv->id }}">{{$atv->descricao }}</option>
+                  @endforeach
+                  @endif
+                  --}}
                 </select>
                 @if ($errors->has('atividade'))
                 <span class="help-block">
@@ -235,33 +229,28 @@
                 @endif
               </div>
             </div>
-
             <div class="form-group{{ $errors->has('subatividade') ? ' has-error' : '' }}">
               <label for="subatividade" class="col-md-2 control-label">Subatividade: </label>
               <div class="col-md-8">
                 {{--Dados obtidos por meio  de requisicao ajax main.js--}}
-
                 <select id ='subatividade' name="subatividade"  class="form-control input-sm">
-               <option selected
-                value="{{ session()->has('selecsub') ? session("selecsub")->id  : ''}} ">
-                {{ session()->has('selecsub') ? session("selecsub")->descricao : ''}}
-               </option>
+                  <option selected
+                    value="{{ session()->has('selecsub') ? session("selecsub")->id  : ''}} ">
+                    {{ session()->has('selecsub') ? session("selecsub")->descricao : ''}}
+                  </option>
                 </select>
-
                 @if ($errors->has('subatividade'))
                 <span class="help-block">
                 <strong>{{ $errors->first('subatividade') }}</strong>
                 </span>
                 @endif
               </div>
-
-                <div class="col-md-2">
-                  <button  id="atualizarsub" name="atualizarsub" type="button" class="btn btn-primary btn-sm">Atualizar Subatividade</button>
-                </div>
+              <div class="col-md-2">
+                <button  id="atualizarsub" name="atualizarsub" type="button" class="btn btn-primary btn-sm">Atualizar Subatividade</button>
+              </div>
             </div>
 
-
-            <div name="input1" class="form-group{{ $errors->has('areaultiu  ') ? ' has-error' : '' }}">
+            <div name="input1" class="form-group{{ $errors->has('areaultiu') ? ' has-error' : '' }}">
               <label for="areaultiu" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
               <div class="col-md-4">
                 <input id="areaultiu" type="text" class="form-control input-sm" name="areaultiu" value="{{ old('areaultiu') }}">
@@ -272,7 +261,6 @@
                 @endif
               </div>
             </div>
-
 
             <div name="input2" class="form-group{{ $errors->has('numerodeempregados') ? ' has-error' : '' }}">
               <label for="numerodeempregados" class="col-md-2 control-label">Nº de empregados: </label>
@@ -285,24 +273,18 @@
                 @endif
               </div>
             </div>
-
-
             <div class="form-group{{ $errors->has('tipopreco') ? ' has-error' : '' }}">
               <label for="tipopreco" class="col-md-2 control-label">Tipo da lincenca: </label>
               <div class="col-md-2">
-
                 <?php
-                    $tipopreco = [1 => 'LP',2 => 'LI', 3 =>'LO']
-                ?>
-
+                  $tipopreco = ['LP' => 'LP', 'LI' => 'LI','LO' =>'LO'];
+                  ?>
                 <select  autocomplete="off" name="tipopreco" id="inputID" class="form-control input-sm">
-                <option selected value=""> </option>
-                @foreach ($tipopreco as $key => $food)
-                      <option value="{{$key}}"{{ (old("tipopreco") == $key ? " selected":"") }}>{{ $food }}</option>
-                @endforeach
-
+                  <option selected value=""> </option>
+                  @foreach ($tipopreco as $key => $food)
+                  <option value="{{$key}}"{{ (old("tipopreco") == $key ? " selected":"") }}>{{ $food }}</option>
+                  @endforeach
                 </select>
-
               </div>
               @if ($errors->has('tipopreco'))
               <span class="help-block">
@@ -310,13 +292,11 @@
               </span>
               @endif
             </div>
-
-
-             <div class="form-group{{ $errors->has('portedaempresa') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('portedaempresa') ? ' has-error' : '' }}">
               <label for="portedaempresa" class="col-md-2 control-label">Porte da empresa: </label>
               <div class="col-md-4">
                 <input readonly="readonly" id="portedaempresa" type="text" class="form-control input-sm" name="portedaempresa"
-                    value="{{ session()->has('portedaempresa') ? session("portedaempresa") : '' }}">
+                value="{{ session()->has('portedaempresa') ? session("portedaempresa") : ' ' }}">
                 @if ($errors->has('portedaempresa'))
                 <span class="help-block">
                 <strong>{{ $errors->first('portedaempresa') }}</strong>
@@ -327,7 +307,8 @@
             <div class="form-group{{ $errors->has('ppd') ? ' has-error' : '' }}">
               <label for="ppd" class="col-md-2 control-label">PPD: </label>
               <div class="col-md-4">
-                <input readonly id="ppd" type="text" class="form-control input-sm" name="ppd" value="{{ old('ppd') }}">
+                <input readonly id="ppd" type="text" class="form-control input-sm" name="ppd"
+                value="{{ session()->has('ppd') ? session("ppd") : '' }}">
                 @if ($errors->has('ppd'))
                 <span class="help-block">
                 <strong>{{ $errors->first('ppd') }}</strong>
@@ -338,7 +319,8 @@
             <div class="form-group{{ $errors->has('valordalicenca') ? ' has-error' : '' }}">
               <label for="valordalicenca" class="col-md-2 control-label">Valor da licenca: </label>
               <div class="col-md-4">
-                <input readonly id="valordalicenca" type="text" class="form-control input-sm" name="valordalicenca" value="{{ old('valordalicenca') }}">
+                <input readonly id="valordalicenca" type="text" class="form-control input-sm" name="valordalicenca"
+                value="{{ session()->has('valordalicenca') ? session("valordalicenca") : '' }}">
                 @if ($errors->has('valordalicenca'))
                 <span class="help-block">
                 <strong>{{ $errors->first('valordalicenca') }}</strong>
@@ -349,7 +331,8 @@
             <div class="form-group{{ $errors->has('btncalcular') ? ' has-error' : '' }}">
               <label for="btncalcular" class="col-md-2 control-label"></label>
               <div class="col-md-4">
-                <button  name="btncalcular" type="submit" class="btn btn-primary btn-sm">   Calcular   </button>
+                <button value="btncalcular"  name="btncalcular" type="submit" class="btn btn-primary btn-sm">   Calcular   </button>    
+                <button  value="btnsalvar"   name="btnsalvar" type="submit" class="btn btn-success btn-sm">   Salvar   </button>
               </div>
             </div>
             </form>

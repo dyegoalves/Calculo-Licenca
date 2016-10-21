@@ -100,5 +100,13 @@
 
      });
 
-  });
+     $('select[name = "tipopreco"]').change( function (){
+
+         $('input[name = "portedaempresa"]').prop('readonly', false).val(" ").prop('readonly', true);
+         $('input[name = "ppd"]').prop('readonly', false).val(" ").prop('readonly', true);
+         $('input[name = "valordalicenca"]').prop('readonly', false).val(" ").prop('readonly', true);
+
+     });
+
+ });
 
