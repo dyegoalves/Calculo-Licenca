@@ -1,14 +1,11 @@
 @extends("layout.main-admin")
 {{--Corpo Padrao meus Codigos --}}
 @section("content")
-<div class="content-wrapper">
-  <div class="container-fluid">
-    <div class="row">
+
       <div class="col-md-12">
         <h2 class="text-left page-title">SISCAL: PRINCIPAL</h2>
       </div>
-    </div>
-    <div class="row">
+
       <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-heading">ACESSO RAPIDO AS PRINCIPAIS FUNCOES</div>
@@ -137,7 +134,5 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+
 @endsection

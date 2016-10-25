@@ -1,15 +1,28 @@
 @extends('layout.main-admin')
 @section('content')
-<div class="content-wrapper">
-  <div class="container-fluid">
-    <div class="row">
+
       <div class="col-md-12">
         <h2 class="page-title">Calculo da licenca</h2>
         <div class="panel panel-default">
-          <div class="panel-heading">Formulário - Calculo da licenca</div>
+          <div class="panel-heading">Formulário - Calculo da licenca.      <strong>  Atencao !</strong> È obrigatorio o preenchimento de todos os dados *.</div>
           <div class="panel-body">
             <form class="form-horizontal" action="{{url("/fazercalculos")}}" method="post" role="form">
             {{csrf_field()}}
+
+            @if(session()->has('msgsucesso'))
+            <div class="alert alert-success fade in">
+               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success!</strong> {{ session("msgsucesso") }}
+            </div>
+            @endif
+
+            @if(session()->has('msgerro'))
+            <div class="alert alert-danger fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Danger!</strong> {{ session("msgerro") }}
+            </div>
+            @endif
+
             <h4 class="page-title" >Processo</h4>
             <div class="form-group">
               {{--Numero de processo--}}
@@ -39,42 +52,42 @@
             </div>
             <div class="form-group">
               {{--Input Razao social--}}
-              <div class="col-md-3 {{ $errors->has('razaosocial') ? ' has-error' : '' }}">
-                <label for="razaosocial" >Razão Social *</label>
-                <input id="razaosocial" type="text" class=" form-control input-sm" name="razaosocial" value="{{ old('razaosocial') }}">
-                @if ($errors->has('razaosocial'))
+              <div class="col-md-3 {{ $errors->has('razaoSocial') ? ' has-error' : '' }}">
+                <label for="razaoSocial" >Razão Social *</label>
+                <input id="razaoSocial" type="text" class=" form-control input-sm" name="razaoSocial" value="{{ old('razaoSocial') }}">
+                @if ($errors->has('razaoSocial'))
                 <span class="help-block">
-                <strong>{{ $errors->first('razaosocial') }}</strong>
+                <strong>{{ $errors->first('razaoSocial') }}</strong>
                 </span>
                 @endif
               </div>
               {{--Input Nome fantasia--}}
-              <div class="col-md-3 {{ $errors->has('nomefantasia') ? ' has-error' : '' }}">
-                <label for="nomefantasia" >Nome fantasia *</label>
-                <input id="nomefantasia" type="text" class=" form-control input-sm" name="nomefantasia" value="{{ old('nomefantasia') }}">
-                @if ($errors->has('nomefantasia'))
+              <div class="col-md-3 {{ $errors->has('nomeFantasia') ? ' has-error' : '' }}">
+                <label for="nomeFantasia" >Nome fantasia *</label>
+                <input id="nomeFantasia" type="text" class=" form-control input-sm" name="nomeFantasia" value="{{ old('nomeFantasia') }}">
+                @if ($errors->has('nomeFantasia'))
                 <span class="help-block">
-                <strong>{{ $errors->first('nomefantasia') }}</strong>
+                <strong>{{ $errors->first('nomeFantasia') }}</strong>
                 </span>
                 @endif
               </div>
               {{--Input CNPJ--}}
-              <div class=" col-md-3{{ $errors->has('cnpj') ? ' has-error' : '' }}">
-                <label for="cnpj" >CNPJ *</label>
-                <input id="cnpj" type="text" class=" form-control input-sm" name="cnpj" value="{{ old('cnpj') }}">
-                @if ($errors->has('cnpj'))
+              <div class=" col-md-3{{ $errors->has('CNPJ') ? ' has-error' : '' }}">
+                <label for="CNPJ" >CNPJ *</label>
+                <input id="CNPJ" type="text" class=" form-control input-sm" name="CNPJ" value="{{ old('CNPJ') }}">
+                @if ($errors->has('CNPJ'))
                 <span class="help-block">
-                <strong>{{ $errors->first('cnpj') }}</strong>
+                <strong>{{ $errors->first('CNPJ') }}</strong>
                 </span>
                 @endif
               </div>
               {{--Input numero inscricao--}}
-              <div class=" col-md-3{{ $errors->has('numerodeinscricao') ? ' has-error' : '' }}">
-                <label for="numerodeinscricao" >Nº Ins. Estadual *</label>
-                <input id="numerodeinscricao" type="text" class=" form-control input-sm" name="numerodeinscricao" value="{{ old('numerodeinscricao') }}">
-                @if ($errors->has('numerodeinscricao'))
+              <div class=" col-md-3{{ $errors->has('inscEstadual') ? ' has-error' : '' }}">
+                <label for="inscEstadual" >Nº Ins. Estadual *</label>
+                <input id="inscEstadual" type="text" class=" form-control input-sm" name="inscEstadual" value="{{ old('inscEstadual') }}">
+                @if ($errors->has('inscEstadual'))
                 <span class="help-block">
-                <strong>{{ $errors->first('numerodeinscricao') }}</strong>
+                <strong>{{ $errors->first('inscEstadual') }}</strong>
                 </span>
                 @endif
               </div>
@@ -156,12 +169,12 @@
             </div>
             <div class="form-group">
               {{--Input CEP--}}
-              <div class="col-md-3{{ $errors->has('cep') ? ' has-error' : '' }}">
-                <label for="cep" >CEP *</label>
-                <input id="cep" type="text" class=" form-control input-sm" name="cep" value="{{ old('cep') }}">
-                @if ($errors->has('cep'))
+              <div class="col-md-3{{ $errors->has('CEP') ? ' has-error' : '' }}">
+                <label for="CEP" >CEP *</label>
+                <input id="CEP" type="text" class=" form-control input-sm" name="CEP" value="{{ old('CEP') }}">
+                @if ($errors->has('CEP'))
                 <span class="help-block">
-                <strong>{{ $errors->first('cep') }}</strong>
+                <strong>{{ $errors->first('CEP') }}</strong>
                 </span>
                 @endif
               </div>
@@ -175,41 +188,43 @@
                 </span>
                 @endif
               </div>
-              {{--Input Estados--}}
-              <div class=" col-md-3{{ $errors->has('estado') ? ' has-error' : '' }}">
-                <?php $estados = "Amazonas";?>
-                <label for="estado" >Estado *</label>
-                <input id="estado" type="text" class=" form-control input-sm" name="estado" value="{{old('estado')}}">
-                @if ($errors->has('estado'))
-                <span class="help-block">
-                <strong>{{ $errors->first('estado') }}</strong>
-                </span>
-                @endif
-              </div>
+
+
               {{--Input Municipio--}}
-              <div class=" col-md-3{{ $errors->has('municipio') ? ' has-error' : '' }}">
-                <label for="municipio" >Municipio *</label>
-                <input   id="municipio" type="text" class=" form-control input-sm" name="municipio" value="{{ old('municipio') }}">
-                @if ($errors->has('municipio'))
+              <div class=" col-md-3{{ $errors->has('cidade') ? ' has-error' : '' }}">
+                <label for="cidade" >Municipio *</label>
+                <input   id="cidade" type="text" class=" form-control input-sm" name="cidade" value="{{ old('cidade') }}">
+                @if ($errors->has('cidade'))
                 <span class="help-block">
-                <strong>{{ $errors->first('municipio') }}</strong>
+                <strong>{{ $errors->first('cidade') }}</strong>
                 </span>
                 @endif
               </div>
+
+
+              {{--Input Estados--}}
+            <div class=" col-md-3{{ $errors->has('UF') ? ' has-error' : '' }}">
+              <?php $estados = "Amazonas";?>
+              <label for="UF" >Estado *</label>
+              <input id="UF" type="text" class=" form-control input-sm" name="UF" value="{{old('UF')}}">
+              @if ($errors->has('UF'))
+              <span class="help-block">
+              <strong>{{ $errors->first('UF') }}</strong>
+              </span>
+              @endif
+            </div>
+
             </div>
             <br/>
             <h4 class="page-title">Dados do Empreendimento e Calculos Lei No 3.785/2012 * </h4>
 
-            <div class="alert bg-warning ">
-              <strong>Atencao !</strong> È obrigatorio o preenchimento de todos os dados *.
-            </div>
-
-            <div class="form-group{{ $errors->has('atividade') ? ' has-error' : '' }}">
+             <div class="form-group{{ $errors->has('atividade') ? ' has-error' : '' }}">
               <label for="atividade" class="col-md-2 control-label">Atividade: </label>
               <div class="col-md-5">
                 <select  autocomplete="off" name="atividade" id="atividade" class="form-control input-sm">
                   <option selected value=" "> </option>
                   @if(isset($atividade))
+
                   @foreach ($atividade as $key)
                   <option value="{{$key->id}}"{{ (old("atividade") == $key->id ? " selected "  : " ") }}>{{ $key->descricao }}</option>
                   @endforeach
@@ -246,29 +261,29 @@
                 @endif
               </div>
               <div class="col-md-2">
-                <button  id="atualizarsub" name="atualizarsub" type="button" class="btn btn-primary btn-sm">Atualizar Subatividade</button>
+                <button  id="atualizarsub" name="atualizarsub" type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
               </div>
             </div>
 
-            <div name="input1" class="form-group{{ $errors->has('areaultiu') ? ' has-error' : '' }}">
-              <label for="areaultiu" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
+            <div name="basedecalculo01" class="form-group{{ $errors->has('basedecalculo01') ? ' has-error' : '' }}">
+              <label for="basedecalculo01" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
               <div class="col-md-4">
-                <input id="areaultiu" type="text" class="form-control input-sm" name="areaultiu" value="{{ old('areaultiu') }}">
-                @if ($errors->has('areaultiu'))
+                <input id="basedecalculo01" type="text" class="form-control input-sm" name="basedecalculo01" value="{{ old('basedecalculo01') }}">
+                @if ($errors->has('basedecalculo01'))
                 <span class="help-block">
-                <strong>{{ $errors->first('areaultiu') }}</strong>
+                <strong>{{ $errors->first('basedecalculo01') }}</strong>
                 </span>
                 @endif
               </div>
             </div>
 
-            <div name="input2" class="form-group{{ $errors->has('numerodeempregados') ? ' has-error' : '' }}">
-              <label for="numerodeempregados" class="col-md-2 control-label">Nº de empregados: </label>
+            <div name="basedecalculo02" class="form-group{{ $errors->has('basedecalculo02') ? ' has-error' : '' }}">
+              <label for="basedecalculo02" class="col-md-2 control-label">Nº de empregados: </label>
               <div class="col-md-4">
-                <input id="numerodeempregados" type="text" class="form-control input-sm" name="numerodeempregados" value="{{ old('numerodeempregados') }}">
-                @if ($errors->has('numerodeempregados'))
+                <input id="basedecalculo02" type="text" class="form-control input-sm" name="basedecalculo02" value="{{ old('basedecalculo02') }}">
+                @if ($errors->has('basedecalculo02'))
                 <span class="help-block">
-                <strong>{{ $errors->first('numerodeempregados') }}</strong>
+                <strong>{{ $errors->first('basedecalculo02') }}</strong>
                 </span>
                 @endif
               </div>
@@ -339,8 +354,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+
 {{--</div>--}}
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Atividade;
+use App\Empresa;
 use App\Processo;
 use App\Subatividade;
 use Illuminate\Http\Request;
@@ -133,6 +134,24 @@ class CadastrosController extends Controller
             return Redirect::route('pag-atividade-sub') ->with( 'msgsuberro', $msgsuberro );
         }
     }
+
+		public function cadastrarempresa(){
+
+			$CNPJ = Input::get("CNPJ");
+
+			$CNPJcount = Empresa::where('CNPJ', $CNPJ)->count();
+
+			if($CNPJcount < 1){
+				$empresa = new Empresa(Input::all());
+				$empresa->save();
+				return "Cadastrou";
+			}
+			else{
+				return "NaoCadastrou";
+			}
+
+		}
+
 
 
 }

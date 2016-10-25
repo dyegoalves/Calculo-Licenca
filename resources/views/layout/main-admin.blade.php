@@ -23,14 +23,15 @@
   </head>
   <body>
     <div class="brand clearfix">
-      {{--<a href="/SistemaInicio"  class="logo"></a>--}}
+      <a style="text-decoration:none;  color: rgb(88, 92, 100) !important ; font-weight: bold ; font-family: Oxygen"
+         href="/sistema-inicio"
+         class="logo text-info ">
+         SISCAL v1.0 DLS
+      </a>
       <span class="menu-btn"><i class="fa fa-bars"></i></span>
       <ul class="ts-profile-nav">
         <li class="ts-account">
           <a href="#">
-
-            {{-- src="{{URL::asset('img/eg1.png')}}"--}}
-
             <img  src="{{URL::asset("/upload/avatars/").'/'. Auth::user()->avatar }}" class="ts-avatar hidden-side" alt="">
                 Opções
             <i class="fa fa-angle-down hidden-side"></i>
@@ -42,13 +43,12 @@
         </li>
       </ul>
     </div>
-
     <div class="ts-main-content">
     <nav class="ts-sidebar">
       <ul class="ts-sidebar-menu">
-        <li style="font-size: 15px ; font-family: Lato" class="ts-label text-center">Menu do Sistema</li>
+      <li style="font-size: 15px ; font-family: Lato" class="ts-label text-center"></li>
+        <li style="font-size: 18px ; font-family: Oxygen" class="ts-label">Menu do Sistema</li>
         <li style="font-size: 15px ; font-family: Lato" class="ts-label text-center"></li>
-
         <li>
             <div class="container">
                 <h4 style="font-family: Lato">Dados pessoais</h4>
@@ -61,22 +61,11 @@
                 <p><strong>Atrasadas: </strong> <span> Qtd-Atrasadas </span> </p>
             </div>
         </li>
-
         <li><a href="http://themestruck.com/demo/harmony/blank.html" target="_blank"><i class="fa fa-home"></i>Harmony Admin</a></li>
         <li id="inicio"><a href="{{ url('/sistema-inicio') }}"><i class="fa fa-home"></i>Inicio</a></li>
-
-        {{--<li>
-          <a href="#"><i class="fa fa-calculator"></i>Calculo da licenca</a>
-          <ul>
-            <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Calcular</a></li>
-          </ul>
-        </li>--}}
-
-
         <li>
           <a href="#"><i class="fa fa-list"></i>Processos & Calculos</a>
           <ul>
-
             <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Calcular Licenca</a></li>
             <li><a href="#"><i class="fa fa-clipboard"></i>Cadastrar</a></li>
             <li><a href="#">Listar todos</a></li>
@@ -90,13 +79,8 @@
           <a href="#"><i class="fa fa-book"></i>Cadastros</a>
           <ul>
             <li><a href="{{ url('/cadastro-usuario') }}"><i class="fa fa-users"></i>Usuários</a></li>
-            <li><a href="{{ url('/cadastro-abreviaturas') }}"><i class="fa fa-font" ></i>Abreviaturas</a></li>
-            <li><a href="{{ url('/atividade-subatividade') }}"><i class="fa fa-font" ></i>Atividade e Subatividade</a></li>
           </ul>
         </li>
-
-
-
         <li>
           <a href="#"><i class="fa fa-list"></i>Dicionario</a>
           <ul>
@@ -115,11 +99,18 @@
         </ul>
       </ul>
     </nav>
-
-
-
-    @yield("content")
-
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+            @yield("content")
+            <div class="col-md-12">
+               <p style="font-family: Oxygen; font-size: 10px">Equipe desenvolvedora DLS( Dyego Alves, Lucas Grana, Simone Lima ), 2016.
+               Todos os direitos reservados
+               </p>
+            </div>
+         </div>
+      </div>
+    </div>
 	</div>
 	<!-- Loading Scripts -->
 	<script src="{{URL::asset('bt/js-admin/jquery.min.js')}}"></script>
