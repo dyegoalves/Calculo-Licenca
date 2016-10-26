@@ -12,14 +12,11 @@ class CreateProcessosTable extends Migration
 
        DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
-
         Schema::create('processos', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-
             $table->increments('id');
-            $table->string("numero");
+            $table->string("num_processo");
             $table->timestamps();
-
         });
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');

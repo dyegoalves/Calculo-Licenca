@@ -135,23 +135,37 @@ class CadastrosController extends Controller
         }
     }
 
-		public function cadastrarempresa(){
 
-			$CNPJ = Input::get("CNPJ");
+    public function cadastrarprocesso()
+    {
+        $numprocesso = Input::get("num_processo");
+        $numprocessocount = Processo::where('num_processo', $numprocesso)->count();
 
-			$CNPJcount = Empresa::where('CNPJ', $CNPJ)->count();
+        if($numprocessocount < 1){
+            $processonumero = new Processo(Input::all());
+            $processonumero->save();
+            return "CadastrouProcesso";
+        }
+        else{
+            return "NaoCadastrouProcesso";
+        }
+    }
 
-			if($CNPJcount < 1){
-				$empresa = new Empresa(Input::all());
-				$empresa->save();
-				return "Cadastrou";
-			}
-			else{
-				return "NaoCadastrou";
-			}
+    public function cadastrarempresa(){
 
-		}
+        $CNPJ = Input::get("CNPJ");
+        $CNPJcount = Empresa::where('CNPJ', $CNPJ)->count();
 
+        if($CNPJcount < 1){
+            $empresa = new Empresa(Input::all());
+            $empresa->save();
+            return "CadastrouEmpresa";
+        }
+        else{
+            return "NaoCadastrouProcesso";
+        }
+
+    }
 
 
 }

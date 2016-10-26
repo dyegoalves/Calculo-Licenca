@@ -231,7 +231,6 @@ class FerramentasController extends Controller
 
         $tipopreco =  $ppd->tipopreco;
 
-
         dd($empresa , $atividade , $subatividade , $porte,  $porteppd , $tipopreco );
 
         // return Response::json($empresa->processo);

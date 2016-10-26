@@ -224,18 +224,10 @@
                 <select  autocomplete="off" name="atividade" id="atividade" class="form-control input-sm">
                   <option selected value=" "> </option>
                   @if(isset($atividade))
-
                   @foreach ($atividade as $key)
                   <option value="{{$key->id}}"{{ (old("atividade") == $key->id ? " selected "  : " ") }}>{{ $key->descricao }}</option>
                   @endforeach
                   @endif
-                  {{--
-                  @if(isset($atividade))
-                  @foreach($atividade as $atv)
-                  <option value="{{ $atv->id }}">{{$atv->descricao }}</option>
-                  @endforeach
-                  @endif
-                  --}}
                 </select>
                 @if ($errors->has('atividade'))
                 <span class="help-block">

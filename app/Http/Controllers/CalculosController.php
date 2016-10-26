@@ -18,6 +18,9 @@ use App\Http\Controllers\CadastrosController;
 
 class CalculosController extends Controller
 {
+
+    public $msgesucesso = [];
+
   // Mostrar a pagina de calculo index
 	public function index(Atividade $atividade)
 	{
@@ -87,7 +90,7 @@ class CalculosController extends Controller
 						 ->withInput();
 			}
 			if($request->get("btnsalvar") == "btnsalvar" ){
-				//Regras de validacao
+				/*//Regras de validacao
 				$rules = array(
 					'num_processo' => 'required',
 					'razaoSocial' => 'required',
@@ -122,22 +125,39 @@ class CalculosController extends Controller
 						->withErrors($validator)
 						->with(compact('selecsub'))
 						->withInput();
-				}
+				}*/
+
 				$cadastros = new CadastrosController();
-				if($cadastros->cadastrarempresa() == "Cadastrou")
+
+                if($cadastros->cadastrarprocesso() == "CadastrouProcesso")
 				{
-					$msgsucesso = "Dados cadastrados com sucesso no sistema SISCAL";
-					return Redirect::route('calculos')
-  											 ->with('msgsucesso' , $msgsucesso);
+					$this->msgesucesso = ["msgprocesso" => "Processo cadastrado com sucesso no sistema SISCAL"];
+
+                    if($cadastros->cadastrarempresa()  == "CadastrouEmpresa")
+                    {
+                        $this->msgesucesso = ["msgempresa" => "Empresa cadastrada com sucesso no sistema SISCAL"];
+
+                       /* return Redirect::route('calculos')
+                            ->with('msgsucesso' , $this->msgesucesso)
+                            ->withInput();*/
+
+
+                    }
+                    dd($this->msgesucesso);
 				}
-				if($cadastros->cadastrarempresa() == "NaoCadastrou")
+
+				if($cadastros->cadastrarprocesso()  == "NaoCadastrouProcesso")
 				{
-					$msgerro = "Empresa já cadastrada no sistema SISCAL";
+					$msgerro = "Processo já cadastrado no sistema SISCAL";
 					return Redirect::route('calculos')
 						->with('msgerro' , $msgerro)
 						->withInput();
 				}
+
+
+
 			}
+
 	}
 	//Auxilio calcularporte
 	public function micro()
@@ -593,6 +613,7 @@ class CalculosController extends Controller
 			if (($basedecalculo01 >= 10) &&  ($basedecalculo02 > 100 && $basedecalculo02 < 500))                   					{return $this->excepcional();}
 			if (($basedecalculo01 >= 10) &&  ($basedecalculo02 >= 500))                               											{return $this->excepcional();}
 		}
+
 
 	}
 	/*|-------------------------------------------------------------------------- */

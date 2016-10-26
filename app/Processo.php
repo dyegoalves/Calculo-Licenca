@@ -8,7 +8,7 @@ class Processo extends Model
 {
 
     protected $fillable = [
-        'numero',
+        'num_processo',
     ];
 
 
