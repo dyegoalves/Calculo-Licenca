@@ -137,7 +137,6 @@ class CadastrosController extends Controller
             return Redirect::route('pag-atividade-sub') ->with( 'msgsuberro', $msgsuberro );
         }
     }
-
     public function cadastrarprocesso()
     {
         $numprocesso = Input::get("num_processo");
@@ -206,5 +205,5 @@ class CadastrosController extends Controller
         $calculo->valor =  $valorlincenca ;
         $calculo->save();
     }
-
+    ///
 }
