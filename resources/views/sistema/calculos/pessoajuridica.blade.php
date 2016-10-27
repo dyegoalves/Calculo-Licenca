@@ -19,7 +19,7 @@
             @if(session()->has('msgerro'))
             <div class="alert alert-danger fade in">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <strong>Danger!</strong> {{ session("msgerro") }}
+              <strong>Danger!</strong> {{ session("msgerro")}}
             </div>
             @endif
 

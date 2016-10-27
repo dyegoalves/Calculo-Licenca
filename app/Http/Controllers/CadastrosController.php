@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Atividade;
+use App\Calculo;
+use App\Empreendimento;
 use App\Empresa;
+use App\Porte;
 use App\Processo;
 use App\Subatividade;
 use Illuminate\Http\Request;
@@ -135,7 +138,6 @@ class CadastrosController extends Controller
         }
     }
 
-
     public function cadastrarprocesso()
     {
         $numprocesso = Input::get("num_processo");
@@ -144,13 +146,12 @@ class CadastrosController extends Controller
         if($numprocessocount < 1){
             $processonumero = new Processo(Input::all());
             $processonumero->save();
-            return "CadastrouProcesso";
+            return true;
         }
         else{
-            return "NaoCadastrouProcesso";
+            return false;
         }
     }
-
     public function cadastrarempresa(){
 
         $CNPJ = Input::get("CNPJ");
@@ -159,13 +160,51 @@ class CadastrosController extends Controller
         if($CNPJcount < 1){
             $empresa = new Empresa(Input::all());
             $empresa->save();
-            return "CadastrouEmpresa";
+            return true;
         }
         else{
-            return "NaoCadastrouProcesso";
+            return false;
         }
 
     }
+    public function cadastrarempreendimento()
+    {
 
+        //Obtrencao de dados para cadastro do Empreendimento
+        $basedecalculo01    = Input::get("basedecalculo01");
+        $basedecalculo02    = Input::get("basedecalculo02");
+        $processo_id        = Processo::where('num_processo', Input::get("num_processo"))->get(['id']);
+        $empresa_id         = Empresa::where('CNPJ', Input::get("CNPJ"))->get(['id']);
+        $porte_id           = Porte::where('tamanho', Input::get("portedaempresa"))->get(['id']);
+        $atividade_id       = Atividade::where('id', Input::get("atividade"))->get(['id']);
+        $subatividade_id    = Subatividade::where('id', Input::get("subatividade"))->get(['id']);
+
+
+        //Cadastra Empreedimento e seus relacionamentos
+        $empreedimento = new Empreendimento();
+        $empreedimento->basedecalculo01 = $basedecalculo01;
+        $empreedimento->basedecalculo02 = $basedecalculo02;
+        $empreedimento->processo_id     = $processo_id[0]->id;
+        $empreedimento->empresa_id      = $empresa_id[0]->id;
+        $empreedimento->porte_id        = $porte_id[0]->id;
+        $empreedimento->atividade_id    = $atividade_id[0]->id;
+        $empreedimento->subatividade_id = $subatividade_id[0]->id;
+        $empreedimento->save();
+
+        $this->cadastrarcalculo($processo_id);
+
+        return "Cadastou tudo";
+
+    }
+    public function cadastrarcalculo( $processo_id )
+    {
+        $calculo  = new Calculo();
+        $calculo->processo_id = $processo_id[0]->id;
+        $valorlincenca = str_replace("R$" , "" , Input::get("valordalicenca"));
+        $valorlincenca = str_replace("." , "" , $valorlincenca);
+        $valorlincenca = str_replace("," , "." , $valorlincenca);
+        $calculo->valor =  $valorlincenca ;
+        $calculo->save();
+    }
 
 }

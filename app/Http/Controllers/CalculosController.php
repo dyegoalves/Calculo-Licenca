@@ -8,20 +8,20 @@ use App\Ppd;
 use Illuminate\Http\Request;
 use App\Processo;
 use App\Subatividade;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Input;
 use Redirect;
 use Response;
 use Illuminate\Support\Facades\View;
 use DB;
+use Symfony\Component\VarDumper\Caster\Caster;
 use Validator;
 use App\Http\Controllers\CadastrosController;
 
 class CalculosController extends Controller
 {
 
-    public $msgesucesso = [];
-
-  // Mostrar a pagina de calculo index
+    // Mostrar a pagina de calculo index
 	public function index(Atividade $atividade)
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
@@ -89,76 +89,70 @@ class CalculosController extends Controller
 						 ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
 						 ->withInput();
 			}
-			if($request->get("btnsalvar") == "btnsalvar" ){
-				/*//Regras de validacao
-				$rules = array(
-					'num_processo' => 'required',
-					'razaoSocial' => 'required',
-					'nomeFantasia' => 'required',
-					'CNPJ' => 'required|size:14',
-					'inscEstadual' => 'required',
-					'email' => 'required|email',
-					'telefone' => 'required',
-					'celular' => 'required',
-					'fax' => '',
-					'endereco' => 'required',
-					'numero' => 'required',
-					'complemento' => '',
-					'CEP' => 'required',
-					'bairro' => 'required',
-					'cidade' => 'required',
-					'UF' => 'required',
-					'atividade' => 'required',
-					'subatividade' => 'required',
-					'basedecalculo01' => 'required',
-					'basedecalculo02' => 'required',
-					'tipopreco' => 'required',
-					'portedaempresa' => 'required',
-					'valordalicenca' => 'required',
-					'ppd' => 'required',
-					'valordalicenca' => 'required',
-				);
-				$selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
-				$validator = Validator::make(Input::all(), $rules);
-				if($validator->fails()) {
-					return back()
-						->withErrors($validator)
-						->with(compact('selecsub'))
-						->withInput();
-				}*/
 
-				$cadastros = new CadastrosController();
+			if($request->get("btnsalvar") == "btnsalvar" ) {
+                /*//Regras de validacao
+                $rules = array(
+                    'num_processo' => 'required',
+                    'razaoSocial' => 'required',
+                    'nomeFantasia' => 'required',
+                    'CNPJ' => 'required|size:14',
+                    'inscEstadual' => 'required',
+                    'email' => 'required|email',
+                    'telefone' => 'required',
+                    'celular' => 'required',
+                    'fax' => '',
+                    'endereco' => 'required',
+                    'numero' => 'required',
+                    'complemento' => '',
+                    'CEP' => 'required',
+                    'bairro' => 'required',
+                    'cidade' => 'required',
+                    'UF' => 'required',
+                    'atividade' => 'required',
+                    'subatividade' => 'required',
+                    'basedecalculo01' => 'required',
+                    'basedecalculo02' => 'required',
+                    'tipopreco' => 'required',
+                    'portedaempresa' => 'required',
+                    'valordalicenca' => 'required',
+                    'ppd' => 'required',
+                    'valordalicenca' => 'required',
+                );
+                $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
+                $validator = Validator::make(Input::all(), $rules);
+                if($validator->fails()) {
+                    return back()
+                        ->withErrors($validator)
+                        ->with(compact('selecsub'))
+                        ->withInput();
+                }*/
 
-                if($cadastros->cadastrarprocesso() == "CadastrouProcesso")
-				{
-					$this->msgesucesso = ["msgprocesso" => "Processo cadastrado com sucesso no sistema SISCAL"];
+                $cadastro  = new CadastrosController();
 
-                    if($cadastros->cadastrarempresa()  == "CadastrouEmpresa")
+                if($cadastro->cadastrarprocesso())
+                {
+                    $msgsucessoprocesso =  "Processo cadastrado com sucesso";
+
+                    if($cadastro->cadastrarempresa())
                     {
-                        $this->msgesucesso = ["msgempresa" => "Empresa cadastrada com sucesso no sistema SISCAL"];
-
-                       /* return Redirect::route('calculos')
-                            ->with('msgsucesso' , $this->msgesucesso)
-                            ->withInput();*/
-
-
+                        $msgsucessoempresa =  "Empresa cadastradada com sucesso";
+                        return $cadastro->cadastrarempreendimento();
                     }
-                    dd($this->msgesucesso);
-				}
+                    else
+                    {
+                        $msgerroempresa = "Erro ao Cadastrar Empresa";
+                    }
 
-				if($cadastros->cadastrarprocesso()  == "NaoCadastrouProcesso")
-				{
-					$msgerro = "Processo já cadastrado no sistema SISCAL";
-					return Redirect::route('calculos')
-						->with('msgerro' , $msgerro)
-						->withInput();
-				}
+                }
+                else
+                {
+                    $msgerroprocesso = "Erro ao Cadastrar Processo";
+                }
 
-
-
-			}
-
+            }
 	}
+
 	//Auxilio calcularporte
 	public function micro()
 	{
