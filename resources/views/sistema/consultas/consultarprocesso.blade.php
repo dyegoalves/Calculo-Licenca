@@ -4,33 +4,29 @@
       <div class="col-md-12">
         <h2 class="page-title">Calculo da licenca</h2>
         <div class="panel panel-default">
-          <div class="panel-heading">Formulário - Calculo da licenca.      <strong>  Atencao !</strong> È obrigatorio o preenchimento de todos os dados *.</div>
+          <div class="panel-heading">Formulário - Calculo da licenca.</div>
           <div class="panel-body">
             <form class="form-horizontal" action="{{url("/fazercalculos")}}" method="post" role="form">
             {{csrf_field()}}
 
-            @if(session()->has('sucessocadastro'))
+            @if(session()->has('msgsucesso'))
             <div class="alert alert-success fade in">
                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <strong>Successo!</strong> {{ session("sucessocadastro") }}
+              <strong>Success!</strong> {{ session("msgsucesso") }}
             </div>
             @endif
 
-            @if(session()->has('errodecastroprocesso'))
+            @if(session()->has('msgerro'))
             <div class="alert alert-danger fade in">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <strong>Erro! </strong> {{ session("errodecastroprocesso")}}
+              <strong>Danger!</strong> {{ session("msgerro")}}
             </div>
             @endif
 
-            @if(session()->has('errodecastroempresa'))
-            <div class="alert alert-danger fade in">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <strong>Erro! </strong> {{ session("errodecastroempresa")}}
-            </div>
-            @endif
+
 
             <h4 class="page-title" >Processo</h4>
+
             <div class="form-group">
               {{--Numero de processo--}}
               <div class="col-md-4 {{ $errors->has('num_processo') ? ' has-error' : '' }}">
@@ -41,8 +37,17 @@
                 <strong>{{ $errors->first('num_processo') }}</strong>
                 </span>
                 @endif
+
               </div>
+
+
             </div>
+              <button  id="consultarprocesso" name="consultarprocesso" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Consultar processo</button>
+
+
+             <br/>
+             <br/>
+
             <br/>
             <h4 class="page-title">Dados da Empresa</h4>
             {{--Tipo pessoa--}}
@@ -52,7 +57,8 @@
                 <div class=" radio radio-info radio-inline">
                   <input value="1" type="radio" id="inlineRadio1"  name="escolhatipo" checked>
                   <label for="inlineRadio1">Pessoa Juridica?</label>     
-
+                  <input value="2" type="radio" id="inlineRadio2"  name="escolhatipo">
+                  <label for="inlineRadio2">Pessoa Fisíca?</label>
                 </div>
               </div>
             </div>
@@ -242,6 +248,7 @@
                 @endif
               </div>
             </div>
+
             <div class="form-group{{ $errors->has('subatividade') ? ' has-error' : '' }}">
               <label for="subatividade" class="col-md-2 control-label">Subatividade: </label>
               <div class="col-md-8">
@@ -258,9 +265,7 @@
                 </span>
                 @endif
               </div>
-              <div class="col-md-2">
-                <button  id="atualizarsub" name="atualizarsub" type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
-              </div>
+
             </div>
 
             <div name="basedecalculo01" class="form-group{{ $errors->has('basedecalculo01') ? ' has-error' : '' }}">
@@ -341,13 +346,8 @@
                 @endif
               </div>
             </div>
-            <div class="form-group{{ $errors->has('btncalcular') ? ' has-error' : '' }}">
-              <label for="btncalcular" class="col-md-2 control-label"></label>
-              <div class="col-md-4">
-                <button value="btncalcular"  name="btncalcular" type="submit" class="btn btn-primary btn-sm">   Calcular   </button>    
-                <button  value="btnsalvar"   name="btnsalvar" type="submit" class="btn btn-success btn-sm">   Salvar   </button>
-              </div>
-            </div>
+
+
             </form>
           </div>
         </div>

@@ -61,12 +61,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/criarppds', 'FerramentasController@criarppds');
         Route::get('/criartipoprecos', 'FerramentasController@criartipoprecos');
         Route::get('/criarsubatividades' , 'FerramentasController@criarsubatividades');
-
         Route::get('/showdadosmodels/{model}', 'FerramentasController@showdadosmodels');
-
         Route::get('/showdados', 'FerramentasController@showdados');
     /*---------------------------------------------------------------------------*/
 
+    /*--------------------------------------------------------------------------
+    *    Rotas do controller Consultar
+    *-------------------------------------------------------------------------*/
+    Route::get('/consultarprocesso' , 'ConsultarController@index');
+
+    /*---------------------------------------------------------------------------*/
 });
 
    /*------------------------------------------------------------------------------

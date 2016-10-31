@@ -189,10 +189,9 @@ class CadastrosController extends Controller
         $empreedimento->atividade_id    = $atividade_id[0]->id;
         $empreedimento->subatividade_id = $subatividade_id[0]->id;
         $empreedimento->save();
-
         $this->cadastrarcalculo($processo_id);
 
-        return "Cadastou tudo";
+        return true;
 
     }
     public function cadastrarcalculo( $processo_id )
@@ -205,5 +204,5 @@ class CadastrosController extends Controller
         $calculo->valor =  $valorlincenca ;
         $calculo->save();
     }
-    ///
+
 }
