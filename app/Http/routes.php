@@ -47,8 +47,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/listarsubatividade/{idatividade}' , 'CalculosController@listarsubatividade');
         Route::get('/calculos' , ['as' => 'calculos', 'uses' => 'CalculosController@index']);
         Route::post('/fazercalculos' , 'CalculosController@fazercalculos');
+
         Route::get('/pessoajuridica' , ['as' => 'pessoajuridica', 'uses' => 'CalculosController@pessoajuridica']);
-        Route::get('/pessoafisica' , ['as' => 'pessoafisica', 'uses' => 'CalculosController@pessoafisica']);
+        Route::get('/pessoajuridica1801' , ['as' => 'pessoajuridica1801', 'uses' => 'CalculosController@pessoajuridica1801']);
+
         Route::post('/calcularporte' , ['as' => 'calcularporte', 'uses' => 'CalculosController@calcularporte']);
         Route::get('/testes' , 'CalculosController@testes');
     /*-------------------------------------------------------------------------*/

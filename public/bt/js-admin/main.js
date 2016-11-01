@@ -99,7 +99,7 @@
          }
 
      });
-
+     //Tipo preco
      $('select[name = "tipopreco"]').change( function (){
 
          $('input[name = "portedaempresa"]').prop('readonly', false).val(" ").prop('readonly', true);
@@ -107,6 +107,25 @@
          $('input[name = "valordalicenca"]').prop('readonly', false).val(" ").prop('readonly', true);
 
      });
+
+
+     $('select[name = subatividade]').change( function (){
+
+         var subatividadeselecionada = $("select[name = subatividade] option:selected");
+         var conteudo = subatividadeselecionada.text();
+
+         if(conteudo.substr(0,4) == 1801){
+
+            alert("ola");
+
+         }
+
+         if(conteudo.substr(0,4) == 1803){
+
+         }
+
+     });
+
 
  });
 

@@ -26,13 +26,22 @@ class CalculosController extends Controller
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
-	}
+    }
+
+
 	// Mostrar a pagina de calculo pessoa juridica
 	public function pessoajuridica(Atividade $atividade)
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
 	}
+
+    public function pessoajuridica1801(Atividade $atividade)
+    {
+        $atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
+        return view('sistema.calculos.pessoajuridica1801', compact("atividade"))->withInput();
+    }
+
 	// Mostrar a pagina de calculo pessoa fisica
 	public function pessoafisica(Atividade $atividade)
 	{
@@ -196,7 +205,43 @@ class CalculosController extends Controller
 		$subatividadecodigo = Subatividade::find(intval(Input::get("subatividade")));
 		$atvidadecodido     = trim($atvidadecodido->codigo);
 		$subatividadecodigo = trim($subatividadecodigo->codigo);
-
+        if ($atvidadecodido == "03" && ($subatividadecodigo >= "0301" && $subatividadecodigo <= "0352"))
+        {
+            $basedecalculo01 = Input::get("basedecalculo01");
+            $basedecalculo02 = Input::get("basedecalculo02");
+            // tab = atv03  ; col = 1 ; lin = 1 // au = 0.1 ate 0.9 ne = de 0.1 a 99.9
+            if ($basedecalculo01 < 1 && $basedecalculo02 < 100) 														    {return $this->pequeno();}
+            // tab = atv03  ; col = 1 ; lin = 2 // au = 0.1 ate 0. 9 ne = de 100 ate 300
+            if ($basedecalculo01 < 1 && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300)) 	    						{return $this->medio();}
+            // tab = atv03  ; col = 1 ; lin = 3 // au = 0.1 ate 0. 9 ne = de 301 ate 899
+            if ($basedecalculo01 < 1 && ($basedecalculo02 > 300 && $basedecalculo02 < 900)) 								{return $this->grande();}
+            // tab = atv03  ; col = 1 ; lin = 4 // au = 0.1 ate 0. 9 ne = 900++
+            if ($basedecalculo01 < 1 && ($basedecalculo02 >= 900))															{return $this->excepcional();}
+            // tab = atv03  ; col = 2 ; lin = 1 // au = 1 ate 2 ne = 99
+            if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && $basedecalculo02 < 100) 								{return $this->medio();}
+            // tab = atv03  ; col = 2 ; lin = 2 // au = 1 ate 2 ne = 100 ate 300
+            if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300))   {return $this->medio();}
+            // tab = atv03  ; col = 2 ; lin = 3 // au = 1 ate 2 ne = 301 ate 899
+            if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 > 300 && $basedecalculo02 < 900))     {return $this->grande();}
+            // tab = atv03  ; col = 2 ; lin = 4 // au = 1 ate 2 ne = 900++
+            if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 >= 900)) 								{return $this->excepcional();}
+            // tab = atv03  ; col = 3 ; lin = 1 // au = 2.1 ate 2.99 ne = 99
+            if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && $basedecalculo02 < 100) 									{return $this->grande();}
+            // tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
+            if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300))     {return $this->grande();}
+            // tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
+            if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 > 300 && $basedecalculo02 < 900))       {return $this->grande();}
+            // tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
+            if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 >= 900))                                {return $this->excepcional();}
+            // tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
+            if (($basedecalculo01 >= 3) && $basedecalculo02 < 100) 															{return $this->excepcional();}
+            // tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
+            if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300)) 							{return $this->excepcional();}
+            // tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
+            if (($basedecalculo01 >= 3) && ($basedecalculo02 > 300 && $basedecalculo02 < 900)) 								{return $this->excepcional();}
+            // tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
+            if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 900)) 														{return $this->excepcional();}
+        }
 		if ($atvidadecodido == "04" && ($subatividadecodigo >= "0401" && $subatividadecodigo <= "0409"))
 		{
 			$basedecalculo01 = Input::get("basedecalculo01");
