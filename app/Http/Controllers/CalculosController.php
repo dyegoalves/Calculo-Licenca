@@ -20,33 +20,17 @@ use App\Http\Controllers\CadastrosController;
 
 class CalculosController extends Controller
 {
-
     // Mostrar a pagina de calculo index
 	public function index(Atividade $atividade)
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
     }
-
-
 	// Mostrar a pagina de calculo pessoa juridica
 	public function pessoajuridica(Atividade $atividade)
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
-	}
-
-    public function pessoajuridica1801(Atividade $atividade)
-    {
-        $atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
-        return view('sistema.calculos.pessoajuridica1801', compact("atividade"))->withInput();
-    }
-
-	// Mostrar a pagina de calculo pessoa fisica
-	public function pessoafisica(Atividade $atividade)
-	{
-			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
-			return view('sistema.calculos.pessoafisica', compact("atividade"));
 	}
 	// Usado da Requisicao AJAX. para obter uma lista de subatividade
 	public function listarsubatividade(Atividade $atividade, $idatividade)
@@ -55,6 +39,7 @@ class CalculosController extends Controller
 			$subatividade = $atividade->subatividade()->getQuery()->get(['id', 'codigo', 'descricao']);
 			return Response::json($subatividade);
 	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| Calculos da licença
@@ -67,39 +52,84 @@ class CalculosController extends Controller
 	//Faz os caluculos da Lincenca
 	public function fazercalculos(Request $request)
 	{
-			if($request->get("btncalcular") == "btncalcular" ){
-					$rules = array(
-						'atividade' => 'required',
-						'subatividade' => 'required',
-						'basedecalculo01' => 'required',
-						'basedecalculo02' => 'required',
-						'tipopreco' => 'required',
-					);
-					$validator = Validator::make(Input::all(), $rules);
-					if($validator->fails()) {
-							return back()
-									->withErrors($validator)
-									->with(compact('selecsub'))
-									->withInput();
-					}
-			//Subatividade
-			$subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
-			//PPD nivel
-			$ppd = $subatividade->ppd->nivel;
-			$selecsub = DB::table('subatividades')->where('id', $request->get("subatividade"))->first();
-			$portedaempresa = $this->calcularporte();
-			$porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
-			$portemodel = Porte::find($porte->id);
-			$porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
-			$ppdmodel  = Ppd::find($porteppd[0]->id);
-			$tipo  = $request->get("tipopreco");
-			$valordalicenca = "R$ " . $ppdmodel->tipopreco[0]->$tipo;
-			return Redirect::route('calculos')
-						 ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
-						 ->withInput();
+            if($request->get("btncalcular") == "btncalcular" ){
+
+                $subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
+
+                    if( $subatividade->codigo == '1803'){
+
+                        $rules = array(
+                            'atividade' => 'required',
+                            'subatividade' => 'required',
+                            'basedecalculo01' => 'required',
+                            'tipopreco' => 'required',
+                        );
+
+                        $validator = Validator::make(Input::all(), $rules);
+                        if($validator->fails()) {
+                            return back()
+                                ->withErrors($validator)
+                                ->with(compact('selecsub'))
+                                ->withInput();
+                        }
+
+                        //Subatividade
+                        $subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
+                        //PPD nivel
+                        $ppd = $subatividade->ppd->nivel;
+                        $selecsub = DB::table('subatividades')->where('id', $request->get("subatividade"))->first();
+                        $portedaempresa = $this->calcularporte();
+                        $porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
+                        $portemodel = Porte::find($porte->id);
+                        $porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
+                        $ppdmodel  = Ppd::find($porteppd[0]->id);
+                        $tipo  = $request->get("tipopreco");
+                        $valordalicenca = "R$ " . $ppdmodel->tipopreco[0]->$tipo;
+                        return Redirect::route('calculos')
+                            ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
+                            ->withInput();
+
+                    }
+
+                    $rules = array(
+                        'atividade' => 'required',
+                        'subatividade' => 'required',
+                        'basedecalculo01' => 'required',
+                        'basedecalculo02' => 'required',
+                        'tipopreco' => 'required',
+                    );
+
+                    $validator = Validator::make(Input::all(), $rules);
+                    if($validator->fails()) {
+                        return back()
+                            ->withErrors($validator)
+                            ->with(compact('selecsub'))
+                            ->withInput();
+                    }
+
+
+                    //Subatividade
+                    $subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
+                    //PPD nivel
+                    $ppd = $subatividade->ppd->nivel;
+                    $selecsub = DB::table('subatividades')->where('id', $request->get("subatividade"))->first();
+                    $portedaempresa = $this->calcularporte();
+                    $porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
+                    $portemodel = Porte::find($porte->id);
+                    $porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
+                    $ppdmodel  = Ppd::find($porteppd[0]->id);
+                    $tipo  = $request->get("tipopreco");
+                    $valordalicenca = "R$ " . $ppdmodel->tipopreco[0]->$tipo;
+                    return Redirect::route('calculos')
+                         ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
+                         ->withInput();
 			}
 
+
+
 			if($request->get("btnsalvar") == "btnsalvar" ) {
+
+
                 //Regras de validacao
                 $rules = array(
                     'num_processo' => 'required',
@@ -128,6 +158,8 @@ class CalculosController extends Controller
                     'ppd' => 'required',
                     'valordalicenca' => 'required',
                 );
+
+
                 $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
                 $validator = Validator::make(Input::all(), $rules);
                 if($validator->fails()) {
@@ -172,7 +204,6 @@ class CalculosController extends Controller
                 }
             }
 	}
-
 	//Auxilio calcularporte
 	public function micro()
 	{
@@ -205,6 +236,7 @@ class CalculosController extends Controller
 		$subatividadecodigo = Subatividade::find(intval(Input::get("subatividade")));
 		$atvidadecodido     = trim($atvidadecodido->codigo);
 		$subatividadecodigo = trim($subatividadecodigo->codigo);
+
         if ($atvidadecodido == "03" && ($subatividadecodigo >= "0301" && $subatividadecodigo <= "0352"))
         {
             $basedecalculo01 = Input::get("basedecalculo01");
@@ -663,6 +695,18 @@ class CalculosController extends Controller
 			if (($basedecalculo01 >= 10) &&  ($basedecalculo02 > 100 && $basedecalculo02 < 500))                   			{return $this->excepcional();}
 			if (($basedecalculo01 >= 10) &&  ($basedecalculo02 >= 500))                               						{return $this->excepcional();}
 		}
+
+        if ($atvidadecodido == "18" && ($subatividadecodigo >= "1803" && $subatividadecodigo <= "1803"))
+        {
+            $basedecalculo01 = Input::get("basedecalculo01");
+
+            if ($basedecalculo01 <= 300)                               						{return $this->pequeno();}
+            if ($basedecalculo01 > 300 && $basedecalculo01 < 500 )                			{return $this->medio();}
+            if ($basedecalculo01 > 500 && $basedecalculo01 < 1000 )                			{return $this->grande();}
+            if ($basedecalculo01 >= 1000)                                 		     		{return $this->excepcional();}
+
+
+        }
 
 	}
 	/*|-------------------------------------------------------------------------- */

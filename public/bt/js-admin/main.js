@@ -109,23 +109,54 @@
      });
 
 
+     function dSecion(name){
+         sessionStorage.removeItem(name);
+     }
+
+
      $('select[name = subatividade]').change( function (){
+
+
 
          var subatividadeselecionada = $("select[name = subatividade] option:selected");
          var conteudo = subatividadeselecionada.text();
 
-         if(conteudo.substr(0,4) == 1801){
-
-            alert("ola");
-
+         if(conteudo.substr(0,4) == 1801)
+         {
+             // Salva dados na sessão
+             var c1801 = sessionStorage.setItem("comportamento1801", "1801");
+             $("label[name = basedecalculo02] ").text('Numero de Cabeças');
+         }else{
+             dSecion("comportamento1801");
+             $("label[name = basedecalculo02] ").text('Numero de Empregados');
          }
+
 
          if(conteudo.substr(0,4) == 1803){
+             var c1803 = sessionStorage.setItem("comportamento1803", "1803");
+             $("label[name = basedecalculo01] ").text('Numero de Animais');
+             $("div[name = basedecalculo02] ").removeAttr("style").hide();
 
+         }else
+         {
+             dSecion("comportamento1803");
+             $("label[name = basedecalculo01]").text('Área Útil em ha (hectare)');
+             $("div[name = basedecalculo02]").show();
          }
+
 
      });
 
+     if( c1801 = sessionStorage.getItem('comportamento1801') == "1801")
+     {
+         $("label[name = basedecalculo02] ").text('Numero de Cabeças');
+     }
+
+     if( c1803 = sessionStorage.getItem('comportamento1803') == "1803")
+     {
+         $("label[name = basedecalculo01] ").text('Numero de Animais');
+         $("div[name = basedecalculo02] ").removeAttr("style").hide();
+     }
 
  });
 

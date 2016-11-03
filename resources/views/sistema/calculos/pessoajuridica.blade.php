@@ -277,7 +277,7 @@
             </div>
 
             <div name="basedecalculo02" class="form-group{{ $errors->has('basedecalculo02') ? ' has-error' : '' }}">
-              <label for="basedecalculo02" class="col-md-2 control-label">Nº de empregados: </label>
+              <label name= "basedecalculo02" for="basedecalculo02" class="col-md-2 control-label">Nº de empregados: </label>
               <div class="col-md-4">
                 <input id="basedecalculo02" type="text" class="form-control input-sm" name="basedecalculo02" value="{{ old('basedecalculo02') }}">
                 @if ($errors->has('basedecalculo02'))
@@ -287,6 +287,7 @@
                 @endif
               </div>
             </div>
+
             <div class="form-group{{ $errors->has('tipopreco') ? ' has-error' : '' }}">
               <label for="tipopreco" class="col-md-2 control-label">Tipo da lincenca: </label>
               <div class="col-md-2">
