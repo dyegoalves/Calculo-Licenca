@@ -20,19 +20,19 @@ use App\Http\Controllers\CadastrosController;
 
 class CalculosController extends Controller
 {
-    // Mostrar a pagina de calculo index
+    //Mostrar a pagina de calculo index
 	public function index(Atividade $atividade)
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
     }
-	// Mostrar a pagina de calculo pessoa juridica
+	//Mostrar a pagina de calculo pessoa juridica
 	public function pessoajuridica(Atividade $atividade)
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
 	}
-	// Usado da Requisicao AJAX. para obter uma lista de subatividade
+	//Usado da Requisicao AJAX. para obter uma lista de subatividade
 	public function listarsubatividade(Atividade $atividade, $idatividade)
 	{
 			$atividade = $atividade->find($idatividade);
@@ -52,85 +52,88 @@ class CalculosController extends Controller
 	//Faz os caluculos da Lincenca
 	public function fazercalculos(Request $request)
 	{
-            if($request->get("btncalcular") == "btncalcular" ){
+            //Funcoes para calculos do processo.
+            if($request->get("btncalcular") == "btncalcular" )
+            {
+
+                if($request->get("atividade") == " ")
+                {
+                    $erroatividade = "Atividade não pode estar vazia!";
+                    return back()
+                        ->with(compact('erroatividade'))
+                        ->withInput();
+                }
+
+                if($request->get("subatividade") == " ")
+                {
+                    $errosubatividade = "Subatividade não pode estar vazia!";
+                    return back()
+                        ->with(compact('errosubatividade'))
+                        ->withInput();
+                }
+
 
                 $subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
 
-                    if( $subatividade->codigo == '1803'){
 
-                        $rules = array(
-                            'atividade' => 'required',
-                            'subatividade' => 'required',
-                            'basedecalculo01' => 'required',
-                            'tipopreco' => 'required',
-                        );
-
-                        $validator = Validator::make(Input::all(), $rules);
-                        if($validator->fails()) {
-                            return back()
-                                ->withErrors($validator)
-                                ->with(compact('selecsub'))
-                                ->withInput();
-                        }
-
-                        //Subatividade
-                        $subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
-                        //PPD nivel
-                        $ppd = $subatividade->ppd->nivel;
-                        $selecsub = DB::table('subatividades')->where('id', $request->get("subatividade"))->first();
-                        $portedaempresa = $this->calcularporte();
-                        $porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
-                        $portemodel = Porte::find($porte->id);
-                        $porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
-                        $ppdmodel  = Ppd::find($porteppd[0]->id);
-                        $tipo  = $request->get("tipopreco");
-                        $valordalicenca = "R$ " . $ppdmodel->tipopreco[0]->$tipo;
-                        return Redirect::route('calculos')
-                            ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
-                            ->withInput();
-
-                    }
+                if( $subatividade->codigo == '1803'){
 
                     $rules = array(
                         'atividade' => 'required',
                         'subatividade' => 'required',
                         'basedecalculo01' => 'required',
-                        'basedecalculo02' => 'required',
                         'tipopreco' => 'required',
                     );
 
-                    $validator = Validator::make(Input::all(), $rules);
-                    if($validator->fails()) {
-                        return back()
-                            ->withErrors($validator)
-                            ->with(compact('selecsub'))
-                            ->withInput();
-                    }
+                 return  $this->auxcalculo($rules);
+
+                }
 
 
-                    //Subatividade
-                    $subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
-                    //PPD nivel
-                    $ppd = $subatividade->ppd->nivel;
-                    $selecsub = DB::table('subatividades')->where('id', $request->get("subatividade"))->first();
-                    $portedaempresa = $this->calcularporte();
-                    $porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
-                    $portemodel = Porte::find($porte->id);
-                    $porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
-                    $ppdmodel  = Ppd::find($porteppd[0]->id);
-                    $tipo  = $request->get("tipopreco");
-                    $valordalicenca = "R$ " . $ppdmodel->tipopreco[0]->$tipo;
-                    return Redirect::route('calculos')
-                         ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
-                         ->withInput();
+                $rules = array(
+                    'atividade' => 'required',
+                    'subatividade' => 'required',
+                    'basedecalculo01' => 'required',
+                    'basedecalculo02' => 'required',
+                    'tipopreco' => 'required',
+                );
+                return $this->auxcalculo($rules);
 			}
-
-
-
-			if($request->get("btnsalvar") == "btnsalvar" ) {
-
-
-                //Regras de validacao
+		    // Funcoes de Salvar o Calculo do processo.
+			if($request->get("btnsalvar") == "btnsalvar" )
+            {
+                //Regras de validação
+                $subatividade  = Subatividade::find(intval(trim($request->get("subatividade"))));
+                if($subatividade->codigo == '1803')
+                {
+                   $rules = array(
+                        'num_processo' => 'required',
+                        'razaoSocial' => 'required',
+                        'nomeFantasia' => 'required',
+                        'CNPJ' => 'required|size:14',
+                        'inscEstadual' => 'required',
+                        'email' => 'required|email',
+                        'telefone' => 'required',
+                        'celular' => 'required',
+                        'fax' => '',
+                        'endereco' => 'required',
+                        'numero' => 'required',
+                        'complemento' => '',
+                        'CEP' => 'required',
+                        'bairro' => 'required',
+                        'cidade' => 'required',
+                        'UF' => 'required',
+                        'atividade' => 'required',
+                        'subatividade' => 'required',
+                        'basedecalculo01' => 'required',
+                        'tipopreco' => 'required',
+                        'portedaempresa' => 'required',
+                        'valordalicenca' => 'required',
+                        'ppd' => 'required',
+                        'valordalicenca' => 'required',
+                    );
+                   return $this->auxcalculosalvar($rules);
+                }
                 $rules = array(
                     'num_processo' => 'required',
                     'razaoSocial' => 'required',
@@ -158,53 +161,82 @@ class CalculosController extends Controller
                     'ppd' => 'required',
                     'valordalicenca' => 'required',
                 );
+                return $this->auxcalculosalvar($rules);
+           }
+	}
+    //Funcao para auxiliar o calculo dos dados de acordo com suas regras;
+    public function auxcalculo($rules)
+    {
+        $validator = Validator::make(Input::all(), $rules);
+        if($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->with(compact('selecsub'))
+                ->withInput();
 
+        }
 
-                $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
-                $validator = Validator::make(Input::all(), $rules);
-                if($validator->fails()) {
-                    return back()
-                        ->withErrors($validator)
-                        ->with(compact('selecsub'))
-                        ->withInput();
-                }
-
-                $cadastro  = new CadastrosController();
-                if($cadastro->cadastrarprocesso())
-                {
-                    if($cadastro->cadastrarempresa())
-                    {
-                        $sucessocadastro = "Foram salvos os seguintes dados,
+        //Subatividade
+        $subatividade   = Subatividade::find(intval(trim(Input::get("subatividade"))));
+        //PPD nivel
+        $ppd = $subatividade->ppd->nivel;
+        $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
+        $portedaempresa = $this->calcularporte();
+        $porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
+        $portemodel = Porte::find($porte->id);
+        $porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
+        $ppdmodel  = Ppd::find($porteppd[0]->id);
+        $tipo  = Input::get("tipopreco");
+        $valordalicenca = "R$ " . $ppdmodel->tipopreco[0]->$tipo;
+        return Redirect::route('calculos')
+            ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
+            ->withInput();
+    }
+    //Funcao para auxiliar o salvamento dos dados de acordo com suas regras;
+    public function auxcalculosalvar($rules)
+    {
+        $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
+        $validator = Validator::make(Input::all(), $rules);
+        if($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->with(compact('selecsub'))
+                ->withInput();
+        }
+        $cadastro  = new CadastrosController();
+        if($cadastro->cadastrarprocesso())
+        {
+            if($cadastro->cadastrarempresa())
+            {
+                $sucessocadastro = "Foram salvos os seguintes dados,
                         Numero de processo,
                         Dados da Empresa,
                         Calculos,
                         Todos os dados foram cadastrado no sistema SISCAL";
-
-                        $cadastro->cadastrarempreendimento();
-                        return back()
-                            ->with(compact('sucessocadastro'));
-                    }
-                    else
-                    {
-                        $processo_id  = Processo::where('num_processo' , "=" , Input::get("num_processo"))->get(['id']);
-                        $deletarprocesso = Processo::find($processo_id[0]->id);
-                        $deletarprocesso->delete();
-                        $errodecastroempresa = "Empresa já cadastrada no sistema SISCAL";
-                        return back()
-                            ->with(compact('errodecastroempresa'))
-                            ->withInput();
-                    }
-                }
-                else
-                {
-                    $errodecastroprocesso = "Processo já existe cadastrado no sistema SISCAL";
-                    return back()
-                        ->with(compact('errodecastroprocesso'))
-                        ->withInput();
-                }
+                $cadastro->cadastrarempreendimento();
+                return back()
+                    ->with(compact('sucessocadastro'));
             }
-	}
-	//Auxilio calcularporte
+            else
+            {
+                $processo_id  = Processo::where('num_processo' , "=" , Input::get("num_processo"))->get(['id']);
+                $deletarprocesso = Processo::find($processo_id[0]->id);
+                $deletarprocesso->delete();
+                $errodecastroempresa = "Empresa já cadastrada no sistema SISCAL";
+                return back()
+                    ->with(compact('errodecastroempresa'))
+                    ->withInput();
+            }
+        }
+        else
+        {
+            $errodecastroprocesso = "Processo já existe cadastrado no sistema SISCAL";
+            return back()
+                ->with(compact('errodecastroprocesso'))
+                ->withInput();
+        }
+    }
+    //Auxilio calcularporte
 	public function micro()
 	{
 			return "MICRO";
@@ -229,7 +261,7 @@ class CalculosController extends Controller
 	{
 			return "EXCEPCIONAL";
 	}
-		//Calcular porte do empreendimento
+	//Calcular porte do empreendimento
 	public function calcularporte()
 	{
 		$atvidadecodido     = Atividade::find(intval(Input::get("atividade")));

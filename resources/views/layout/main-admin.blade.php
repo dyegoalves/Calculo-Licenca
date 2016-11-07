@@ -67,7 +67,7 @@
           <a href="#"><i class="fa fa-list"></i>Processos & Calculos</a>
           <ul>
             <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Calcular Licenca</a></li>
-            <li><a href="{{url("/consultarprocesso")}}"><i class="fa fa-clipboard"></i>Consultar processo</a></li>
+            <li><a href="{{url("/consultarprocessoindex")}}"><i class="fa fa-clipboard"></i>Consultar processo</a></li>
             <li><a href="#">Listar todos</a></li>
             <li><a href="#">Atrasados</a></li>
             <li><a href="#">Entregues</a></li>

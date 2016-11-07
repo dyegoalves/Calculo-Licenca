@@ -6,7 +6,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">Formulário - Calculo da licenca.</div>
           <div class="panel-body">
-            <form class="form-horizontal" action="{{url("/fazercalculos")}}" method="post" role="form">
+            <form name="formconsultar" class="form-horizontal" action="{{url("/fazerconsultarprocesso")}}" method="post" role="form">
             {{csrf_field()}}
 
             @if(session()->has('msgsucesso'))
@@ -24,7 +24,6 @@
             @endif
 
 
-
             <h4 class="page-title" >Processo</h4>
 
             <div class="form-group">
@@ -37,14 +36,9 @@
                 <strong>{{ $errors->first('num_processo') }}</strong>
                 </span>
                 @endif
-
               </div>
-
-
             </div>
-              <button  id="consultarprocesso" name="consultarprocesso" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Consultar processo</button>
-
-
+              <button  id="consultarprocesso" name="consultarprocesso" type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Consultar processo</button>
              <br/>
              <br/>
 
@@ -57,8 +51,7 @@
                 <div class=" radio radio-info radio-inline">
                   <input value="1" type="radio" id="inlineRadio1"  name="escolhatipo" checked>
                   <label for="inlineRadio1">Pessoa Juridica?</label>     
-                  <input value="2" type="radio" id="inlineRadio2"  name="escolhatipo">
-                  <label for="inlineRadio2">Pessoa Fisíca?</label>
+
                 </div>
               </div>
             </div>
@@ -66,7 +59,7 @@
               {{--Input Razao social--}}
               <div class="col-md-3 {{ $errors->has('razaoSocial') ? ' has-error' : '' }}">
                 <label for="razaoSocial" >Razão Social *</label>
-                <input id="razaoSocial" type="text" class=" form-control input-sm" name="razaoSocial" value="{{ old('razaoSocial') }}">
+                <input id="razaoSocial" type="text" class=" form-control input-sm" name="razaoSocial" value="{{ session()->has('empresa') ? session("empresa")->razaoSocial  : '' }}">
                 @if ($errors->has('razaoSocial'))
                 <span class="help-block">
                 <strong>{{ $errors->first('razaoSocial') }}</strong>
@@ -76,7 +69,7 @@
               {{--Input Nome fantasia--}}
               <div class="col-md-3 {{ $errors->has('nomeFantasia') ? ' has-error' : '' }}">
                 <label for="nomeFantasia" >Nome fantasia *</label>
-                <input id="nomeFantasia" type="text" class=" form-control input-sm" name="nomeFantasia" value="{{ old('nomeFantasia') }}">
+                <input id="nomeFantasia" type="text" class=" form-control input-sm" name="nomeFantasia" value="{{ session()->has('empresa') ? session("empresa")->nomeFantasia  : '' }}">
                 @if ($errors->has('nomeFantasia'))
                 <span class="help-block">
                 <strong>{{ $errors->first('nomeFantasia') }}</strong>
@@ -86,7 +79,7 @@
               {{--Input CNPJ--}}
               <div class=" col-md-3{{ $errors->has('CNPJ') ? ' has-error' : '' }}">
                 <label for="CNPJ" >CNPJ *</label>
-                <input id="CNPJ" type="text" class=" form-control input-sm" name="CNPJ" value="{{ old('CNPJ') }}">
+                <input id="CNPJ" type="text" class=" form-control input-sm" name="CNPJ" value="{{ session()->has('empresa') ? session("empresa")->CNPJ  : '' }}">
                 @if ($errors->has('CNPJ'))
                 <span class="help-block">
                 <strong>{{ $errors->first('CNPJ') }}</strong>

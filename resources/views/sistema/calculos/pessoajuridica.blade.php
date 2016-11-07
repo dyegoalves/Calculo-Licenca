@@ -224,6 +224,21 @@
             <br/>
             <h4 class="page-title">Dados do Empreendimento e Calculos Lei No 3.785/2012 * </h4>
 
+                @if(session()->has('erroatividade'))
+                <div class="alert alert-danger fade in">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Erro! </strong> {{ session("erroatividade")}}
+                </div>
+                @endif
+
+                @if(session()->has('errosubatividade'))
+                <div class="alert alert-danger fade in">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Erro! </strong> {{ session("errosubatividade")}}
+                </div>
+                @endif
+
+
              <div class="form-group{{ $errors->has('atividade') ? ' has-error' : '' }}">
               <label for="atividade" class="col-md-2 control-label">Atividade: </label>
               <div class="col-md-5">

@@ -42,15 +42,11 @@ Route::group(['middleware' => ['auth']], function () {
     /*--------------------------------------------------------------------------/
      *    Rotas do controller Calculos
      *-------------------------------------------------------------------------*/
-
         Route::get("/calculo-porte" , "CalculosController@calculo_porte");
         Route::get('/listarsubatividade/{idatividade}' , 'CalculosController@listarsubatividade');
         Route::get('/calculos' , ['as' => 'calculos', 'uses' => 'CalculosController@index']);
         Route::post('/fazercalculos' , 'CalculosController@fazercalculos');
-
         Route::get('/pessoajuridica' , ['as' => 'pessoajuridica', 'uses' => 'CalculosController@pessoajuridica']);
-        Route::get('/pessoajuridica1801' , ['as' => 'pessoajuridica1801', 'uses' => 'CalculosController@pessoajuridica1801']);
-
         Route::post('/calcularporte' , ['as' => 'calcularporte', 'uses' => 'CalculosController@calcularporte']);
         Route::get('/testes' , 'CalculosController@testes');
     /*-------------------------------------------------------------------------*/
@@ -70,7 +66,8 @@ Route::group(['middleware' => ['auth']], function () {
     /*--------------------------------------------------------------------------
     *    Rotas do controller Consultar
     *-------------------------------------------------------------------------*/
-    Route::get('/consultarprocesso' , 'ConsultarController@index');
+    Route::get('/consultarprocessoindex' , 'ConsultarController@index');
+    Route::post('/fazerconsultarprocesso' , 'ConsultarController@fazerconsultarprocesso');
 
     /*---------------------------------------------------------------------------*/
 });
