@@ -39,6 +39,12 @@ button{
     padding-top: 10px !important;
 }
 
+#maskZone{
+
+    position:absolute;
+}
+
+
 /****************************
 *   FOR RESPONSIVENESS      *
 ****************************/

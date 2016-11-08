@@ -14,10 +14,10 @@ class ConsultarController extends Controller
 
     public function index()
     {
-       $bloqueio = 'readonly';
-       return view("sistema.consultas.consultarprocesso");
-
+       $bloqueio = 'sim';
+       return view("sistema.consultas.consultarprocesso")->with(compact('bloqueio'));
     }
+
 
     public function fazerconsultarprocesso()
     {
@@ -29,7 +29,8 @@ class ConsultarController extends Controller
         $subatividade = $empredimento->atividade->descricao;
 
         return back()
-            ->with(compact('empresa'));
+            ->with(compact('empresa'))
+				  	->withInput();
 
     }
 

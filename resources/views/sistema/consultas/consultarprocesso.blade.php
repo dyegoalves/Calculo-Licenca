@@ -89,7 +89,7 @@
               {{--Input numero inscricao--}}
               <div class=" col-md-3{{ $errors->has('inscEstadual') ? ' has-error' : '' }}">
                 <label for="inscEstadual" >Nº Ins. Estadual *</label>
-                <input id="inscEstadual" type="text" class=" form-control input-sm" name="inscEstadual" value="{{ old('inscEstadual') }}">
+                <input id="inscEstadual" type="text" class=" form-control input-sm" name="inscEstadual" value="{{session()->has('empresa') ? session("empresa")->inscEstadual  : '' }}">
                 @if ($errors->has('inscEstadual'))
                 <span class="help-block">
                 <strong>{{ $errors->first('inscEstadual') }}</strong>
@@ -102,7 +102,7 @@
               {{--Input Email--}}
               <div class="col-md-4 {{$errors->has('email') ? ' has-error' : '' }}">
                 <label for="email" >Email *</label>
-                <input id="email" type="text" class=" form-control input-sm" name="email" value="{{ old('email') }}">
+                <input id="email" type="text" class=" form-control input-sm" name="email" value="{{session()->has('empresa') ? session("empresa")->email  : '' }}">
                 @if ($errors->has('email'))
                 <span class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>
@@ -112,7 +112,7 @@
               {{--Input Nome Telefone--}}
               <div class="col-md-3 {{ $errors->has('telefone') ? ' has-error' : '' }}">
                 <label for="telefone" >Telefone *</label>
-                <input id="telefone" type="text" class=" form-control input-sm" name="telefone" value="{{ old('telefone') }}">
+                <input id="telefone" type="text" class=" form-control input-sm" name="telefone" value="{{session()->has('empresa') ? session("empresa")->telefone  : '' }}">
                 @if ($errors->has('telefone'))
                 <span class="help-block">
                 <strong>{{ $errors->first('telefone') }}</strong>
@@ -122,7 +122,7 @@
               {{--Input Celular--}}
               <div class=" col-md-3{{ $errors->has('celular') ? ' has-error' : '' }}">
                 <label for="celular" >Celular *</label>
-                <input id="celular" type="text" class=" form-control input-sm" name="celular" value="{{ old('celular') }}">
+                <input id="celular" type="text" class=" form-control input-sm" name="celular" value="{{session()->has('empresa') ? session("empresa")->celular  : '' }}">
                 @if ($errors->has('celular'))
                 <span class="help-block">
                 <strong>{{ $errors->first('celular') }}</strong>
@@ -132,7 +132,7 @@
               {{--Input Fax--}}
               <div class=" col-md-2{{ $errors->has('fax') ? ' has-error' : '' }}">
                 <label for="fax" >Fax </label>
-                <input id="fax" type="text" class=" form-control input-sm" name="fax" value="{{ old('fax') }}">
+                <input id="fax" type="text" class=" form-control input-sm" name="fax" value="{{session()->has('empresa') ? session("empresa")->fax  : '' }}">
                 @if ($errors->has('fax'))
                 <span class="help-block">
                 <strong>{{ $errors->first('fax') }}</strong>
@@ -144,7 +144,7 @@
               {{--Input Endereco--}}
               <div class="col-md-6 {{ $errors->has('endereco') ? ' has-error' : '' }}">
                 <label for="endereco" >Endereco da Empresa *</label>
-                <input id="endereco" type="text" class=" form-control input-sm" name="endereco" value="{{ old('endereco') }}">
+                <input id="endereco" type="text" class=" form-control input-sm" name="endereco" value="{{session()->has('empresa') ? session("empresa")->endereco  : '' }}">
                 @if ($errors->has('endereco'))
                 <span class="help-block">
                 <strong>{{ $errors->first('endereco') }}</strong>
@@ -154,7 +154,7 @@
               {{--Input numero do empredimento--}}
               <div class=" col-md-2 {{ $errors->has('numero') ? ' has-error' : '' }}">
                 <label for="numero" >Numero *</label>
-                <input id="numero" type="text" class=" form-control input-sm" name="numero" value="{{ old('numero') }}">
+                <input id="numero" type="text" class=" form-control input-sm" name="numero" value="{{session()->has('empresa') ? session("empresa")->numero  : '' }}">
                 @if ($errors->has('numero'))
                 <span class="help-block">
                 <strong>{{ $errors->first('numero') }}</strong>
@@ -164,7 +164,7 @@
               {{--Input Complemento--}}
               <div class=" col-md-4{{ $errors->has('complemento') ? ' has-error' : '' }}">
                 <label for="complemento" >Complemento </label>
-                <input id="complemento" type="text" class=" form-control input-sm" name="complemento" value="{{ old('complemento') }}">
+                <input id="complemento" type="text" class=" form-control input-sm" name="complemento" value="{{session()->has('empresa') ? session("empresa")->complemento  : '' }}">
                 @if ($errors->has('complemento'))
                 <span class="help-block">
                 <strong>{{ $errors->first('complemento') }}</strong>
@@ -176,7 +176,7 @@
               {{--Input CEP--}}
               <div class="col-md-3{{ $errors->has('CEP') ? ' has-error' : '' }}">
                 <label for="CEP" >CEP *</label>
-                <input id="CEP" type="text" class=" form-control input-sm" name="CEP" value="{{ old('CEP') }}">
+                <input id="CEP" type="text" class=" form-control input-sm" name="CEP" value="{{session()->has('empresa') ? session("empresa")->CEP  : '' }}">
                 @if ($errors->has('CEP'))
                 <span class="help-block">
                 <strong>{{ $errors->first('CEP') }}</strong>
@@ -186,7 +186,7 @@
               {{--Input Bairro--}}
               <div class="col-md-3 {{ $errors->has('bairro') ? ' has-error' : '' }}">
                 <label for="bairro" >Bairro *</label>
-                <input id="bairro" type="text" class=" form-control input-sm" name="bairro" value="{{ old('bairro') }}">
+                <input id="bairro" type="text" class=" form-control input-sm" name="bairro" value="{{session()->has('empresa') ? session("empresa")->bairro  : '' }}">
                 @if ($errors->has('bairro'))
                 <span class="help-block">
                 <strong>{{ $errors->first('bairro') }}</strong>
@@ -198,7 +198,7 @@
               {{--Input Municipio--}}
               <div class=" col-md-3{{ $errors->has('cidade') ? ' has-error' : '' }}">
                 <label for="cidade" >Municipio *</label>
-                <input   id="cidade" type="text" class=" form-control input-sm" name="cidade" value="{{ old('cidade') }}">
+                <input   id="cidade" type="text" class=" form-control input-sm" name="cidade" value="{{session()->has('empresa') ? session("empresa")->cidade  : '' }}">
                 @if ($errors->has('cidade'))
                 <span class="help-block">
                 <strong>{{ $errors->first('cidade') }}</strong>
@@ -211,7 +211,7 @@
             <div class=" col-md-3{{ $errors->has('UF') ? ' has-error' : '' }}">
               <?php $estados = "Amazonas";?>
               <label for="UF" >Estado *</label>
-              <input id="UF" type="text" class=" form-control input-sm" name="UF" value="{{old('UF')}}">
+              <input id="UF" type="text" class=" form-control input-sm" name="UF" name="cidade" value="{{session()->has('empresa') ? session("empresa")->UF  : '' }}">
               @if ($errors->has('UF'))
               <span class="help-block">
               <strong>{{ $errors->first('UF') }}</strong>
@@ -220,20 +220,17 @@
             </div>
 
             </div>
+
+
             <br/>
             <h4 class="page-title">Dados do Empreendimento e Calculos Lei No 3.785/2012 * </h4>
 
              <div class="form-group{{ $errors->has('atividade') ? ' has-error' : '' }}">
               <label for="atividade" class="col-md-2 control-label">Atividade: </label>
-              <div class="col-md-5">
-                <select  autocomplete="off" name="atividade" id="atividade" class="form-control input-sm">
-                  <option selected value=" "> </option>
-                  @if(isset($atividade))
-                  @foreach ($atividade as $key)
-                  <option value="{{$key->id}}"{{ (old("atividade") == $key->id ? " selected "  : " ") }}>{{ $key->descricao }}</option>
-                  @endforeach
-                  @endif
-                </select>
+               <div  class="col-md-5">
+
+                  <input id="UF" type="text" class=" form-control input-sm" name="UF" name="Atividade" value="{{session()->has('empresa') ? session("empresa")->UF  : '' }}">
+
                 @if ($errors->has('atividade'))
                 <span class="help-block">
                 <strong>{{ $errors->first('atividade') }}</strong>
@@ -246,12 +243,9 @@
               <label for="subatividade" class="col-md-2 control-label">Subatividade: </label>
               <div class="col-md-8">
                 {{--Dados obtidos por meio  de requisicao ajax main.js--}}
-                <select id ='subatividade' name="subatividade"  class="form-control input-sm">
-                  <option selected
-                    value="{{ session()->has('selecsub') ? session("selecsub")->id  : ''}} ">
-                    {{ session()->has('selecsub') ? session("selecsub")->descricao : ''}}
-                  </option>
-                </select>
+
+                <input id="UF" type="text" class=" form-control input-sm" name="UF" name="cidade" value="{{session()->has('empresa') ? session("empresa")->UF  : '' }}">
+
                 @if ($errors->has('subatividade'))
                 <span class="help-block">
                 <strong>{{ $errors->first('subatividade') }}</strong>
@@ -290,12 +284,9 @@
                 <?php
                   $tipopreco = ['LP' => 'LP', 'LI' => 'LI','LO' =>'LO'];
                   ?>
-                <select  autocomplete="off" name="tipopreco" id="inputID" class="form-control input-sm">
-                  <option selected value=""> </option>
-                  @foreach ($tipopreco as $key => $food)
-                  <option value="{{$key}}"{{ (old("tipopreco") == $key ? " selected":"") }}>{{ $food }}</option>
-                  @endforeach
-                </select>
+
+                 <input id="UF" type="text" class=" form-control input-sm" name="UF" name="cidade" value="{{session()->has('empresa') ? session("empresa")->UF  : '' }}">
+
               </div>
               @if ($errors->has('tipopreco'))
               <span class="help-block">

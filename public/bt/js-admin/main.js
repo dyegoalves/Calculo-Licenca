@@ -65,7 +65,6 @@
              });
          });
      });
-
      // Acao do butao para atualizar as subatividades relacionada com a Atividade correspondente.
      $('button[name = atualizarsub]').click( function (){
          var idatividade =  $('select[name = atividade]');
@@ -138,10 +137,17 @@
          $("div[name = basedecalculo02] ").removeAttr("style").hide();
      }
 
-      $('form[name = formconsultar]').click( function(){
+     $('button[name=consultarprocesso]').click(function(){
+            $('form[name=formconsultar] :input select option').prop('readonly', true);
+            $("select").prop('disabled', true);
+     })
 
-         // $('input[name=]').disabled = true;
+     //$("form[name=formconsultar] select").prop('disabled', true);
 
-      });
+     $('form[name=formconsultar] :input').prop('readonly', true);
+
+     $('form[name=formconsultar] input[name=num_processo]').prop('readonly', false);
+
+     $('#maskZone').show();
 
  });
