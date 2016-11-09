@@ -237,8 +237,6 @@
                   <strong>Erro! </strong> {{ session("errosubatividade")}}
                 </div>
                 @endif
-
-
              <div class="form-group{{ $errors->has('atividade') ? ' has-error' : '' }}">
               <label for="atividade" class="col-md-2 control-label">Atividade: </label>
               <div class="col-md-5">
@@ -249,6 +247,8 @@
                   <option value="{{$key->id}}"{{ (old("atividade") == $key->id ? " selected "  : " ") }}>{{ $key->descricao }}</option>
                   @endforeach
                   @endif
+
+
                 </select>
                 @if ($errors->has('atividade'))
                 <span class="help-block">
@@ -347,7 +347,7 @@
               </div>
             </div>
             <div class="form-group{{ $errors->has('valordalicenca') ? ' has-error' : '' }}">
-              <label for="valordalicenca" class="col-md-2 control-label">Valor da licenca: </label>
+              <label for="valordalicenca" class="col-md-2 control-label">Valor da Licenca R$:</label>
               <div class="col-md-4">
                 <input readonly id="valordalicenca" type="text" class="form-control input-sm" name="valordalicenca"
                 value="{{ session()->has('valordalicenca') ? session("valordalicenca") : '' }}">

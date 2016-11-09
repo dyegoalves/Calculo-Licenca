@@ -117,10 +117,10 @@ class CadastrosController extends Controller
     {
         $calculo  = new Calculo();
         $calculo->processo_id = $processo_id[0]->id;
-        $valorlincenca = str_replace("R$" , "" , Input::get("valordalicenca"));
-        $valorlincenca = str_replace("." , "" , $valorlincenca);
-        $valorlincenca = str_replace("," , "." , $valorlincenca);
-        $calculo->valor =  $valorlincenca ;
+				$valorlincenca = Input::get("valordalicenca");
+				$valorlincenca = str_replace(".","" , $valorlincenca);
+				$valorlincenca = str_replace(",","." , $valorlincenca);
+			  $calculo->valor =  $valorlincenca ;
         $calculo->save();
     }
 

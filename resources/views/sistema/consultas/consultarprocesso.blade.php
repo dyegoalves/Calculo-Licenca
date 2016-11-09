@@ -229,7 +229,7 @@
               <label for="atividade" class="col-md-2 control-label">Atividade: </label>
                <div  class="col-md-5">
 
-                  <input id="UF" type="text" class=" form-control input-sm" name="UF" name="Atividade" value="{{session()->has('empresa') ? session("empresa")->UF  : '' }}">
+                  <input id="UF" type="text" class=" form-control input-sm" name="atividade" value="{{session()->has('atividade') ? session("atividade")->descricao  : '' }}">
 
                 @if ($errors->has('atividade'))
                 <span class="help-block">
@@ -244,7 +244,7 @@
               <div class="col-md-8">
                 {{--Dados obtidos por meio  de requisicao ajax main.js--}}
 
-                <input id="UF" type="text" class=" form-control input-sm" name="UF" name="cidade" value="{{session()->has('empresa') ? session("empresa")->UF  : '' }}">
+                <input id="UF" type="text" class=" form-control input-sm" name="subatividade" value="{{session()->has('subatividade') ? session("subatividade")->descricao  : '' }}">
 
                 @if ($errors->has('subatividade'))
                 <span class="help-block">
@@ -258,7 +258,7 @@
             <div name="basedecalculo01" class="form-group{{ $errors->has('basedecalculo01') ? ' has-error' : '' }}">
               <label for="basedecalculo01" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
               <div class="col-md-4">
-                <input id="basedecalculo01" type="text" class="form-control input-sm" name="basedecalculo01" value="{{ old('basedecalculo01') }}">
+                <input id="basedecalculo01" type="text" class="form-control input-sm" name="basedecalculo01" value="{{session()->has('empreendimento') ? session("empreendimento")->basedecalculo01  : '' }}">
                 @if ($errors->has('basedecalculo01'))
                 <span class="help-block">
                 <strong>{{ $errors->first('basedecalculo01') }}</strong>
@@ -270,7 +270,7 @@
             <div name="basedecalculo02" class="form-group{{ $errors->has('basedecalculo02') ? ' has-error' : '' }}">
               <label for="basedecalculo02" class="col-md-2 control-label">Nº de empregados: </label>
               <div class="col-md-4">
-                <input id="basedecalculo02" type="text" class="form-control input-sm" name="basedecalculo02" value="{{ old('basedecalculo02') }}">
+                <input id="basedecalculo02" type="text" class="form-control input-sm" name="basedecalculo02" value="{{session()->has('empreendimento') ? session("empreendimento")->basedecalculo02  : '' }}">
                 @if ($errors->has('basedecalculo02'))
                 <span class="help-block">
                 <strong>{{ $errors->first('basedecalculo02') }}</strong>
@@ -281,11 +281,8 @@
             <div class="form-group{{ $errors->has('tipopreco') ? ' has-error' : '' }}">
               <label for="tipopreco" class="col-md-2 control-label">Tipo da lincenca: </label>
               <div class="col-md-2">
-                <?php
-                  $tipopreco = ['LP' => 'LP', 'LI' => 'LI','LO' =>'LO'];
-                  ?>
 
-                 <input id="UF" type="text" class=" form-control input-sm" name="UF" name="cidade" value="{{session()->has('empresa') ? session("empresa")->UF  : '' }}">
+                 <input id="UF" type="text" class=" form-control input-sm" name="UF" name="tipodelicenca" value="{{session()->has('tipodelicenca') ? session("tipodelicenca")  : '' }}">
 
               </div>
               @if ($errors->has('tipopreco'))
@@ -298,7 +295,7 @@
               <label for="portedaempresa" class="col-md-2 control-label">Porte da empresa: </label>
               <div class="col-md-4">
                 <input readonly="readonly" id="portedaempresa" type="text" class="form-control input-sm" name="portedaempresa"
-                value="{{ session()->has('portedaempresa') ? session("portedaempresa") : ' ' }}">
+                 value="{{session()->has('porte') ? session("porte")->tamanho : '' }}">
                 @if ($errors->has('portedaempresa'))
                 <span class="help-block">
                 <strong>{{ $errors->first('portedaempresa') }}</strong>
@@ -310,7 +307,7 @@
               <label for="ppd" class="col-md-2 control-label">PPD: </label>
               <div class="col-md-4">
                 <input readonly id="ppd" type="text" class="form-control input-sm" name="ppd"
-                value="{{ session()->has('ppd') ? session("ppd") : '' }}">
+                value="{{session()->has('ppd') ? session("ppd")->nivel : '' }}">
                 @if ($errors->has('ppd'))
                 <span class="help-block">
                 <strong>{{ $errors->first('ppd') }}</strong>
@@ -322,7 +319,7 @@
               <label for="valordalicenca" class="col-md-2 control-label">Valor da licenca: </label>
               <div class="col-md-4">
                 <input readonly id="valordalicenca" type="text" class="form-control input-sm" name="valordalicenca"
-                value="{{ session()->has('valordalicenca') ? session("valordalicenca") : '' }}">
+                value="{{session()->has('valordalicenca') ? session("valordalicenca") : '' }}">
                 @if ($errors->has('valordalicenca'))
                 <span class="help-block">
                 <strong>{{ $errors->first('valordalicenca') }}</strong>

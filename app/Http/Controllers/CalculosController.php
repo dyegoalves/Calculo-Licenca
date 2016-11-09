@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers;
 use App\Atividade;
-use App\Empresa;
 use App\Porte;
 use App\Ppd;
 use Illuminate\Http\Request;
 use App\Processo;
 use App\Subatividade;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Input;
 use Redirect;
 use Response;
-use Illuminate\Support\Facades\View;
 use DB;
-use Symfony\Component\VarDumper\Caster\Caster;
 use Validator;
-use App\Http\Controllers\CadastrosController;
 
 class CalculosController extends Controller
 {
@@ -25,7 +20,7 @@ class CalculosController extends Controller
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
-    }
+	}
 	//Mostrar a pagina de calculo pessoa juridica
 	public function pessoajuridica(Atividade $atividade)
 	{
@@ -39,7 +34,6 @@ class CalculosController extends Controller
 			$subatividade = $atividade->subatividade()->getQuery()->get(['id', 'codigo', 'descricao']);
 			return Response::json($subatividade);
 	}
-
 	/*
 	|--------------------------------------------------------------------------
 	| Calculos da licença
@@ -52,191 +46,221 @@ class CalculosController extends Controller
 	//Faz os caluculos da Lincenca
 	public function fazercalculos(Request $request)
 	{
-            //Funcoes para calculos do processo.
-            if($request->get("btncalcular") == "btncalcular" )
-            {
-
-                if($request->get("atividade") == " ")
-                {
-                    $erroatividade = "Atividade não pode estar vazia!";
-                    return back()
-                        ->with(compact('erroatividade'))
-                        ->withInput();
-                }
-
-                if($request->get("subatividade") == " ")
-                {
-                    $errosubatividade = "Subatividade não pode estar vazia!";
-                    return back()
-                        ->with(compact('errosubatividade'))
-                        ->withInput();
-                }
-
-
-                $subatividade   = Subatividade::find(intval(trim($request->get("subatividade"))));
-
-
-                if( $subatividade->codigo == '1803'){
-
-                    $rules = array(
-                        'atividade' => 'required',
-                        'subatividade' => 'required',
-                        'basedecalculo01' => 'required',
-                        'tipopreco' => 'required',
-                    );
-
-                 return  $this->auxcalculo($rules);
-
-                }
-
-
-                $rules = array(
-                    'atividade' => 'required',
-                    'subatividade' => 'required',
-                    'basedecalculo01' => 'required',
-                    'basedecalculo02' => 'required',
-                    'tipopreco' => 'required',
-                );
-                return $this->auxcalculo($rules);
+		//Funcoes para calculos do processo.
+		if($request->get("btncalcular") == "btncalcular" )
+		{
+			if($request->get('subatividade') != " ")
+			{
+				$subatividade  = Subatividade::find(intval(trim($request->get("subatividade"))));
+				if($subatividade->codigo == "1803")
+				{
+					$rules = array(
+						'atividade' => 'required',
+						'subatividade' => 'required',
+						'basedecalculo01' => 'required',
+						'tipopreco' => 'required',
+					);
+				  return  $this->auxcalculo($rules);
+				}
+				else
+				{
+					$rules = array(
+						'atividade' => 'required',
+						'subatividade' => 'required',
+						'basedecalculo01' => 'required',
+						'basedecalculo02' => 'required',
+						'tipopreco' => 'required',
+					);
+					return $this->auxcalculo($rules);
+				}
 			}
-		    // Funcoes de Salvar o Calculo do processo.
-			if($request->get("btnsalvar") == "btnsalvar" )
-            {
-                //Regras de validação
-                $subatividade  = Subatividade::find(intval(trim($request->get("subatividade"))));
-                if($subatividade->codigo == '1803')
-                {
-                   $rules = array(
-                        'num_processo' => 'required',
-                        'razaoSocial' => 'required',
-                        'nomeFantasia' => 'required',
-                        'CNPJ' => 'required|size:14',
-                        'inscEstadual' => 'required',
-                        'email' => 'required|email',
-                        'telefone' => 'required',
-                        'celular' => 'required',
-                        'fax' => '',
-                        'endereco' => 'required',
-                        'numero' => 'required',
-                        'complemento' => '',
-                        'CEP' => 'required',
-                        'bairro' => 'required',
-                        'cidade' => 'required',
-                        'UF' => 'required',
-                        'atividade' => 'required',
-                        'subatividade' => 'required',
-                        'basedecalculo01' => 'required',
-                        'tipopreco' => 'required',
-                        'portedaempresa' => 'required',
-                        'valordalicenca' => 'required',
-                        'ppd' => 'required',
-                        'valordalicenca' => 'required',
-                    );
-                   return $this->auxcalculosalvar($rules);
-                }
-                $rules = array(
-                    'num_processo' => 'required',
-                    'razaoSocial' => 'required',
-                    'nomeFantasia' => 'required',
-                    'CNPJ' => 'required|size:14',
-                    'inscEstadual' => 'required',
-                    'email' => 'required|email',
-                    'telefone' => 'required',
-                    'celular' => 'required',
-                    'fax' => '',
-                    'endereco' => 'required',
-                    'numero' => 'required',
-                    'complemento' => '',
-                    'CEP' => 'required',
-                    'bairro' => 'required',
-                    'cidade' => 'required',
-                    'UF' => 'required',
-                    'atividade' => 'required',
-                    'subatividade' => 'required',
-                    'basedecalculo01' => 'required',
-                    'basedecalculo02' => 'required',
-                    'tipopreco' => 'required',
-                    'portedaempresa' => 'required',
-                    'valordalicenca' => 'required',
-                    'ppd' => 'required',
-                    'valordalicenca' => 'required',
-                );
-                return $this->auxcalculosalvar($rules);
-           }
+			else
+			{
+				$rules = array(
+					'atividade' => 'required',
+					'subatividade' => 'required',
+					'basedecalculo01' => 'required',
+					'basedecalculo02' => 'required',
+					'tipopreco' => 'required',
+				);
+				return $this->auxcalculo($rules);
+			}
+		}
+		// Funcoes de Salvar o Calculo do processo.
+		if($request->get("btnsalvar") == "btnsalvar" )
+		{
+
+			//Regras de validação
+			if($request->get('subatividade') != " "){
+				$subatividade  = Subatividade::find(intval(trim($request->get("subatividade"))));
+				if($subatividade->codigo == '1803')
+				{
+					$rules = array(
+						'num_processo' => 'required',
+						'razaoSocial' => 'required',
+						'nomeFantasia' => 'required',
+						'CNPJ' => 'required|size:14',
+						'inscEstadual' => 'required',
+						'email' => 'required|email',
+						'telefone' => 'required',
+						'celular' => 'required',
+						'fax' => '',
+						'endereco' => 'required',
+						'numero' => 'required',
+						'complemento' => '',
+						'CEP' => 'required',
+						'bairro' => 'required',
+						'cidade' => 'required',
+						'UF' => 'required',
+						'atividade' => 'required',
+						'subatividade' => 'required',
+						'basedecalculo01' => 'required',
+						'tipopreco' => 'required',
+						'portedaempresa' => 'required',
+						'valordalicenca' => 'required',
+						'ppd' => 'required',
+						'valordalicenca' => 'required',
+					);
+					return $this->auxcalculosalvar($rules);
+				}
+				else
+				{
+					$rules = array(
+						'num_processo' => 'required',
+						'razaoSocial' => 'required',
+						'nomeFantasia' => 'required',
+						'CNPJ' => 'required|size:14',
+						'inscEstadual' => 'required',
+						'email' => 'required|email',
+						'telefone' => 'required',
+						'celular' => 'required',
+						'fax' => '',
+						'endereco' => 'required',
+						'numero' => 'required',
+						'complemento' => '',
+						'CEP' => 'required',
+						'bairro' => 'required',
+						'cidade' => 'required',
+						'UF' => 'required',
+						'atividade' => 'required',
+						'subatividade' => 'required',
+						'basedecalculo01' => 'required',
+						'basedecalculo02' => 'required',
+						'tipopreco' => 'required',
+						'portedaempresa' => 'required',
+						'valordalicenca' => 'required',
+						'ppd' => 'required',
+						'valordalicenca' => 'required',
+					);
+					return $this->auxcalculosalvar($rules);
+				}
+			}
+			else
+			{
+				$rules = array(
+					'num_processo' => 'required',
+					'razaoSocial' => 'required',
+					'nomeFantasia' => 'required',
+					'CNPJ' => 'required|size:14',
+					'inscEstadual' => 'required',
+					'email' => 'required|email',
+					'telefone' => 'required',
+					'celular' => 'required',
+					'fax' => '',
+					'endereco' => 'required',
+					'numero' => 'required',
+					'complemento' => '',
+					'CEP' => 'required',
+					'bairro' => 'required',
+					'cidade' => 'required',
+					'UF' => 'required',
+					'atividade' => 'required',
+					'subatividade' => 'required',
+					'basedecalculo01' => 'required',
+					'basedecalculo02' => 'required',
+					'tipopreco' => 'required',
+					'portedaempresa' => 'required',
+					'valordalicenca' => 'required',
+					'ppd' => 'required',
+					'valordalicenca' => 'required',
+				);
+				return $this->auxcalculosalvar($rules);
+			}
+		}
 	}
-    //Funcao para auxiliar o calculo dos dados de acordo com suas regras;
-    public function auxcalculo($rules)
-    {
-        $validator = Validator::make(Input::all(), $rules);
-        if($validator->fails()) {
-            return back()
-                ->withErrors($validator)
-                ->with(compact('selecsub'))
-                ->withInput();
+	//Funcao para auxiliar o calculo dos dados de acordo com suas regras;
+	public function auxcalculo($rules)
+	{
+			$validator = Validator::make(Input::all(), $rules);
+			if($validator->fails())
+			{
+					return back()
+							->withErrors($validator)
+							->with(compact('selecsub'))
+							->withInput();
+			}
+			//Subatividade
+			$subatividade   = Subatividade::find(intval(trim(Input::get("subatividade"))));
+			//PPD nivel
+			$ppd = $subatividade->ppd->nivel;
+			$selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
+			$portedaempresa = $this->calcularporte();
+			$porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
+			$portemodel = Porte::find($porte->id);
+			$porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
+			$ppdmodel  = Ppd::find($porteppd[0]->id);
+			$tipo  = Input::get("tipopreco");
+			$valordalicenca = $ppdmodel->tipopreco[0]->$tipo;
+			return Redirect::route('calculos')
+					->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
+					->withInput();
+	}
+	//Funcao para auxiliar o salvamento dos dados de acordo com suas regras;
+	public function auxcalculosalvar($rules)
+	{
+			$selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
+			$validator = Validator::make(Input::all(), $rules);
+			if($validator->fails()) {
+					return back()
+							->withErrors($validator)
+							->with(compact('selecsub'))
+							->withInput();
+			}
 
-        }
-
-        //Subatividade
-        $subatividade   = Subatividade::find(intval(trim(Input::get("subatividade"))));
-        //PPD nivel
-        $ppd = $subatividade->ppd->nivel;
-        $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
-        $portedaempresa = $this->calcularporte();
-        $porte = DB::table('portes')->where('tamanho', $portedaempresa)->first();
-        $portemodel = Porte::find($porte->id);
-        $porteppd =  $portemodel->ppd()->where('nivel', $ppd)->get();
-        $ppdmodel  = Ppd::find($porteppd[0]->id);
-        $tipo  = Input::get("tipopreco");
-        $valordalicenca = "R$ " . $ppdmodel->tipopreco[0]->$tipo;
-        return Redirect::route('calculos')
-            ->with(compact('portedaempresa', 'selecsub' , 'ppd' , 'porte' , 'valordalicenca'))
-            ->withInput();
-    }
-    //Funcao para auxiliar o salvamento dos dados de acordo com suas regras;
-    public function auxcalculosalvar($rules)
-    {
-        $selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
-        $validator = Validator::make(Input::all(), $rules);
-        if($validator->fails()) {
-            return back()
-                ->withErrors($validator)
-                ->with(compact('selecsub'))
-                ->withInput();
-        }
-        $cadastro  = new CadastrosController();
-        if($cadastro->cadastrarprocesso())
-        {
-            if($cadastro->cadastrarempresa())
-            {
-                $sucessocadastro = "Foram salvos os seguintes dados,
-                        Numero de processo,
-                        Dados da Empresa,
-                        Calculos,
-                        Todos os dados foram cadastrado no sistema SISCAL";
-                $cadastro->cadastrarempreendimento();
-                return back()
-                    ->with(compact('sucessocadastro'));
-            }
-            else
-            {
-                $processo_id  = Processo::where('num_processo' , "=" , Input::get("num_processo"))->get(['id']);
-                $deletarprocesso = Processo::find($processo_id[0]->id);
-                $deletarprocesso->delete();
-                $errodecastroempresa = "Empresa já cadastrada no sistema SISCAL";
-                return back()
-                    ->with(compact('errodecastroempresa'))
-                    ->withInput();
-            }
-        }
-        else
-        {
-            $errodecastroprocesso = "Processo já existe cadastrado no sistema SISCAL";
-            return back()
-                ->with(compact('errodecastroprocesso'))
-                ->withInput();
-        }
-    }
-    //Auxilio calcularporte
+			$cadastro  = new CadastrosController();
+			if($cadastro->cadastrarprocesso())
+			{
+					if($cadastro->cadastrarempresa())
+					{
+							$sucessocadastro = "Foram salvos os seguintes dados,
+											Numero de processo,
+											Dados da Empresa,
+											Calculos,
+											Todos os dados foram cadastrado no sistema SISCAL";
+							$cadastro->cadastrarempreendimento();
+							return back()
+									->with(compact('sucessocadastro'));
+					}
+					else
+					{
+							$processo_id  = Processo::where('num_processo' , "=" , Input::get("num_processo"))->get(['id']);
+							$deletarprocesso = Processo::find($processo_id[0]->id);
+							$deletarprocesso->delete();
+							$errodecastroempresa = "Empresa já cadastrada no sistema SISCAL";
+							return back()
+									->with(compact('errodecastroempresa'))
+									->withInput();
+					}
+			}
+			else
+			{
+					$errodecastroprocesso = "Processo já existe cadastrado no sistema SISCAL";
+					return back()
+							->with(compact('errodecastroprocesso'))
+							->withInput();
+			}
+	}
+	//Auxilio calcularporte
 	public function micro()
 	{
 			return "MICRO";
@@ -268,44 +292,43 @@ class CalculosController extends Controller
 		$subatividadecodigo = Subatividade::find(intval(Input::get("subatividade")));
 		$atvidadecodido     = trim($atvidadecodido->codigo);
 		$subatividadecodigo = trim($subatividadecodigo->codigo);
-
-        if ($atvidadecodido == "03" && ($subatividadecodigo >= "0301" && $subatividadecodigo <= "0352"))
-        {
-            $basedecalculo01 = Input::get("basedecalculo01");
-            $basedecalculo02 = Input::get("basedecalculo02");
-            // tab = atv03  ; col = 1 ; lin = 1 // au = 0.1 ate 0.9 ne = de 0.1 a 99.9
-            if ($basedecalculo01 < 1 && $basedecalculo02 < 100) 														    {return $this->pequeno();}
-            // tab = atv03  ; col = 1 ; lin = 2 // au = 0.1 ate 0. 9 ne = de 100 ate 300
-            if ($basedecalculo01 < 1 && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300)) 	    						{return $this->medio();}
-            // tab = atv03  ; col = 1 ; lin = 3 // au = 0.1 ate 0. 9 ne = de 301 ate 899
-            if ($basedecalculo01 < 1 && ($basedecalculo02 > 300 && $basedecalculo02 < 900)) 								{return $this->grande();}
-            // tab = atv03  ; col = 1 ; lin = 4 // au = 0.1 ate 0. 9 ne = 900++
-            if ($basedecalculo01 < 1 && ($basedecalculo02 >= 900))															{return $this->excepcional();}
-            // tab = atv03  ; col = 2 ; lin = 1 // au = 1 ate 2 ne = 99
-            if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && $basedecalculo02 < 100) 								{return $this->medio();}
-            // tab = atv03  ; col = 2 ; lin = 2 // au = 1 ate 2 ne = 100 ate 300
-            if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300))   {return $this->medio();}
-            // tab = atv03  ; col = 2 ; lin = 3 // au = 1 ate 2 ne = 301 ate 899
-            if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 > 300 && $basedecalculo02 < 900))     {return $this->grande();}
-            // tab = atv03  ; col = 2 ; lin = 4 // au = 1 ate 2 ne = 900++
-            if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 >= 900)) 								{return $this->excepcional();}
-            // tab = atv03  ; col = 3 ; lin = 1 // au = 2.1 ate 2.99 ne = 99
-            if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && $basedecalculo02 < 100) 									{return $this->grande();}
-            // tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
-            if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300))     {return $this->grande();}
-            // tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
-            if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 > 300 && $basedecalculo02 < 900))       {return $this->grande();}
-            // tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
-            if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 >= 900))                                {return $this->excepcional();}
-            // tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
-            if (($basedecalculo01 >= 3) && $basedecalculo02 < 100) 															{return $this->excepcional();}
-            // tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
-            if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300)) 							{return $this->excepcional();}
-            // tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
-            if (($basedecalculo01 >= 3) && ($basedecalculo02 > 300 && $basedecalculo02 < 900)) 								{return $this->excepcional();}
-            // tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
-            if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 900)) 														{return $this->excepcional();}
-        }
+		if ($atvidadecodido == "03" && ($subatividadecodigo >= "0301" && $subatividadecodigo <= "0352"))
+		{
+				$basedecalculo01 = Input::get("basedecalculo01");
+				$basedecalculo02 = Input::get("basedecalculo02");
+				// tab = atv03  ; col = 1 ; lin = 1 // au = 0.1 ate 0.9 ne = de 0.1 a 99.9
+				if ($basedecalculo01 < 1 && $basedecalculo02 < 100) 														    {return $this->pequeno();}
+				// tab = atv03  ; col = 1 ; lin = 2 // au = 0.1 ate 0. 9 ne = de 100 ate 300
+				if ($basedecalculo01 < 1 && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300)) 	    						{return $this->medio();}
+				// tab = atv03  ; col = 1 ; lin = 3 // au = 0.1 ate 0. 9 ne = de 301 ate 899
+				if ($basedecalculo01 < 1 && ($basedecalculo02 > 300 && $basedecalculo02 < 900)) 								{return $this->grande();}
+				// tab = atv03  ; col = 1 ; lin = 4 // au = 0.1 ate 0. 9 ne = 900++
+				if ($basedecalculo01 < 1 && ($basedecalculo02 >= 900))															{return $this->excepcional();}
+				// tab = atv03  ; col = 2 ; lin = 1 // au = 1 ate 2 ne = 99
+				if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && $basedecalculo02 < 100) 								{return $this->medio();}
+				// tab = atv03  ; col = 2 ; lin = 2 // au = 1 ate 2 ne = 100 ate 300
+				if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300))   {return $this->medio();}
+				// tab = atv03  ; col = 2 ; lin = 3 // au = 1 ate 2 ne = 301 ate 899
+				if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 > 300 && $basedecalculo02 < 900))     {return $this->grande();}
+				// tab = atv03  ; col = 2 ; lin = 4 // au = 1 ate 2 ne = 900++
+				if (($basedecalculo01 >= 1 && $basedecalculo01 <= 2) && ($basedecalculo02 >= 900)) 								{return $this->excepcional();}
+				// tab = atv03  ; col = 3 ; lin = 1 // au = 2.1 ate 2.99 ne = 99
+				if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && $basedecalculo02 < 100) 									{return $this->grande();}
+				// tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
+				if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300))     {return $this->grande();}
+				// tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
+				if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 > 300 && $basedecalculo02 < 900))       {return $this->grande();}
+				// tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
+				if (($basedecalculo01 > 2 && $basedecalculo01 < 3) && ($basedecalculo02 >= 900))                                {return $this->excepcional();}
+				// tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
+				if (($basedecalculo01 >= 3) && $basedecalculo02 < 100) 															{return $this->excepcional();}
+				// tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
+				if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300)) 							{return $this->excepcional();}
+				// tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
+				if (($basedecalculo01 >= 3) && ($basedecalculo02 > 300 && $basedecalculo02 < 900)) 								{return $this->excepcional();}
+				// tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
+				if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 900)) 														{return $this->excepcional();}
+		}
 		if ($atvidadecodido == "04" && ($subatividadecodigo >= "0401" && $subatividadecodigo <= "0409"))
 		{
 			$basedecalculo01 = Input::get("basedecalculo01");
@@ -727,19 +750,15 @@ class CalculosController extends Controller
 			if (($basedecalculo01 >= 10) &&  ($basedecalculo02 > 100 && $basedecalculo02 < 500))                   			{return $this->excepcional();}
 			if (($basedecalculo01 >= 10) &&  ($basedecalculo02 >= 500))                               						{return $this->excepcional();}
 		}
+		if ($atvidadecodido == "18" && ($subatividadecodigo >= "1803" && $subatividadecodigo <= "1803"))
+		{
+				$basedecalculo01 = Input::get("basedecalculo01");
+				if ($basedecalculo01 <= 300)                               						{return $this->pequeno();}
+				if ($basedecalculo01 > 300 && $basedecalculo01 < 500 )                			{return $this->medio();}
+				if ($basedecalculo01 > 500 && $basedecalculo01 < 1000 )                			{return $this->grande();}
+				if ($basedecalculo01 >= 1000)                                 		     		{return $this->excepcional();}
 
-        if ($atvidadecodido == "18" && ($subatividadecodigo >= "1803" && $subatividadecodigo <= "1803"))
-        {
-            $basedecalculo01 = Input::get("basedecalculo01");
-
-            if ($basedecalculo01 <= 300)                               						{return $this->pequeno();}
-            if ($basedecalculo01 > 300 && $basedecalculo01 < 500 )                			{return $this->medio();}
-            if ($basedecalculo01 > 500 && $basedecalculo01 < 1000 )                			{return $this->grande();}
-            if ($basedecalculo01 >= 1000)                                 		     		{return $this->excepcional();}
-
-
-        }
-
+		}
 	}
 	/*|-------------------------------------------------------------------------- */
 }
