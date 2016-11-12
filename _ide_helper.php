@@ -10883,8 +10883,10 @@ namespace {
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
         }
-        
-    }
+
+
+
+		}
 
 
 }

@@ -3,14 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Processo extends Model
 {
 
     protected $fillable = [
-        'num_processo',
+        "num_processo", "situacao" , "user_id"
     ];
-
 
     public function calculo()
     {
@@ -22,5 +22,9 @@ class Processo extends Model
         return $this->hasOne(Empreendimento::class);
     }
 
+		public function user()
+		{
+			return $this->belongsTo(User::class);
+		}
 
 }

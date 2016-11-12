@@ -20,15 +20,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/atividade' , 'CadastrosController@atividade');
         Route::post('/subatividade' , 'CadastrosController@subatividade');
 
-    /*-------------------------------------------------------------------------*/
+	      Route::get('/quantosusers' , 'CadastrosController@quantosprocessosuser');
 
+    /*-------------------------------------------------------------------------*/
 
     /*--------------------------------------------------------------------------/
      *    Rotas do controller Home
      *-------------------------------------------------------------------------*/
         //Acessa a pagina do Bootstrap.
         Route::get("/bootstrap", "HomeController@bootstrap");
-
     /*-------------------------------------------------------------------------*/
 
     /*--------------------------------------------------------------------------/
@@ -68,8 +68,15 @@ Route::group(['middleware' => ['auth']], function () {
     *-------------------------------------------------------------------------*/
     Route::get('/consultarprocessoindex' , 'ConsultarController@index');
     Route::post('/fazerconsultarprocesso' , 'ConsultarController@fazerconsultarprocesso');
-
     /*---------------------------------------------------------------------------*/
+
+		/*--------------------------------------------------------------------------
+		*    Rotas do controller Listas
+		*-------------------------------------------------------------------------*/
+		Route::get('/listartodosprocessos' , 'ListasController@listartodosprocessos');
+
+
+	/*---------------------------------------------------------------------------*/
 });
 
    /*------------------------------------------------------------------------------

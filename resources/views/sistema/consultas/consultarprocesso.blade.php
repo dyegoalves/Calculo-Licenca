@@ -22,10 +22,7 @@
               <strong>Danger!</strong> {{ session("msgerro")}}
             </div>
             @endif
-
-
             <h4 class="page-title" >Processo</h4>
-
             <div class="form-group">
               {{--Numero de processo--}}
               <div class="col-md-4 {{ $errors->has('num_processo') ? ' has-error' : '' }}">
@@ -37,6 +34,14 @@
                 </span>
                 @endif
               </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4 {{ $errors->has('num_processo') ? ' has-error' : '' }}">
+                  <label for="num_processo">Situacao: </label>
+                  <h2>
+                   {{ session()->has('processo') ? session("processo")->situacao  : " "}}
+                  </h2>
+                </div>
+
             </div>
               <button  id="consultarprocesso" name="consultarprocesso" type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Consultar processo</button>
              <br/>

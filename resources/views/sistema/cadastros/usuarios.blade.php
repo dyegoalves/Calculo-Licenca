@@ -40,6 +40,7 @@
 </div>
 </div>
 
+
 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 <label for="password" class="col-md-4 control-label">Senha</label>
 
@@ -67,6 +68,27 @@
     @endif
 </div>
 </div>
+
+<div class="form-group{{ $errors->has('funcao') ? ' has-error' : '' }}">
+<label for="funcao" class="col-md-4 control-label">Funcao: </label>
+<?php
+    $funcao = [ " " => "Escolha a funcao" , 'Administrador' => 'Administrador', 'Gerente'=> 'Gerente' , 'Secretaria' => 'Secretaria', 'Analista' => 'Analista'  ]
+?>
+
+<div class="col-md-6">
+
+   {{ Form::select('funcao', $funcao , null , ['class' => 'form-control'] )}}
+
+    @if ($errors->has('funcao'))
+        <span class="help-block">
+            <strong>{{ $errors->first('funcao') }}</strong>
+        </span>
+    @endif
+
+</div>
+
+</div>
+
 
 <div class="form-group">
 <div class="col-md-6 col-md-offset-4">

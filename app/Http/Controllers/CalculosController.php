@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Atividade;
 use App\Porte;
 use App\Ppd;
+use App\User;
 use Illuminate\Http\Request;
 use App\Processo;
 use App\Subatividade;
@@ -24,6 +25,7 @@ class CalculosController extends Controller
 	//Mostrar a pagina de calculo pessoa juridica
 	public function pessoajuridica(Atividade $atividade)
 	{
+
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
 	}
@@ -43,12 +45,15 @@ class CalculosController extends Controller
 	| os dados fornecidos
 	|
 	*/
-	//Faz os caluculos da Lincenca
+
+
 	public function fazercalculos(Request $request)
 	{
 		//Funcoes para calculos do processo.
 		if($request->get("btncalcular") == "btncalcular" )
 		{
+
+
 			if($request->get('subatividade') != " ")
 			{
 				$subatividade  = Subatividade::find(intval(trim($request->get("subatividade"))));
@@ -89,6 +94,22 @@ class CalculosController extends Controller
 		// Funcoes de Salvar o Calculo do processo.
 		if($request->get("btnsalvar") == "btnsalvar" )
 		{
+
+			$users = User::with('users')->where('users.funcao','=','analista')->get();
+
+			dd($users);
+
+
+			//$usuarioscadastrados = User::all();
+
+
+			if(count($usuarioscadastrados) == 0 )
+			{
+				$msgerro = "Nenhum usuario cadastrado no sistema primeiro faça o cadastro de um usuário para realizaca estar tarefa";
+				return Redirect::route('calculos')
+					->with(compact('msgerro'))
+					->withInput();
+			}
 
 			//Regras de validação
 			if($request->get('subatividade') != " "){

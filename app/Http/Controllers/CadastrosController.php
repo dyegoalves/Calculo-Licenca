@@ -8,6 +8,9 @@ use App\Empresa;
 use App\Porte;
 use App\Processo;
 use App\Subatividade;
+use App\User;
+use App\Usuario;
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
@@ -50,23 +53,50 @@ class CadastrosController extends Controller
             $user->avatar = $filename;
             $user->save();
         }
+
         return view('sistema.cadastros.profile' , ['user' => Auth::user()]);
     }
+
     //Cadastrar processo
     public function cadastrarprocesso()
     {
-        $numprocesso = Input::get("num_processo");
-        $numprocessocount = Processo::where('num_processo', $numprocesso)->count();
+
+			$numprocesso = Input::get("num_processo");
+			$numprocessocount = Processo::where('num_processo', $numprocesso)->count();
 
         if($numprocessocount < 1){
-            $processonumero = new Processo(Input::all());
-            $processonumero->save();
-            return true;
+					DB::statement('SET FOREIGN_KEY_CHECKS=0');
+  					$processonumero = new Processo();
+            $processonumero->num_processo = Input::get('num_processo');
+					  $processonumero->situacao =  Input::get('situacao');
+					  $processonumero->user_id  =  intval($this->analistatemmenosprocesso());
+					  $processonumero->save();
+				  	DB::statement('SET FOREIGN_KEY_CHECKS=1');
+          return true;
         }
-        else{
+				else{
             return false;
         }
     }
+
+		//Pega sempre o ultimo cara que tem menos processo;
+		public function analistatemmenosprocesso()
+		{
+
+			$analista = [];
+			foreach(User::all() as $users)
+			{
+				$analista[$users->id] = count($users->processo);
+			}
+			arsort($analista);
+			foreach ($analista as $chave => $valor)
+			{
+				$analista[$chave] = $valor;
+			}
+			$temmenosprocesso =  array_keys($analista);
+			return end($temmenosprocesso);
+		}
+
     //Cadastrar Empresa
     public function cadastrarempresa(){
 
@@ -86,7 +116,6 @@ class CadastrosController extends Controller
     //Cadastrar Empreendimento
     public function cadastrarempreendimento()
     {
-
         //Obtrencao de dados para cadastro do Empreendimento
         $basedecalculo01    = Input::get("basedecalculo01");
         $basedecalculo02    = Input::get("basedecalculo02");
@@ -95,7 +124,6 @@ class CadastrosController extends Controller
         $porte_id           = Porte::where('tamanho', Input::get("portedaempresa"))->get(['id']);
         $atividade_id       = Atividade::where('id', Input::get("atividade"))->get(['id']);
         $subatividade_id    = Subatividade::where('id', Input::get("subatividade"))->get(['id']);
-
 
         //Cadastra Empreedimento e seus relacionamentos
         $empreedimento = new Empreendimento();
@@ -108,7 +136,6 @@ class CadastrosController extends Controller
         $empreedimento->subatividade_id = $subatividade_id[0]->id;
         $empreedimento->save();
         $this->cadastrarcalculo($processo_id);
-
         return true;
 
     }
@@ -123,5 +150,6 @@ class CadastrosController extends Controller
 			  $calculo->valor =  $valorlincenca ;
         $calculo->save();
     }
+
 
 }

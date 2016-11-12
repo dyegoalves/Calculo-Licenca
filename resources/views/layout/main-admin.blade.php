@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="theme-color" content="#3e454c">
-    <title>IPAAM</title>
+    <title> {{ session()->has('titulo') ? session("titulo"):'SISCAL'}}</title>
     <link href="{{ URL::asset('bt/css-admin/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('bt/css-admin/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('bt/css-admin/dataTables.bootstrap.min.css')}}" rel="stylesheet">
@@ -54,7 +54,7 @@
                 <h4 style="font-family: Lato">Dados pessoais</h4>
                 <hr/>
                 <p><strong>Nome:</strong>   <span> {{ Auth::user()->name }}</span></p>
-                <p><strong>Funcao:</strong> <span> Dados funcao </span></p>
+                <p><strong>Funcao:</strong> <span> {{Auth::user()->funcao}} </span></p>
                 <h4 style="font-family: Lato">Resumo de licenças:</h4><hr/>
                 <p><strong>Quantidade na carga: </strong> <span>Qtd-Carga</span> </p>
                 <p><strong>Entregues:</strong> <span> Qtd-Entregues </span></p>
@@ -68,7 +68,10 @@
           <ul>
             <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Calcular Licenca</a></li>
             <li><a href="{{url("/consultarprocessoindex")}}"><i class="fa fa-clipboard"></i>Consultar processo</a></li>
-            <li><a href="#">Listar todos</a></li>
+             <li><a href="{{url("/listartodosprocessos")}}"><i class="fa fa-clipboard"></i>Listar todos os processos</a></li>
+
+
+
             <li><a href="#">Atrasados</a></li>
             <li><a href="#">Entregues</a></li>
           </ul>

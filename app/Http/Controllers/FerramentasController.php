@@ -59,10 +59,8 @@ class FerramentasController extends Controller
 
         for ($idx = 0; $idx < count($linha_array); $idx++) {
             $linha = $linha_array[$idx];
-            list($codigo,$decricao) = explode('-',$linha);
-
+            list($codigo,$decricao) = explode(' - ',$linha);
             $dados =['codigos' => $codigo,'descricao'=> $decricao];
-
             $atividade->create([
                 'codigo' => $dados['codigos'],
                 'descricao' => $dados['codigos'].' - '.$dados['descricao']
@@ -197,11 +195,6 @@ class FerramentasController extends Controller
         }
     }
 
-    public function cad()
-    {
-
-
-    }
 
     public function showdados()
     {

@@ -30,6 +30,13 @@
             </div>
             @endif
 
+            @if(session()->has('msgerro'))
+            <div class="alert alert-danger fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Erro! </strong> {{ session("msgerro")}}
+            </div>
+            @endif
+
             <h4 class="page-title" >Processo</h4>
             <div class="form-group">
               {{--Numero de processo--}}
@@ -43,6 +50,20 @@
                 @endif
               </div>
             </div>
+
+            <div  class="form-group ">
+              {{--Numero de processo--}}
+              <div  class="col-md-4 {{ $errors->has('situacao') ? ' has-error' : '' }}">
+                <label for="situacao"></label>
+                <input  id="situacao" type="hidden" class="form-control input-sm" name="situacao" value="{{"Aberto"}}">
+                @if ($errors->has('situacao'))
+                <span class="help-block">
+                <strong>{{ $errors->first('situacao') }}</strong>
+                </span>
+                @endif
+              </div>
+            </div>
+
             <br/>
             <h4 class="page-title">Dados da Empresa</h4>
             {{--Tipo pessoa--}}
