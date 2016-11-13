@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use PDO;
 use Schema;
+use View;
 
 class FerramentasController extends Controller
 {
@@ -31,8 +32,8 @@ class FerramentasController extends Controller
         $this->criarppds();
         $this->criartipoprecos();
         $this->criarsubatividades();
-        $array  = "A estrutura do Banco e seus dados foram criado com sucesso";
-        return Response::json($array);
+        $msgsucesso  = "O Banco de dados foi instalado com sucesso!";
+			  return View::make('auth.login' ,  ['msgsucesso' => $msgsucesso]);
     }
     //Comando no Banco de dados
     public function comandocriarbanco()

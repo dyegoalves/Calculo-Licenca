@@ -24,6 +24,14 @@
     <div class="section">
       <div class="container">
         <div class="row">
+
+            @if( isset($msgsucesso))
+            <div  style="background-color: #f0f0f0" class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Sucesso! </strong>{{ $msgsucesso }}
+            </div>
+            @endif
+
           {{--IMAGEM--}}
           <div class="col-md-4">
             <img class="img-circle img-responsive" src="{{ URL::asset('img/logo-principal.png')}}" alt=""/>
@@ -63,6 +71,7 @@
                 </span>
               </div>
               @endif
+
               @if ($errors->has('password'))
               <div  id="alerta-password" class="alert alert-danger">
                 <span class="help-block">

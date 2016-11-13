@@ -95,17 +95,11 @@ class CalculosController extends Controller
 		if($request->get("btnsalvar") == "btnsalvar" )
 		{
 
-			$users = User::with('users')->where('users.funcao','=','analista')->get();
-
-			dd($users);
-
-
-			//$usuarioscadastrados = User::all();
-
+			$usuarioscadastrados = User::where('funcao','=','Analista')->get();
 
 			if(count($usuarioscadastrados) == 0 )
 			{
-				$msgerro = "Nenhum usuario cadastrado no sistema primeiro faça o cadastro de um usuário para realizaca estar tarefa";
+				$msgerro = "Nenhum usuario do tipo Analista cadastrado no sistema primeiro faça o cadastro de um usuário (Analista) para realização desta tarefa";
 				return Redirect::route('calculos')
 					->with(compact('msgerro'))
 					->withInput();

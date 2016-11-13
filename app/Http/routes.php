@@ -8,6 +8,7 @@ Route::group(['middleware' => ['auth']], function () {
      *------------------------------------------------------------------------*/
         Route::get("/sistema-inicio" ,"AdminController@sistema_inicio");
         Route::get('/', "AdminController@sistema_inicio");
+
     /*------------------------------------------------------------------------*/
 
     /*-------------------------------------------------------------------------/
@@ -19,8 +20,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post("/profile", "CadastrosController@salvar_imagem");
         Route::post('/atividade' , 'CadastrosController@atividade');
         Route::post('/subatividade' , 'CadastrosController@subatividade');
-
-	      Route::get('/quantosusers' , 'CadastrosController@quantosprocessosuser');
 
     /*-------------------------------------------------------------------------*/
 
@@ -74,7 +73,6 @@ Route::group(['middleware' => ['auth']], function () {
 		*    Rotas do controller Listas
 		*-------------------------------------------------------------------------*/
 		Route::get('/listartodosprocessos' , 'ListasController@listartodosprocessos');
-
 
 	/*---------------------------------------------------------------------------*/
 });

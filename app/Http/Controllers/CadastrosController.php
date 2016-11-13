@@ -69,7 +69,7 @@ class CadastrosController extends Controller
   					$processonumero = new Processo();
             $processonumero->num_processo = Input::get('num_processo');
 					  $processonumero->situacao =  Input::get('situacao');
-					  $processonumero->user_id  =  intval($this->analistatemmenosprocesso());
+					  $processonumero->user_id  =  intval($this->distribuicaojusta());
 					  $processonumero->save();
 				  	DB::statement('SET FOREIGN_KEY_CHECKS=1');
           return true;
@@ -80,20 +80,30 @@ class CadastrosController extends Controller
     }
 
 		//Pega sempre o ultimo cara que tem menos processo;
-		public function analistatemmenosprocesso()
+		public function distribuicaojusta()
 		{
-
+			//Criacao de array para manipular os Analista;
 			$analista = [];
-			foreach(User::all() as $users)
+			//Regastando do banco um array com todos os dados do Usuario tipo Analista
+			$todososanalista =  User::where('funcao','=','Analista')->get();
+
+			//Faz a contagem de processo  para cadas usuario do tipo analista  e criaca uma array com os dados
+			foreach($todososanalista as $users)
 			{
+				//atibuicao do valores contados
 				$analista[$users->id] = count($users->processo);
 			}
+			//Ordernacao de valores do array $analista[]
 			arsort($analista);
+			//Faz se novamente atribuicao do array com os dados ja atribuidos.
 			foreach ($analista as $chave => $valor)
 			{
+				//Atribuicão de valores ordenado no array.
 				$analista[$chave] = $valor;
 			}
+			//Recuperar todas a chaves ou keys do array.
 			$temmenosprocesso =  array_keys($analista);
+			//Retorna sempre o array da ultima posicao que por sua vez tem menos processos.
 			return end($temmenosprocesso);
 		}
 

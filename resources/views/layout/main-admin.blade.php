@@ -53,7 +53,7 @@
             <div class="container">
                 <h4 style="font-family: Lato">Dados pessoais</h4>
                 <hr/>
-                <p><strong>Nome:</strong>   <span> {{ Auth::user()->name }}</span></p>
+                <p><strong>Nome:</strong>   <span> {{Auth::user()->name }}</span></p>
                 <p><strong>Funcao:</strong> <span> {{Auth::user()->funcao}} </span></p>
                 <h4 style="font-family: Lato">Resumo de licenças:</h4><hr/>
                 <p><strong>Quantidade na carga: </strong> <span>Qtd-Carga</span> </p>
@@ -64,19 +64,15 @@
         <li><a href="http://themestruck.com/demo/harmony/blank.html" target="_blank"><i class="fa fa-home"></i>Harmony Admin</a></li>
         <li id="inicio"><a href="{{ url('/sistema-inicio') }}"><i class="fa fa-home"></i>Inicio</a></li>
         <li>
-          <a href="#"><i class="fa fa-list"></i>Processos & Calculos</a>
+          <a href="#"><i class="fa fa-list"></i>Processos | Calculos</a>
           <ul>
-            <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Calcular Licenca</a></li>
+            <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Cadastro e Calculo</a></li>
             <li><a href="{{url("/consultarprocessoindex")}}"><i class="fa fa-clipboard"></i>Consultar processo</a></li>
              <li><a href="{{url("/listartodosprocessos")}}"><i class="fa fa-clipboard"></i>Listar todos os processos</a></li>
-
-
-
             <li><a href="#">Atrasados</a></li>
             <li><a href="#">Entregues</a></li>
           </ul>
         </li>
-
 
         <li>
           <a href="#"><i class="fa fa-book"></i>Cadastros</a>

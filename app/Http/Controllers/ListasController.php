@@ -14,7 +14,6 @@ class ListasController extends Controller
 	{
 		$processos =  Processo::all();
 		return view("sistema.listar.todosprocessos" , compact('processos'));
-
 	}
 
 }
