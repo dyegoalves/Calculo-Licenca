@@ -774,6 +774,447 @@ class CalculosController extends Controller
 				if ($basedecalculo01 >= 1000)                                 		     		{return $this->excepcional();}
 
 		}
-	}
+		if ($atvidadecodido == "19" && ($subatividadecodigo >= "1901" && $subatividadecodigo <= "1906"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			$basedecalculo02 = Input::get("basedecalculo02");
+
+			// tab = atv03  ; col = 1 ; lin = 1 // au < 2 ne de 0 ate 600
+			if ($basedecalculo01 < 2 && $basedecalculo02 < 30) 														        							{return $this->pequeno();}
+			// tab = atv03  ; col = 1 ; lin = 2 // au = 0.1 ate 0. 9 ne = de 100 ate 300
+			if ($basedecalculo01 < 2 && ($basedecalculo02 >= 30 && $basedecalculo02 <= 100)) 	    							{return $this->medio();}
+			// tab = atv03  ; col = 1 ; lin = 3 // au = 0.1 ate 0. 9 ne = de 301 ate 899
+			if ($basedecalculo01 < 2 && ($basedecalculo02 > 100 && $basedecalculo02 < 600)) 										{return $this->grande();}
+			// tab = atv03  ; col = 1 ; lin = 4 // au = 0.1 ate 0. 9 ne = 900++
+			if ($basedecalculo01 < 2 && ($basedecalculo02 >= 600))																							{return $this->excepcional();}
+
+			// tab = atv03  ; col = 2 ; lin = 1 // au = 2 ate 5 ne ate 30
+			if (($basedecalculo01 >= 2 && $basedecalculo01 <= 5) && $basedecalculo02 < 30) 								    							{return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 2 // au = 2 ate 5 ne de 30 ate 100
+			if (($basedecalculo01 >= 2 && $basedecalculo01 <= 5) && ($basedecalculo02 >= 30 && $basedecalculo02 <= 100))    {return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 3 // au = 2 ate 5 ne = 100 ate 600
+			if (($basedecalculo01 >= 2 && $basedecalculo01 <= 5) && ($basedecalculo02 > 100 && $basedecalculo02 < 600))     {return $this->grande();}
+			// tab = atv03  ; col = 2 ; lin = 4 // au = 2 ate 5 ne = 600++
+			if (($basedecalculo01 >= 2 && $basedecalculo01 <= 5) && ($basedecalculo02 >= 600)) 															{return $this->excepcional();}
+
+			// tab = atv03  ; col = 3 ; lin = 1 // au = 5 ate 10 ne = 99
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 10) && $basedecalculo02 < 30) 																	{return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 10) && ($basedecalculo02 >= 30 && $basedecalculo02 <= 100))     {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 10) && ($basedecalculo02 > 100 && $basedecalculo02 < 600))      {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 10) && ($basedecalculo02 >= 600))                               {return $this->excepcional();}
+
+			// tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
+			if (($basedecalculo01 >= 10) && $basedecalculo02 < 30) 																						{return $this->excepcional();}
+			// tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
+			if (($basedecalculo01 >= 10) && ($basedecalculo02 >= 30 && $basedecalculo02 <= 100)) 							{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
+			if (($basedecalculo01 >= 10) && ($basedecalculo02 > 100 && $basedecalculo02 < 600))								{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
+			if (($basedecalculo01 >= 10) && ($basedecalculo02 >= 600)) 																				{return $this->excepcional();}
+		}
+		if ($atvidadecodido == "20" && ($subatividadecodigo == "2001"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			$basedecalculo02 = Input::get("basedecalculo02");
+
+			// tab = atv03  ; col = 1 ; lin = 1 // au < 1 && ne = de <50
+			if ($basedecalculo01 < 1 && $basedecalculo02 < 50) 					    									    						{return $this->pequeno();}
+			// tab = atv03  ; col = 1 ; lin = 2 // au < 1 && 50 <= ne <= 150
+			if ($basedecalculo01 < 1 && ($basedecalculo02 >= 50 && $basedecalculo02 <= 150)) 	    						{return $this->medio();}
+			// tab = atv03  ; col = 1 ; lin = 3 // au < 1 && 150 < ne < 500
+			if ($basedecalculo01 < 1 && ($basedecalculo02 > 150 && $basedecalculo02 < 500)) 									{return $this->grande();}
+			// tab = atv03  ; col = 1 ; lin = 4 // au < 1 && ne >= 500
+			if ($basedecalculo01 < 1 && ($basedecalculo02 >= 500))																						{return $this->excepcional();}
+
+			// tab = atv03  ; col = 2 ; lin = 1 // au = 1 ate 2 ne = 99
+			if (($basedecalculo01 >= 1 && $basedecalculo01 <= 5) && $basedecalculo02 < 50)   																{return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 2 // au = 1 ate 2 ne = 100 ate 300
+			if (($basedecalculo01 >= 1 && $basedecalculo01 <= 5) && ($basedecalculo02 >= 50 && $basedecalculo02 <= 150))   	{return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 3 // au = 1 ate 2 ne = 301 ate 899
+			if (($basedecalculo01 >= 1 && $basedecalculo01 <= 5) && ($basedecalculo02 > 150 && $basedecalculo02 < 500))     {return $this->grande();}
+			// tab = atv03  ; col = 2 ; lin = 4 // au = 1 ate 2 ne = 900++
+			if (($basedecalculo01 >= 1 && $basedecalculo01 <= 5) && ($basedecalculo02 >= 500)) 															{return $this->excepcional();}
+
+			// tab = atv03  ; col = 3 ; lin = 1 // au = 2.1 ate 2.99 ne = 99
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 10) && $basedecalculo02 < 50) 																	{return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 10) && ($basedecalculo02 >= 50 && $basedecalculo02 <= 150))     {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 10) && ($basedecalculo02 > 150 && $basedecalculo02 < 500))      {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 10) && ($basedecalculo02 >= 500))                               {return $this->excepcional();}
+
+			// tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
+			if (($basedecalculo01 >= 10) && $basedecalculo02 < 50) 																						{return $this->excepcional();}
+			// tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
+			if (($basedecalculo01 >= 10) && ($basedecalculo02 >= 50 && $basedecalculo02 <= 150)) 							{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
+			if (($basedecalculo01 >= 10) && ($basedecalculo02 > 150 && $basedecalculo02 < 500))								{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
+			if (($basedecalculo01 >= 10) && ($basedecalculo02 >= 500)) 																				{return $this->excepcional();}
+		}
+		if ($atvidadecodido == "21" && ($subatividadecodigo >= "2101" && $subatividadecodigo <= "2102"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			$basedecalculo02 = Input::get("basedecalculo02");
+
+			// tab = atv03  ; col = 1 ; lin = 1 // au < 1 && ne = de <50
+			if ($basedecalculo01 < 0.5 && $basedecalculo02 < 20) 					    																	{return $this->pequeno();}
+			// tab = atv03  ; col = 1 ; lin = 2 // au < 1 && 50 <= ne <= 150
+			if ($basedecalculo01 < 0.5 && ($basedecalculo02 >= 20 && $basedecalculo02 <= 50)) 	    						{return $this->medio();}
+			// tab = atv03  ; col = 1 ; lin = 3 // au < 1 && 150 < ne < 500
+			if ($basedecalculo01 < 0.5 && ($basedecalculo02 > 50 && $basedecalculo02 < 200)) 										{return $this->grande();}
+			// tab = atv03  ; col = 1 ; lin = 4 // au < 1 && ne >= 500
+			if ($basedecalculo01 < 0.5 && ($basedecalculo02 >= 200))																						{return $this->excepcional();}
+			// tab = atv03  ; col = 2 ; lin = 1 // au = 1 ate 2 ne = 99
+			if (($basedecalculo01 >= 0.5 && $basedecalculo01 <= 2) && $basedecalculo02 < 20)   															{return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 2 // au = 1 ate 2 ne = 100 ate 300
+			if (($basedecalculo01 >= 0.5 && $basedecalculo01 <= 2) && ($basedecalculo02 >= 20 && $basedecalculo02 <= 50))   {return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 3 // au = 1 ate 2 ne = 301 ate 899
+			if (($basedecalculo01 >= 0.5 && $basedecalculo01 <= 2) && ($basedecalculo02 > 50 && $basedecalculo02 < 200))    {return $this->grande();}
+			// tab = atv03  ; col = 2 ; lin = 4 // au = 1 ate 2 ne = 900++
+			if (($basedecalculo01 >= 0.5 && $basedecalculo01 <= 2) && ($basedecalculo02 >= 200)) 														{return $this->excepcional();}
+			// tab = atv03  ; col = 3 ; lin = 1 // au = 2.1 ate 2.99 ne = 99
+			if (($basedecalculo01 > 2 && $basedecalculo01 < 5) && $basedecalculo02 < 20) 																		{return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
+			if (($basedecalculo01 > 2 && $basedecalculo01 < 5) && ($basedecalculo02 >= 20 && $basedecalculo02 <= 50))       {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
+			if (($basedecalculo01 > 2 && $basedecalculo01 < 5) && ($basedecalculo02 > 50 && $basedecalculo02 < 200))        {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
+			if (($basedecalculo01 > 2 && $basedecalculo01 < 5) && ($basedecalculo02 >= 200))                                {return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
+			if (($basedecalculo01 >= 5) && $basedecalculo02 < 20) 																							{return $this->excepcional();}
+			// tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
+			if (($basedecalculo01 >= 5) && ($basedecalculo02 >= 20 && $basedecalculo02 <= 50)) 							    {return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
+			if (($basedecalculo01 >= 5) && ($basedecalculo02 > 50 && $basedecalculo02 < 200))										{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
+			if (($basedecalculo01 >= 5) && ($basedecalculo02 >= 200)) 																					{return $this->excepcional();}
+		}
+		if ($atvidadecodido == "25" && ($subatividadecodigo == "2501"))
+		{
+
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 <= 20)                               						{return $this->pequeno();}
+			if ($basedecalculo01 > 20 && $basedecalculo01 <= 50 )                	{return $this->medio();}
+			if ($basedecalculo01 > 50 && $basedecalculo01 < 100 )                	{return $this->grande();}
+			if ($basedecalculo01 >= 100)                                 		     	{return $this->excepcional();}
+		}
+		if ($atvidadecodido == "25" && ($subatividadecodigo == "2502"))
+		{
+
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 <= 10)     	                         						{return $this->pequeno();}
+			if ($basedecalculo01 > 10 && $basedecalculo01 <= 20 )                	{return $this->medio();}
+			if ($basedecalculo01 > 20 && $basedecalculo01 <= 40 )                	{return $this->grande();}
+			if ($basedecalculo01 > 40)                                 		     		{return $this->excepcional();}
+		}
+		if ($atvidadecodido == "25" && ($subatividadecodigo >= "2503" && $subatividadecodigo <= "2504"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 <= 50)                               						{return $this->pequeno();}
+			if ($basedecalculo01 > 50 && $basedecalculo01 <= 250 )                {return $this->medio();}
+			if ($basedecalculo01 > 250 && $basedecalculo01 <= 500 )               {return $this->grande();}
+			if ($basedecalculo01 > 500)                                 		     	{return $this->excepcional();}
+		}
+
+
+		/*
+		 * Testar as atividades abaixo
+		 *
+		 * */
+
+		//PORTE-68: 2505
+		if ($atvidadecodido == "25" && ($subatividadecodigo == "2505"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 <= 20)                               						{return $this->pequeno();}
+			if ($basedecalculo01 > 20 && $basedecalculo01 <= 80 )                	{return $this->medio();}
+			if ($basedecalculo01 > 80 && $basedecalculo01 < 240 )                	{return $this->grande();}
+			if ($basedecalculo01 >= 240)                                 		     	{return $this->excepcional();}
+		}
+		//PORTE-72: 2506
+		if ($atvidadecodido == "25" && ($subatividadecodigo == "2506"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 100)                               						{return $this->pequeno();}
+			if ($basedecalculo01 >= 100 && $basedecalculo01 <= 200 )              {return $this->medio();}
+			if ($basedecalculo01 > 200 && $basedecalculo01 < 400 )                {return $this->grande();}
+			if ($basedecalculo01 >= 400)                                 		     	{return $this->excepcional();}
+		}
+		//PORTE-69: 2703
+		if ($atvidadecodido == "27" && ($subatividadecodigo == "2703"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 <= 20)                               						{return $this->pequeno();}
+			if ($basedecalculo01 > 20 && $basedecalculo01 <= 50 )                	{return $this->medio();}
+			if ($basedecalculo01 > 50 && $basedecalculo01 < 100 )                	{return $this->grande();}
+			if ($basedecalculo01 >= 100)                                 		     	{return $this->excepcional();}
+		}
+		//PORTE-76: 2701-2702;2706
+		if ($atvidadecodido == "27" && ($subatividadecodigo >= "2701" && $subatividadecodigo <= "2702" || $subatividadecodigo=="2706"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 <= 20)                               						{return $this->pequeno();}
+			if ($basedecalculo01 >= 20 && $basedecalculo01 <= 50 )                {return $this->medio();}
+			if ($basedecalculo01 > 50 && $basedecalculo01 < 150 )                	{return $this->grande();}
+			if ($basedecalculo01 >= 150)                                 		     	{return $this->excepcional();}
+		}
+		//PORTE-77: 2704;2707
+		if ($atvidadecodido == "27" && ($subatividadecodigo == "2704" || $subatividadecodigo=="2707"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 10)                               						{return $this->pequeno();}
+			if ($basedecalculo01 >= 10 && $basedecalculo01 <= 30 )              {return $this->medio();}
+			if ($basedecalculo01 > 30 && $basedecalculo01 < 100 )               {return $this->grande();}
+			if ($basedecalculo01 >= 100)                                 		    {return $this->excepcional();}
+		}
+		//porte-78: 2705
+		if ($atvidadecodido == "27" && ($subatividadecodigo == "2705"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			$basedecalculo02 = Input::get("basedecalculo02");
+
+			// tab = atv03  ; col = 1 ; lin = 1 // au < 1 && ne = de < 10
+			if ($basedecalculo01 < 1 && $basedecalculo02 < 10) 					    									    {return $this->pequeno();}
+			// tab = atv03  ; col = 1 ; lin = 2 // au < 1 && 50 <= ne <= 150
+			if ($basedecalculo01 < 1 && ($basedecalculo02 >= 10 && $basedecalculo02 <= 30)) 	    						{return $this->medio();}
+			// tab = atv03  ; col = 1 ; lin = 3 // au < 1 && 150 < ne < 500
+			if ($basedecalculo01 < 1 && ($basedecalculo02 > 30 && $basedecalculo02 < 100))   								{return $this->grande();}
+			// tab = atv03  ; col = 1 ; lin = 4 // au < 1 && ne >= 500
+			if ($basedecalculo01 < 1 && ($basedecalculo02 >= 100))															{return $this->excepcional();}
+
+			// tab = atv03  ; col = 2 ; lin = 1 // au = 1 ate 2 ne = 99
+			if (($basedecalculo01 >= 1 && $basedecalculo01 <= 5) && $basedecalculo02 < 10)   								{return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 2 // au = 1 ate 2 ne = 100 ate 300
+			if (($basedecalculo01 >= 1 && $basedecalculo01 <= 5) && ($basedecalculo02 >= 10 && $basedecalculo02 <= 30))     {return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 3 // au = 1 ate 2 ne = 301 ate 899
+			if (($basedecalculo01 >= 1 && $basedecalculo01 <= 5) && ($basedecalculo02 > 30 && $basedecalculo02 < 100))      {return $this->grande();}
+			// tab = atv03  ; col = 2 ; lin = 4 // au = 1 ate 2 ne = 900++
+			if (($basedecalculo01 >= 1 && $basedecalculo01 <= 5) && ($basedecalculo02 >= 100)) 								{return $this->excepcional();}
+
+			// tab = atv03  ; col = 3 ; lin = 1 // au = 2.1 ate 2.99 ne = 99
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 15) && $basedecalculo02 < 10) 								    {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 15) && ($basedecalculo02 >= 10 && $basedecalculo02 <= 30))      {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 15) && ($basedecalculo02 > 30 && $basedecalculo02 < 100))       {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
+			if (($basedecalculo01 > 5 && $basedecalculo01 < 15) && ($basedecalculo02 >= 100))                               {return $this->excepcional();}
+
+			// tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
+			if (($basedecalculo01 >= 15) && $basedecalculo02 < 10) 															{return $this->excepcional();}
+			// tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
+			if (($basedecalculo01 >= 15) && ($basedecalculo02 >= 10 && $basedecalculo02 <= 30)) 							{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
+			if (($basedecalculo01 >= 15) && ($basedecalculo02 > 30 && $basedecalculo02 < 100))								{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
+			if (($basedecalculo01 >= 15) && ($basedecalculo02 >= 100)) 														{return $this->excepcional();}
+		}
+		//PORTE-79: 2708-2710
+		if ($atvidadecodido == "27" && ($subatividadecodigo >= "2708" && $subatividadecodigo <= "2710"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 1)                               								{return $this->pequeno();}
+			if ($basedecalculo01 > 1 && $basedecalculo01 <= 3 )                			{return $this->medio();}
+			if ($basedecalculo01 > 3 && $basedecalculo01 < 5 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 5)                                 		     			{return $this->excepcional();}
+		}
+		//PORTE-79: 2712-2715
+		if ($atvidadecodido == "27" && ($subatividadecodigo >= "2712" && $subatividadecodigo <= "2715"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 1)                               								{return $this->pequeno();}
+			if ($basedecalculo01 > 1 && $basedecalculo01 <= 3 )                			{return $this->medio();}
+			if ($basedecalculo01 > 3 && $basedecalculo01 < 5 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 5)                                 		     			{return $this->excepcional();}
+		}
+		//PORTE-80: 2711
+		if ($atvidadecodido == "27" && ($subatividadecodigo == "2711"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 30)                               									{return $this->pequeno();}
+			if ($basedecalculo01 >= 30 && $basedecalculo01 <= 80 )                		{return $this->medio();}
+			if ($basedecalculo01 > 80 && $basedecalculo01 < 300 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 300)                                 		     			{return $this->excepcional();}
+		}
+		//PORTE-99: 3201;3203;3205
+		if ($atvidadecodido == "32" && ($subatividadecodigo == "3201" || $subatividadecodigo=="3203" || $subatividadecodigo=="3205"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 5)                               								  {return $this->pequeno();}
+			if ($basedecalculo01 >= 5 && $basedecalculo01 <= 20 )                			{return $this->medio();}
+			if ($basedecalculo01 > 20 && $basedecalculo01 < 50 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 50)                                 		     		  {return $this->excepcional();}
+		}
+		//PORTE-100: 3202;3204;3216
+		if ($atvidadecodido == "32" && ($subatividadecodigo == "3202" || $subatividadecodigo=="3204" || $subatividadecodigo=="3216"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 5)                               						      {return $this->pequeno();}
+			if ($basedecalculo01 >= 5 && $basedecalculo01 <= 30 )                			{return $this->medio();}
+			if ($basedecalculo01 > 30 && $basedecalculo01 < 100 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 100)                                 		     		  {return $this->excepcional();}
+		}
+		//PORTE-101: 3206-3208
+		if ($atvidadecodido == "32" && ($subatividadecodigo >= "3206" && $subatividadecodigo <="3208"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 0.5)                               						      {return $this->pequeno();}
+			if ($basedecalculo01 >= 0.5 && $basedecalculo01 <= 3 )                			{return $this->medio();}
+			if ($basedecalculo01 > 3 && $basedecalculo01 < 8 )                    			{return $this->grande();}
+			if ($basedecalculo01 >= 8)                                 		         		  {return $this->excepcional();}
+		}
+		//PORTE-102: 3209
+		if ($atvidadecodido == "32" && ($subatividadecodigo == "3209"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 5)                               						      {return $this->pequeno();}
+			if ($basedecalculo01 >= 5 && $basedecalculo01 <= 30 )                			{return $this->medio();}
+			if ($basedecalculo01 > 30 && $basedecalculo01 < 100 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 100)                                 		     		  {return $this->excepcional();}
+		}
+		//PORTE-103: 3210
+		if ($atvidadecodido == "32" && ($subatividadecodigo == "3210"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 2)                               						      {return $this->pequeno();}
+			if ($basedecalculo01 >= 2 && $basedecalculo01 <= 20 )                			{return $this->medio();}
+			if ($basedecalculo01 > 20 && $basedecalculo01 < 100 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 100)                                 		     		  {return $this->excepcional();}
+		}
+		//PORTE-104: 3211
+		if ($atvidadecodido == "32" && ($subatividadecodigo == "3212"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 5)                               						      {return $this->pequeno();}
+			if ($basedecalculo01 >= 5 && $basedecalculo01 <= 20 )                			{return $this->medio();}
+			if ($basedecalculo01 > 20 && $basedecalculo01 < 50 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 50)                                 		     		  {return $this->excepcional();}
+		}
+		//PORTE-105: 3212-3213;3215
+		if ($atvidadecodido == "32" && ($subatividadecodigo >= "3212" && $subatividadecodigo <= "3213" || $subatividadecodigo=="3215"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 20)                               						      {return $this->pequeno();}
+			if ($basedecalculo01 >= 20 && $basedecalculo01 <= 50 )                		{return $this->medio();}
+			if ($basedecalculo01 > 50 && $basedecalculo01 < 200 )                			{return $this->grande();}
+			if ($basedecalculo01 >= 200)                                 		     		  {return $this->excepcional();}
+		}
+		//PORTE-106: 3214
+		if ($atvidadecodido == "32" && ($subatividadecodigo == "3214"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 20)                               						        {return $this->pequeno();}
+			if ($basedecalculo01 >= 20 && $basedecalculo01 <= 50 )                			{return $this->medio();}
+			if ($basedecalculo01 > 50 && $basedecalculo01 < 100 )                			  {return $this->grande();}
+			if ($basedecalculo01 >= 100)                                 		     		    {return $this->excepcional();}
+		}
+		//PORTE-107: 3217
+		if ($atvidadecodido == "32" && ($subatividadecodigo == "3217"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 1000)                               						{return $this->pequeno();}
+			if ($basedecalculo01 >= 1000 && $basedecalculo01 <= 2000 )            {return $this->medio();}
+			if ($basedecalculo01 > 2000 && $basedecalculo01 < 5000 )              {return $this->grande();}
+			if ($basedecalculo01 >= 5000)                                 		    {return $this->excepcional();}
+		}
+		//PORTE-108: 3218
+		if ($atvidadecodido == "32" && ($subatividadecodigo == "3218"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			if ($basedecalculo01 < 0.5)                               						{return $this->pequeno();}
+			if ($basedecalculo01 >= 0.5 && $basedecalculo01 <= 3 )               	{return $this->medio();}
+			if ($basedecalculo01 > 3 && $basedecalculo01 < 8 )                   	{return $this->grande();}
+			if ($basedecalculo01 >= 8)                                 	    	    {return $this->excepcional();}
+		}
+		//porte-109: 3219-3221
+		if ($atvidadecodido == "32" && ($subatividadecodigo >= "3219" && $subatividadecodigo <= "3221"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			$basedecalculo02 = Input::get("basedecalculo02");
+
+			// tab = atv03  ; col = 1 ; lin = 1 // au < 1 && ne = de <50
+			if ($basedecalculo01 < 0.2 && $basedecalculo02 < 20) 					    									{return $this->pequeno();}
+			// tab = atv03  ; col = 1 ; lin = 2 // au < 1 && 50 <= ne <= 150
+			if ($basedecalculo01 < 0.2 && ($basedecalculo02 >= 20 && $basedecalculo02 <= 50)) 	    						{return $this->medio();}
+			// tab = atv03  ; col = 1 ; lin = 3 // au < 1 && 150 < ne < 500
+			if ($basedecalculo01 < 0.2 && ($basedecalculo02 > 50 && $basedecalculo02 < 100)) 								{return $this->grande();}
+			// tab = atv03  ; col = 1 ; lin = 4 // au < 1 && ne >= 500
+			if ($basedecalculo01 < 0.2 && ($basedecalculo02 >= 100))														{return $this->excepcional();}
+
+			// tab = atv03  ; col = 2 ; lin = 1 // au = 1 ate 2 ne = 99
+			if (($basedecalculo01 >= 0.2 && $basedecalculo01 <= 1) && $basedecalculo02 < 20)   								{return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 2 // au = 1 ate 2 ne = 100 ate 300
+			if (($basedecalculo01 >= 0.2 && $basedecalculo01 <= 1) && ($basedecalculo02 >= 20 && $basedecalculo02 <= 50))   {return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 3 // au = 1 ate 2 ne = 301 ate 899
+			if (($basedecalculo01 >= 0.2 && $basedecalculo01 <= 1) && ($basedecalculo02 > 50 && $basedecalculo02 < 100))    {return $this->grande();}
+			// tab = atv03  ; col = 2 ; lin = 4 // au = 1 ate 2 ne = 900++
+			if (($basedecalculo01 >= 0.1 && $basedecalculo01 <= 1) && ($basedecalculo02 >= 100)) 							{return $this->excepcional();}
+
+			// tab = atv03  ; col = 3 ; lin = 1 // au = 2.1 ate 2.99 ne = 99
+			if (($basedecalculo01 > 1 && $basedecalculo01 < 3) && $basedecalculo02 < 20) 									{return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
+			if (($basedecalculo01 > 1 && $basedecalculo01 < 3) && ($basedecalculo02 >= 20 && $basedecalculo02 <= 50))       {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
+			if (($basedecalculo01 > 1 && $basedecalculo01 < 3) && ($basedecalculo02 > 50 && $basedecalculo02 < 100))        {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
+			if (($basedecalculo01 > 1 && $basedecalculo01 < 3) && ($basedecalculo02 >= 100))                                {return $this->excepcional();}
+
+			// tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
+			if (($basedecalculo01 >= 3) && $basedecalculo02 < 20) 															{return $this->excepcional();}
+			// tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
+			if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 20 && $basedecalculo02 <= 50)) 							    {return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
+			if (($basedecalculo01 >= 3) && ($basedecalculo02 > 50 && $basedecalculo02 < 100))								{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
+			if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 100)) 														{return $this->excepcional();}
+		}
+		//porte-110: 3301-3306
+		if ($atvidadecodido == "33" && ($subatividadecodigo >= "3301" && $subatividadecodigo <= "3306"))
+		{
+			$basedecalculo01 = Input::get("basedecalculo01");
+			$basedecalculo02 = Input::get("basedecalculo02");
+
+			// tab = atv03  ; col = 1 ; lin = 1 // au < 1 && ne = de <50
+			if ($basedecalculo01 < 0.2 && $basedecalculo02 < 100) 					    									{return $this->pequeno();}
+			// tab = atv03  ; col = 1 ; lin = 2 // au < 1 && 50 <= ne <= 150
+			if ($basedecalculo01 < 0.2 && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300)) 	    						{return $this->medio();}
+			// tab = atv03  ; col = 1 ; lin = 3 // au < 1 && 150 < ne < 500
+			if ($basedecalculo01 < 0.2 && ($basedecalculo02 > 300 && $basedecalculo02 < 900)) 								{return $this->grande();}
+			// tab = atv03  ; col = 1 ; lin = 4 // au < 1 && ne >= 500
+			if ($basedecalculo01 < 0.2 && ($basedecalculo02 >= 900))														{return $this->excepcional();}
+
+			// tab = atv03  ; col = 2 ; lin = 1 // au = 1 ate 2 ne = 99
+			if (($basedecalculo01 >= 0.2 && $basedecalculo01 <= 1) && $basedecalculo02 < 100)   							{return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 2 // au = 1 ate 2 ne = 100 ate 300
+			if (($basedecalculo01 >= 0.2 && $basedecalculo01 <= 1) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 50))  {return $this->medio();}
+			// tab = atv03  ; col = 2 ; lin = 3 // au = 1 ate 2 ne = 301 ate 899
+			if (($basedecalculo01 >= 0.2 && $basedecalculo01 <= 1) && ($basedecalculo02 > 300 && $basedecalculo02 < 100))   {return $this->grande();}
+			// tab = atv03  ; col = 2 ; lin = 4 // au = 1 ate 2 ne = 900++
+			if (($basedecalculo01 >= 0.1 && $basedecalculo01 <= 1) && ($basedecalculo02 >= 900)) 							{return $this->excepcional();}
+
+			// tab = atv03  ; col = 3 ; lin = 1 // au = 2.1 ate 2.99 ne = 99
+			if (($basedecalculo01 > 1 && $basedecalculo01 < 3) && $basedecalculo02 < 100) 									{return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 2 // au = 2.1 ate 2.99 ne = 100 ate 300
+			if (($basedecalculo01 > 1 && $basedecalculo01 < 3) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300))     {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 3 // au = 2.1 ate 2.99 ne = 301 ate 899
+			if (($basedecalculo01 > 1 && $basedecalculo01 < 3) && ($basedecalculo02 > 300 && $basedecalculo02 < 900))       {return $this->grande();}
+			// tab = atv03  ; col = 3 ; lin = 4  // au = 2.1 ate 2.99 ne = 900++
+			if (($basedecalculo01 > 1 && $basedecalculo01 < 3) && ($basedecalculo02 >= 900))                                {return $this->excepcional();}
+
+			// tab = atv03  ; col = 4 ; lin = 1 // au = 3++  ne = 0.1 ate 99
+			if (($basedecalculo01 >= 3) && $basedecalculo02 < 100) 															{return $this->excepcional();}
+			// tab = atv03 ; col = 4 ; lin = 2 // au = 3++ ne = 100 ate 300
+			if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 100 && $basedecalculo02 <= 300)) 							{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 3 // au = 3++ ne = 301 ate 899
+			if (($basedecalculo01 >= 3) && ($basedecalculo02 > 300 && $basedecalculo02 < 900))								{return $this->excepcional();}
+			// tab = atv03  ; col = 4 ; lin = 4  // au = 3++ ne = 900++
+			if (($basedecalculo01 >= 3) && ($basedecalculo02 >= 900)) 														{return $this->excepcional();}
+		}
+		}
 	/*|-------------------------------------------------------------------------- */
 }
