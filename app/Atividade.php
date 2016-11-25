@@ -10,11 +10,18 @@ class Atividade extends Model
         'codigo', 'descricao'
     ];
 
-    public function subatividade()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function subatividade()
     {
         return $this->hasMany(Subatividade::class);
     }
-    public function empreendimento()
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function empreendimento()
     {
         return $this->hasOne(Empreendimento::class);
     }

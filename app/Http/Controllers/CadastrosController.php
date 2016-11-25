@@ -22,7 +22,10 @@ use Validator;
 class CadastrosController extends Controller
 {
     //Acessa a view sistema ->cadastro->usuarios
-    public function cadastro_usuario()
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function cadastro_usuario()
     {
         return view("sistema.cadastros.usuarios", compact('titulo'));
     }
@@ -32,7 +35,11 @@ class CadastrosController extends Controller
         return view('sistema.cadastros.profile' , ['user' => Auth::user()]);
     }
     //Salvar foto de perfil do usuario autenticado
-    public function salvar_imagem( Request $request)
+	/**
+	 * @param Request $request
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function salvar_imagem( Request $request)
     {
         $rules = array(
             'imagem' => 'required|max:10000|image|mimes:jpeg,png,jpg'
@@ -58,7 +65,10 @@ class CadastrosController extends Controller
     }
 
     //Cadastrar processo
-    public function cadastrarprocesso()
+	/**
+	 * @return bool
+	 */
+	public function cadastrarprocesso()
     {
 
 			$numprocesso = Input::get("num_processo");
@@ -80,7 +90,10 @@ class CadastrosController extends Controller
     }
 
 		//Pega sempre o ultimo cara que tem menos processo;
-		public function distribuicaojusta()
+	/**
+	 * @return mixed
+	 */
+	public function distribuicaojusta()
 		{
 			//Criacao de array para manipular os Analista;
 			$analista = [];
@@ -124,7 +137,10 @@ class CadastrosController extends Controller
 
     }
     //Cadastrar Empreendimento
-    public function cadastrarempreendimento()
+	/**
+	 * @return bool
+	 */
+	public function cadastrarempreendimento()
     {
         //Obtrencao de dados para cadastro do Empreendimento
         $basedecalculo01    = Input::get("basedecalculo01");
@@ -150,7 +166,10 @@ class CadastrosController extends Controller
 
     }
     //Cadastrar Calculo
-    public function cadastrarcalculo( $processo_id )
+	/**
+	 * @param $processo_id
+	 */
+	public function cadastrarcalculo( $processo_id )
     {
         $calculo  = new Calculo();
         $calculo->processo_id = $processo_id[0]->id;

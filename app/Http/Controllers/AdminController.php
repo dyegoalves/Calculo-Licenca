@@ -9,7 +9,10 @@ use App\Http\Requests;
 class AdminController extends Controller
 {
 
-    public function sistema_inicio(){
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function sistema_inicio(){
         return view("sistema.admin.inicio");
     }
 

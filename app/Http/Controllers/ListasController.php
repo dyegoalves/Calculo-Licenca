@@ -10,6 +10,9 @@ use App\Http\Requests;
 
 class ListasController extends Controller
 {
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function listartodosprocessos()
 	{
 		$processos =  Processo::all();

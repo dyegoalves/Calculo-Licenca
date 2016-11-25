@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function bootstrap(){
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function bootstrap(){
         return view("bootstrap");
     }
 

@@ -27,7 +27,10 @@ class Empresa extends Model
 
 
     //Relacao 1 .. N - Uma empresa pode ter varios empreendimentos
-    public function empreendimento()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function empreendimento()
     {
         return $this->hasMany(Empreendimento::class);
     }

@@ -7,15 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Calculo extends Model
 {
 
-    protected $fillable = [
-        'valor',
-        'processo_id',
-    ];
+	protected $fillable = [
+			'valor',
+			'processo_id',
+	];
 
-    public function processo()
-    {
-        return $this->belongsTo(Processo::class);
-    }
-
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function processo()
+	{
+			return $this->belongsTo(Processo::class);
+	}
 
 }

@@ -10,7 +10,10 @@ class Ppd extends Model
         'nivel' , 'porte_id'
     ];
 
-    public function porte()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function porte()
     {
         return $this->belongsTo(Porte::class);
     }

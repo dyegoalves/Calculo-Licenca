@@ -24,7 +24,10 @@ use View;
 class FerramentasController extends Controller
 {
     //Criar dados criarbancoedados
-    public function instalarbancodedados()
+	/**
+	 * @return \Illuminate\Contracts\View\View
+	 */
+	public function instalarbancodedados()
     {
         $this->comandocriarbanco();
         $this->criarativiades();
@@ -36,7 +39,10 @@ class FerramentasController extends Controller
 			  return View::make('auth.login' ,  ['msgsucesso' => $msgsucesso]);
     }
     //Comando no Banco de dados
-    public function comandocriarbanco()
+	/**
+	 *
+	 */
+	public function comandocriarbanco()
     {
        $database = env("DB_DATABASE");
        $username = env("DB_USERNAME");
@@ -48,7 +54,10 @@ class FerramentasController extends Controller
 
     }
     //criar atividades  - sem chaves estrangeiras
-    public function criarativiades()
+	/**
+	 * @return mixed
+	 */
+	public function criarativiades()
     {
         $atividade = new Atividade ;
         $arquivo = "dados/atividades.txt";

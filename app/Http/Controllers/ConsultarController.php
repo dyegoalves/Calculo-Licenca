@@ -21,8 +21,9 @@ class ConsultarController extends Controller
 		 return view("sistema.consultas.consultarprocesso");
 	}
 
-
-
+	/**
+	 * @return  array $this
+	 */
 	public function fazerconsultarprocesso()
 	{
 			$numprocessocount = Processo::where('num_processo', Input::get("num_processo"))->count();

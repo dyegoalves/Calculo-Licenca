@@ -16,20 +16,29 @@ use Validator;
 
 class CalculosController extends Controller
 {
-    //Mostrar a pagina de calculo index
+  //Mostrar a pagina de calculo index
+	/**
+	 * @param Atividade $atividade
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function index(Atividade $atividade)
 	{
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
 	}
 	//Mostrar a pagina de calculo pessoa juridica
+
 	public function pessoajuridica(Atividade $atividade)
 	{
-
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
 	}
 	//Usado da Requisicao AJAX. para obter uma lista de subatividade
+	/**
+	 * @param object Atividade $atividade
+	 * @param  int $idatividade
+	 * @return object json \Illuminate\Http\JsonResponse
+	 */
 	public function listarsubatividade(Atividade $atividade, $idatividade)
 	{
 			$atividade = $atividade->find($idatividade);
@@ -45,8 +54,10 @@ class CalculosController extends Controller
 	| os dados fornecidos
 	|
 	*/
-
-
+	/**
+	 * @param object Request $request
+	 * @return  array $this
+	 */
 	public function fazercalculos(Request $request)
 	{
 		//Funcoes para calculos do processo.
@@ -204,6 +215,10 @@ class CalculosController extends Controller
 		}
 	}
 	//Funcao para auxiliar o calculo dos dados de acordo com suas regras;
+	/**
+	 * @param array $rules
+	 * @return array $this
+	 */
 	public function auxcalculo($rules)
 	{
 			$validator = Validator::make(Input::all(), $rules);
@@ -231,6 +246,10 @@ class CalculosController extends Controller
 					->withInput();
 	}
 	//Funcao para auxiliar o salvamento dos dados de acordo com suas regras;
+	/**
+	 * @param $rules
+	 * @return mixed $this
+	 */
 	public function auxcalculosalvar($rules)
 	{
 			$selecsub = DB::table('subatividades')->where('id', Input::get("subatividade"))->first();
@@ -276,31 +295,49 @@ class CalculosController extends Controller
 			}
 	}
 	//Auxilio calcularporte
+	/**
+	 * @return string
+	 */
 	public function micro()
 	{
 			return "MICRO";
 	}
 	//Auxilio calcularporte
+	/**
+	 * @return string
+	 */
 	public function pequeno()
 	{
 			return "PEQUENO";
 	}
 	//Auxilio calcularporte
+	/**
+	 * @return string
+	 */
 	public function medio()
 	{
 			return "MEDIO";
 	}
 	//Auxilio calcularporte
+	/**
+	 * @return string
+	 */
 	public function grande()
 	{
 			return "GRANDE";
 	}
 	//Auxilio calcularporte
+	/**
+	 * @return string
+	 */
 	public function excepcional()
 	{
 			return "EXCEPCIONAL";
 	}
 	//Calcular porte do empreendimento
+	/**
+	 * @return string
+	 */
 	public function calcularporte()
 	{
 		$atvidadecodido     = Atividade::find(intval(Input::get("atividade")));
@@ -920,15 +957,7 @@ class CalculosController extends Controller
 			if ($basedecalculo01 > 250 && $basedecalculo01 <= 500 )               {return $this->grande();}
 			if ($basedecalculo01 > 500)                                 		     	{return $this->excepcional();}
 		}
-
-
-		/*
-		 * Testar as atividades abaixo
-		 *
-		 * */
-
-		//PORTE-68: 2505
-		if ($atvidadecodido == "25" && ($subatividadecodigo == "2505"))
+    if ($atvidadecodido == "25" && ($subatividadecodigo == "2505"))
 		{
 			$basedecalculo01 = Input::get("basedecalculo01");
 			if ($basedecalculo01 <= 20)                               						{return $this->pequeno();}
@@ -936,8 +965,9 @@ class CalculosController extends Controller
 			if ($basedecalculo01 > 80 && $basedecalculo01 < 240 )                	{return $this->grande();}
 			if ($basedecalculo01 >= 240)                                 		     	{return $this->excepcional();}
 		}
+
 		//PORTE-72: 2506
-		if ($atvidadecodido == "25" && ($subatividadecodigo == "2506"))
+		if ($atvidadecodido == "25" && ($subatividadecodigo == "2506:LAU"))
 		{
 			$basedecalculo01 = Input::get("basedecalculo01");
 			if ($basedecalculo01 < 100)                               						{return $this->pequeno();}
@@ -945,6 +975,7 @@ class CalculosController extends Controller
 			if ($basedecalculo01 > 200 && $basedecalculo01 < 400 )                {return $this->grande();}
 			if ($basedecalculo01 >= 400)                                 		     	{return $this->excepcional();}
 		}
+
 		//PORTE-69: 2703
 		if ($atvidadecodido == "27" && ($subatividadecodigo == "2703"))
 		{

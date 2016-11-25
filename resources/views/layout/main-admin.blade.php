@@ -23,10 +23,13 @@
   </head>
   <body>
     <div class="brand clearfix">
+
+
       <a style="text-decoration:none;  color: rgb(88, 92, 100) !important ; font-weight: bold ; font-family: Oxygen"
          href="/sistema-inicio"
-         class="logo text-info ">
+         class="logo text-info">
          SISCAL v1.0 DLS
+
       </a>
       <span class="menu-btn"><i class="fa fa-bars"></i></span>
       <ul class="ts-profile-nav">

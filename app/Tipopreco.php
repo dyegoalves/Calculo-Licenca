@@ -14,7 +14,10 @@ class Tipopreco extends Model
         'ppd_id',
     ];
 
-    public function ppd()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function ppd()
     {
         return $this->belongsTo(Ppd::class);
     }

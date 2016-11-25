@@ -16,7 +16,10 @@ class Empreendimento extends Model
         "subatividade_id"
     ];
 
-    public function empresa()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function empresa()
     {
         return $this->belongsTo(Empresa::class);
     }

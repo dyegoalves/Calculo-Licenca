@@ -12,7 +12,10 @@ class Processo extends Model
         "num_processo", "situacao" , "user_id"
     ];
 
-    public function calculo()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function calculo()
     {
         return $this->hasOne(Calculo::class);
     }
@@ -26,5 +29,7 @@ class Processo extends Model
 		{
 			return $this->belongsTo(User::class);
 		}
+
+
 
 }

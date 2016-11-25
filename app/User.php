@@ -14,7 +14,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-		public function processo()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function processo()
 		{
 			return $this->hasMany(Processo::class);
 		}
