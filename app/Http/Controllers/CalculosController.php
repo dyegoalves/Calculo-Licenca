@@ -73,7 +73,7 @@ class CalculosController extends Controller
 					$rules = array(
 						'atividade' => 'required',
 						'subatividade' => 'required',
-						'basedecalculo01' => 'required',
+						'basedecalculo01' => $this->auxvalidacao02(),
 						'tipopreco' => 'required',
 					);
 				  return  $this->auxcalculo($rules);
@@ -83,8 +83,8 @@ class CalculosController extends Controller
 					$rules = array(
 						'atividade' => 'required',
 						'subatividade' => 'required',
-						'basedecalculo01' => 'required',
-						'basedecalculo02' => 'required',
+						'basedecalculo01' => $this->auxvalidacao02(),
+						'basedecalculo02' => $this->auxvalidacao02(),
 						'tipopreco' => 'required',
 					);
 					return $this->auxcalculo($rules);
@@ -95,8 +95,8 @@ class CalculosController extends Controller
 				$rules = array(
 					'atividade' => 'required',
 					'subatividade' => 'required',
-					'basedecalculo01' => 'required',
-					'basedecalculo02' => 'required',
+					'basedecalculo01' => $this->auxvalidacao02(),
+					'basedecalculo02' => $this->auxvalidacao02(),
 					'tipopreco' => 'required',
 				);
 				return $this->auxcalculo($rules);
@@ -140,7 +140,7 @@ class CalculosController extends Controller
 						'UF' => 'required',
 						'atividade' => 'required',
 						'subatividade' => 'required',
-						'basedecalculo01' => 'required',
+						'basedecalculo01' =>$this->auxvalidacao02(),
 						'tipopreco' => 'required',
 						'portedaempresa' => 'required',
 						'valordalicenca' => 'required',
@@ -170,8 +170,8 @@ class CalculosController extends Controller
 						'UF' => 'required',
 						'atividade' => 'required',
 						'subatividade' => 'required',
-						'basedecalculo01' => 'required',
-						'basedecalculo02' => 'required',
+						'basedecalculo01' => $this->auxvalidacao02(),
+						'basedecalculo02' => $this->auxvalidacao02(),
 						'tipopreco' => 'required',
 						'portedaempresa' => 'required',
 						'valordalicenca' => 'required',
@@ -202,8 +202,8 @@ class CalculosController extends Controller
 					'UF' => 'required',
 					'atividade' => 'required',
 					'subatividade' => 'required',
-					'basedecalculo01' => 'required',
-					'basedecalculo02' => 'required',
+					'basedecalculo01' =>$this->auxvalidacao02(),
+					'basedecalculo02' =>$this->auxvalidacao02(),
 					'tipopreco' => 'required',
 					'portedaempresa' => 'required',
 					'valordalicenca' => 'required',
@@ -219,6 +219,11 @@ class CalculosController extends Controller
 	 * @param array $rules
 	 * @return array $this
 	 */
+    public  function auxvalidacao02(){
+
+        return 'required|numeric|between:0.001,1000000000000000';
+
+    }
 	public function auxcalculo($rules)
 	{
 			$validator = Validator::make(Input::all(), $rules);

@@ -22,7 +22,7 @@ return [
     'array'                => 'The :attribute must be an array.',
     'before'               => 'The :attribute must be a date before :date.',
     'between'              => [
-        'numeric' => 'The :attribute must be between :min and :max.',
+        'numeric' => 'O campo :attribute não aceita números negativos ou  um numero menor que 0.001 / 1mt',
         'file'    => 'The :attribute must be between :min and :max kilobytes.',
         'string'  => 'The :attribute must be between :min and :max characters.',
         'array'   => 'The :attribute must have between :min and :max items.',
@@ -41,7 +41,7 @@ return [
     'image'                => 'Imagem Inválida, escolha novamente uma :attribute do tipo .jpg .jpeg .png',
     'in'                   => 'The selected :attribute is invalid.',
     'in_array'             => 'The :attribute field does not exist in :other.',
-    'integer'              => 'The :attribute must be an integer.',
+    'integer'              => 'O campo :attribute só aceita numeros inteiros',
     'ip'                   => 'The :attribute must be a valid IP address.',
     'json'                 => 'The :attribute must be a valid JSON string.',
     'max'                  => [
@@ -58,7 +58,7 @@ return [
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
-    'numeric'              => 'The :attribute must be a number.',
+    'numeric'              => 'O campo :attribute só aceita numeros',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'The :attribute format is invalid.',
     'required'             => 'O campo :Attribute não pode estar vazio.',

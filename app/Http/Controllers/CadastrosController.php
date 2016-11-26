@@ -75,9 +75,9 @@ class CadastrosController extends Controller
 			$numprocessocount = Processo::where('num_processo', $numprocesso)->count();
 
         if($numprocessocount < 1){
-					DB::statement('SET FOREIGN_KEY_CHECKS=0');
-  					$processonumero = new Processo();
-            $processonumero->num_processo = Input::get('num_processo');
+					  DB::statement('SET FOREIGN_KEY_CHECKS=0');
+  					  $processonumero = new Processo();
+                      $processonumero->num_processo = Input::get('num_processo');
 					  $processonumero->situacao =  Input::get('situacao');
 					  $processonumero->user_id  =  intval($this->distribuicaojusta());
 					  $processonumero->save();
