@@ -12,6 +12,11 @@ class HomeController extends Controller
 	 */
 	public function bootstrap(){
         return view("bootstrap");
-    }
+	}
+
+	public function teste()
+	{
+		return view('errors.503');
+	}
 
 }

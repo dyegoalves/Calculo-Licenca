@@ -1,4 +1,4 @@
-@extends('......layout.app')
+@extends('layout.main-admin')
 
 @section('content')
 <div class="container">
@@ -10,7 +10,10 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                         {{ csrf_field() }}
+                        <?php
 
+                        $token = 151515151;
+                        ?>
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

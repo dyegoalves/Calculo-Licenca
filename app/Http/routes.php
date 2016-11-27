@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
      *-------------------------------------------------------------------------*/
         //Acessa a pagina do Bootstrap.
         Route::get("/bootstrap", "HomeController@bootstrap");
+        Route::get("/teste", "HomeController@teste");
     /*-------------------------------------------------------------------------*/
 
     /*--------------------------------------------------------------------------/
