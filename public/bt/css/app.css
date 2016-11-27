@@ -46,7 +46,14 @@ footer  h1  { color: #ffffff !important;}
     text-align: center;
     color: #ffffff;
 }
+/*Bnt morrom*/
+.btn-marrom{
 
+    color: #fff;
+    background-color: #d87a68;
+    border-color: rgba(0,0,0,0.2);
+
+}
 
 
 /* Medias Querys*/

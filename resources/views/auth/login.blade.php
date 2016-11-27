@@ -56,11 +56,11 @@
               </div>
               <br/>
               <div class="input-group">
-                <button type="submit" class="btn btn-social btn-adn">Entrar</button>
+                <button type="submit" class="btn btn-marrom">Entrar</button>
               </div>
               <br/>
               <div class="input-group">
-                <a class="btn btn-social btn-adn" href="http://">Perdeu sua senha?</a>
+                <a class="btn btn-marrom" href="http://">Perdeu sua senha?</a>
               </div>
               {{-- MENSAGEM DE ERRO --}}
               <br/>
