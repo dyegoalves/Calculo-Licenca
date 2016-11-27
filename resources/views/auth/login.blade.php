@@ -57,6 +57,8 @@
               <br/>
               <div class="input-group">
                 <button type="submit" class="btn btn-marrom">Entrar</button>
+
+                  <a class="btn btn-marrom" href="http://">Perdeu sua senha?</a>
               </div>
 
               <div class="input-group">
