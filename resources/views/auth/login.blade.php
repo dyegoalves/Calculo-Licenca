@@ -34,14 +34,14 @@
 
           {{--IMAGEM--}}
           <div class="col-md-4">
-            <img class="img-circle img-responsive" src="{{ URL::asset('img/logo20.png')}}" alt=""/>
+            <img class="img-circle img-responsive" src="{{ URL::asset('img/logoverde.png')}}" alt=""/>
           </div>
           {{--FIM DA IMAGEM--}}
           {{--QUADRO DO FORMULARIO--}}
           <div class="col-md-8">
             {{--FORMULARIO DE LOGIN--}}
             <form id="signin" class="" role="form" method="POST" action="{{ url('/login') }}">
-              <h1 class="h1-bkgcolor">SISCAL - Sistema de Calculo da Licença</h1>
+              <h1 class="h1-bkgcolor titulo-siscal">SISCAL - Sistema de Calculo da Licença</h1>
               <hr/>
               {{ csrf_field()}}
               <br/>
