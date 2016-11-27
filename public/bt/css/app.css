@@ -19,12 +19,6 @@ html,body {
 /*****************************   CORPO DO CONTEUDO  ****************************************/
 .corpo{ padding-top: 70px;}
 .corpologin{
-
-    background-color: #ffffff;
-
-}
-.h1-bkgcolor{
-   /* color: #ffffff;*/
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9dd53a+40,7cbc0a+54,a1d54f+77,a1d54f+77,80c217+99 */
 
     background: #9dd53a; /* Old browsers */
@@ -33,6 +27,9 @@ html,body {
     background: linear-gradient(135deg,  #9dd53a 40%,#7cbc0a 54%,#a1d54f 77%,#a1d54f 77%,#80c217 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#80c217',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+}
+.h1-bkgcolor{
+    color: #ffffff;
 }
 
 /*****************************  RODAPÉ FOOTER  *********************************************/
