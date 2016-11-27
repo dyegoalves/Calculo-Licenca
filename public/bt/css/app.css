@@ -50,7 +50,8 @@ footer  h1  { color: #ffffff !important;}
 .btn-marrom{
 
     color: #fff;
-    background-color: #d87a68;
+    /*background-color: #A45E4D*/;
+    background-color: rgb(164,94,77);
     border-color: rgba(0,0,0,0.2);
 
 }
