@@ -16,6 +16,8 @@ class HomeController extends Controller
 
 	public function teste()
 	{
+
+
 		return view('errors.503');
 	}
 
