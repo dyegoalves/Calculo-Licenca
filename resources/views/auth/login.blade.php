@@ -34,7 +34,7 @@
 
           {{--IMAGEM--}}
           <div class="col-md-4">
-            <img class="img-circle img-responsive" src="{{ URL::asset('img/logo-principal.png')}}" alt=""/>
+            <img class="img-circle img-responsive" src="{{ URL::asset('img/logo20.png')}}" alt=""/>
           </div>
           {{--FIM DA IMAGEM--}}
           {{--QUADRO DO FORMULARIO--}}
