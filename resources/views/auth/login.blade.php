@@ -41,7 +41,7 @@
           <div class="col-md-8">
             {{--FORMULARIO DE LOGIN--}}
             <form id="signin" class="" role="form" method="POST" action="{{ url('/login') }}">
-              <h1 class="h1-bkgcolor titulo-siscal">SISCAL - Sistema de Calculo da Licença</h1>
+              <h1 class="h1-bkgcolor titulo-siscal">SisCal - Sistema de Cálculo da Licença</h1>
               <hr/>
               {{ csrf_field()}}
               <br/>
