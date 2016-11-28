@@ -9,6 +9,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get("/sistema-inicio" ,"AdminController@sistema_inicio");
         Route::get('/', "AdminController@sistema_inicio");
 
+
     /*------------------------------------------------------------------------*/
 
     /*-------------------------------------------------------------------------/
@@ -83,6 +84,7 @@ Route::group(['middleware' => ['auth']], function () {
     *-----------------------------------------------------------------------------*/
         Route::get('/instalarbancodedados', 'FerramentasController@instalarbancodedados');
         Route::get('/comandocriarbanco', 'FerramentasController@comandocriarbanco');
+				Route::get('/resetsenha', "AdminController@resetsenha");
 
    /*-----------------------------------------------------------------------------*/
 

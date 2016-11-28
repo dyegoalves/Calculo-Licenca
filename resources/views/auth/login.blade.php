@@ -41,7 +41,7 @@
           <div class="col-md-8">
             {{--FORMULARIO DE LOGIN--}}
             <form id="signin" class="" role="form" method="POST" action="{{ url('/login') }}">
-              <h1 class="h1-bkgcolor titulo-siscal">SisCal - Sistema de Cálculo da Licença</h1>
+              <h1 class="h1-bkgcolor titulo-siscal">SisCal - Sistema de Cálculo de Licença Ambiental do AM</h1>
               <hr/>
               {{ csrf_field()}}
               <br/>
@@ -60,7 +60,7 @@
               </div>
                 <br/>
               <div class="input-group">
-                <a class="btn btn-marrom" href="http://">Perdeu sua senha?</a>
+               <a href="{{ url("/resetsenha") }}"><button type="button" class="btn btn-marrom">Perdeu sua senha?</button></a>
               </div>
               {{-- MENSAGEM DE ERRO --}}
               <br/>
@@ -89,8 +89,11 @@
     {{--RODAPE --}}
     <div class="footer">
       <div class="container">
-        <p>Todos os Direitos reservados {{date("Y")}}. SISCAL (Sistema de Calculo da Licença) -  Desenvolvimento: DLS </p>
-      </div>
+        <p>
+            Todos os Direitos reservados 2016 - {{date("Y")}}. SISCAL (Sistema de Calculo da Licença) -  Desenvolvimento: DLS
+        </p>
+
+     </div>
     </div>
     {{--FIM DO RODAPÉ--}}
   </body>

@@ -59,7 +59,11 @@
                 <p><strong>Nome:</strong>   <span> {{Auth::user()->name }}</span></p>
                 <p><strong>Funcao:</strong> <span> {{Auth::user()->funcao}} </span></p>
                 <h4 style="font-family: Lato">Resumo de licenças:</h4><hr/>
-                <p><strong>Quantidade na carga: </strong> <span>Qtd-Carga</span> </p>
+                <p><strong>Quantidade na carga: </strong>
+                     <span class="label label-default">
+                      {{ count(\App\User::find(Auth::user()->id)->processo)}}
+                     </span>
+                </p>
                 <p><strong>Entregues:</strong> <span> Qtd-Entregues </span></p>
                 <p><strong>Atrasadas: </strong> <span> Qtd-Atrasadas </span> </p>
             </div>
@@ -106,8 +110,7 @@
         <div class="row">
             @yield("content")
             <div class="col-md-12">
-               <p style="font-family: Oxygen; font-size: 10px">Equipe desenvolvedora DLS( Dyego Alves, Lucas Grana, Simone Lima ), 2016.
-               Todos os direitos reservados
+               <p style="font-family: Oxygen; font-size: 10px">Todos os Direitos reservados 2016 - {{date("Y")}}. SISCAL (Sistema de Calculo da Licença) -  Desenvolvimento: DLS
                </p>
             </div>
          </div>

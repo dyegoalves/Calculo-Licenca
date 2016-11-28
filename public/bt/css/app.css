@@ -49,18 +49,22 @@ footer  h1  { color: #ffffff !important;}
 }
 /*Bnt morrom*/
 .btn-marrom{
-
     color: #fff;
-    /*background-color: #A45E4D*/;
     background-color: rgb(164,94,77);
     border-color: rgba(0,0,0,0.2);
-
 }
+.btn-marrom:hover{
+    font-size: 15px;
+    color: #ffffff;
+    background-color: rgb(164, 120, 32);
+}
+
+
 
 .titulo-siscal{
     color: rgb(15,143,82);
     font-weight: bold;
-    font-size: 40px;
+    font-size: 42px;
 }
 
 

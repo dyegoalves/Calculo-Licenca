@@ -12,9 +12,15 @@ class AdminController extends Controller
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function sistema_inicio(){
-        return view("sistema.admin.inicio");
-    }
+	public function sistema_inicio()
+	{
+		return view("sistema.admin.inicio");
+	}
+
+	public function resetsenha()
+	{
+		return view("sistema.admin.resetsenha");
+	}
 
 
 }
