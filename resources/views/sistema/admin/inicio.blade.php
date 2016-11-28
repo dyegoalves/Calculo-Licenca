@@ -3,12 +3,12 @@
 @section("content")
 
       <div class="col-md-12">
-        <h2 class="text-left page-title">SISCAL: Tela de Inicio</h2>
+        <h2 class="text-left page-title">SISCAL: Tela de Início</h2>
       </div>
 
       <div class="col-md-12">
         <div class="panel panel-default">
-          <div class="panel-heading">ACESSO RAPIDO AS PRINCIPAIS FUNCOES</div>
+          <div class="panel-heading">ACESSO RÁPIDO AS PRINCIPAIS FUNCÕES</div>
           <div class="panel-body">
             <div class="panel" id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -27,7 +27,7 @@
                       <div class="panel panel-default">
                         <div class="panel-body bk-success text-light">
                           <div class="stat-panel text-center">
-                            <div class="stat-panel-number h5 ">Usuarios</div>
+                            <div class="stat-panel-number h5 ">Usuários</div>
                           </div>
                         </div>
                         <a href="{{url("cadastro-usuario")}}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
@@ -55,7 +55,7 @@
                       <div class="panel panel-default">
                         <div class="panel-body bk-success text-light">
                           <div class="stat-panel text-center">
-                            <div class="stat-panel-number h5 ">Cadastro e Calculos</div>
+                            <div class="stat-panel-number h5 ">Cadastro e Cálculos</div>
                           </div>
                         </div>
                         <a href="{{ url("/calculos") }}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>

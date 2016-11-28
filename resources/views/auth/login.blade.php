@@ -97,7 +97,7 @@
     <div class="footer">
       <div class="container">
         <p>
-            Todos os Direitos reservados 2016 - {{date("Y")}}. SISCAL (Sistema de Calculo da Licença) -  Desenvolvimento: DLS
+            Todos os Direitos reservados 2016 - {{date("Y")}}. SISCAL (Sistema de Cálculo da Licença) -  Desenvolvimento: DLS
         </p>
 
      </div>

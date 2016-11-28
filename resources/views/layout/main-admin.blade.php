@@ -65,15 +65,16 @@
                 <p><strong>Atrasadas: </strong> <span> Qtd-Atrasadas </span> </p>
             </div>
         </li>
-        <li><a href="http://themestruck.com/demo/harmony/blank.html" target="_blank"><i class="fa fa-home"></i>Harmony Admin</a></li>
-        <li id="inicio"><a href="{{ url('/sistema-inicio') }}"><i class="fa fa-home"></i>Inicio</a></li>
+        {{--
+            <li><a href="http://themestruck.com/demo/harmony/blank.html" target="_blank"><i class="fa fa-home"></i>Harmony Admin</a></li>
+        --}}
+        <li id="inicio"><a href="{{ url('/sistema-inicio') }}"><i class="fa fa-home"></i>Início</a></li>
         <li>
-          <a href="#"><i class="fa fa-list"></i>Processos | Calculos</a>
+          <a href="#"><i class="fa fa-list"></i>Processos | Cálculos</a>
           <ul>
-            <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Cadastro e Calculo</a></li>
+            <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Cadastro e Cálculo</a></li>
             <li><a href="{{url("/consultarprocessoindex")}}"><i class="fa fa-clipboard"></i>Consultar processo</a></li>
              <li><a href="{{url("/listartodosprocessos")}}"><i class="fa fa-clipboard"></i>Listar todos os processos</a></li>
-
           </ul>
         </li>
         <li>
@@ -86,7 +87,7 @@
         <!-- Account from above -->
         <ul class="ts-profile-nav">
           <li class="ts-account">
-            <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Opcoes</a>
+            <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Opcões</a>
             <ul>
               <li><a href="{{ url('/profile') }}"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
               <li><a href="{{ url('/logout') }}"><i class="fa fa-power-off" aria-hidden="true"></i>Sair</a></li>
@@ -100,7 +101,7 @@
         <div class="row">
             @yield("content")
             <div class="col-md-12">
-               <p style="font-family: Oxygen; font-size: 10px">Todos os Direitos reservados 2016 - {{date("Y")}}. SISCAL (Sistema de Calculo da Licença) -  Desenvolvimento: DLS
+               <p style="font-family: Oxygen; font-size: 10px">Todos os Direitos reservados 2016 - {{date("Y")}}. SISCAL (Sistema de Cálculo da Licença) -  Desenvolvimento: DLS
                </p>
             </div>
          </div>

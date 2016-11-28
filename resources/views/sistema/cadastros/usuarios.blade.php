@@ -4,7 +4,7 @@
 
 <div class="col-md-12">
 
-<h2 class="page-title">Cadastro de Usuário</h2>
+<h2 class="page-title">SISCAL: Cadastro de Usuário</h2>
 
 <div class="panel panel-default">
 <div class="panel-heading">Formulário - preencha os dados corretamente</div>

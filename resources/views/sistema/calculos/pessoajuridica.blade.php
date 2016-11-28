@@ -2,11 +2,11 @@
 @section('content')
 
       <div class="col-md-12">
-        <h2 class="page-title">SISCAL: Processo e Cálculo da licenca</h2>
+        <h2 class="page-title">SISCAL: Processo e Cálculo da Licença</h2>
         <div class="panel panel-default">
-          <div class="panel-heading">Formulário - Calculo da licenca.      <strong>  Atencao !</strong> È obrigatorio o preenchimento de todos os dados *.</div>
+          <div class="panel-heading">Formulário - Cálculo da licenca.      <strong>  Atencao !</strong> È obrigatorio o preenchimento de todos os dados *.</div>
           <div class="panel-body">
-            <form class="form-horizontal" action="{{url("/fazercalculos")}}" method="post" role="form">
+            <form class="form-horizontal" action="{{url("/fazerCálculos")}}" method="post" role="form">
             {{csrf_field()}}
 
             @if(session()->has('sucessocadastro'))
@@ -243,7 +243,7 @@
 
             </div>
             <br/>
-            <h4 class="page-title">Dados do Empreendimento e Calculos Lei No 3.785/2012 * </h4>
+            <h4 class="page-title">Dados do Empreendimento e Cálculos Lei No 3.785/2012 * </h4>
 
                 @if(session()->has('erroatividade'))
                 <div class="alert alert-danger fade in">
@@ -300,25 +300,25 @@
             </div>
 
 
-            <div name="basedecalculo01" class="form-group{{ $errors->has('basedecalculo01') ? ' has-error' : '' }}">
-              <label name= "basedecalculo01" for="basedecalculo01" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
+            <div name="basedeCálculo01" class="form-group{{ $errors->has('basedeCálculo01') ? ' has-error' : '' }}">
+              <label name= "basedeCálculo01" for="basedeCálculo01" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
               <div class="col-md-4">
-                <input id="basedecalculo01" type="text" class="form-control input-sm" name="basedecalculo01" value="{{ old('basedecalculo01') }}">
-                @if ($errors->has('basedecalculo01'))
+                <input id="basedeCálculo01" type="text" class="form-control input-sm" name="basedeCálculo01" value="{{ old('basedeCálculo01') }}">
+                @if ($errors->has('basedeCálculo01'))
                 <span class="help-block">
-                <strong>{{ $errors->first('basedecalculo01') }}</strong>
+                <strong>{{ $errors->first('basedeCálculo01') }}</strong>
                 </span>
                 @endif
               </div>
             </div>
 
-            <div name="basedecalculo02" class="form-group{{ $errors->has('basedecalculo02') ? ' has-error' : '' }}">
-              <label name= "basedecalculo02" for="basedecalculo02" class="col-md-2 control-label">Nº de empregados: </label>
+            <div name="basedeCálculo02" class="form-group{{ $errors->has('basedeCálculo02') ? ' has-error' : '' }}">
+              <label name= "basedeCálculo02" for="basedeCálculo02" class="col-md-2 control-label">Nº de empregados: </label>
               <div class="col-md-4">
-                <input id="basedecalculo02" type="text" class="form-control input-sm" name="basedecalculo02" value="{{ old('basedecalculo02') }}">
-                @if ($errors->has('basedecalculo02'))
+                <input id="basedeCálculo02" type="text" class="form-control input-sm" name="basedeCálculo02" value="{{ old('basedeCálculo02') }}">
+                @if ($errors->has('basedeCálculo02'))
                 <span class="help-block">
-                <strong>{{ $errors->first('basedecalculo02') }}</strong>
+                <strong>{{ $errors->first('basedeCálculo02') }}</strong>
                 </span>
                 @endif
               </div>
