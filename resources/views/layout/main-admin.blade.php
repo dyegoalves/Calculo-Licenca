@@ -65,9 +65,9 @@
                 <p><strong>Atrasadas: </strong> <span> Qtd-Atrasadas </span> </p>
             </div>
         </li>
-        {{--
+
             <li><a href="http://themestruck.com/demo/harmony/blank.html" target="_blank"><i class="fa fa-home"></i>Harmony Admin</a></li>
-        --}}
+
         <li id="inicio"><a href="{{ url('/sistema-inicio') }}"><i class="fa fa-home"></i>Início</a></li>
         <li>
           <a href="#"><i class="fa fa-list"></i>Processos | Cálculos</a>
