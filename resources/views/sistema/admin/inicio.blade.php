@@ -3,7 +3,7 @@
 @section("content")
 
       <div class="col-md-12">
-        <h2 class="text-left page-title">SISCAL: PRINCIPAL</h2>
+        <h2 class="text-left page-title">SISCAL: Tela de Inicio</h2>
       </div>
 
       <div class="col-md-12">
@@ -33,16 +33,8 @@
                         <a href="{{url("cadastro-usuario")}}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
                       </div>
                     </div>
-                    <div class="col-md-3">
-                      <div class="panel panel-default">
-                        <div class="panel-body bk-primary text-light">
-                          <div class="stat-panel text-center">
-                            <div class="stat-panel-number h5 ">Abreviaturas</div>
-                          </div>
-                        </div>
-                        <a href="{{ url("cadastro-abreviaturas")}}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
-                      </div>
-                    </div>
+
+
                   </div>
                 </div>
               </div>
@@ -53,7 +45,7 @@
                 <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    SISCAL PROCESSOS
+                    SISCAL PROCESSOS - CÁLCULOS
                     </a>
                   </h4>
                 </div>
@@ -63,72 +55,40 @@
                       <div class="panel panel-default">
                         <div class="panel-body bk-success text-light">
                           <div class="stat-panel text-center">
-                            <div class="stat-panel-number h5 ">Cadastro</div>
+                            <div class="stat-panel-number h5 ">Cadastro e Calculos</div>
                           </div>
                         </div>
-                        <a href="#" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{ url("/calculos") }}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="panel panel-default">
                         <div class="panel-body bk-primary text-light">
                           <div class="stat-panel text-center">
-                            <div class="stat-panel-number h5 ">Listar todos</div>
+                            <div class="stat-panel-number h5 ">Consultar Processo</div>
                           </div>
                         </div>
-                        <a href="#" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{ url("/consultarprocessoindex") }}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="panel panel-default">
                         <div class="panel-body bk-info text-light">
                           <div class="stat-panel text-center">
-                            <div class="stat-panel-number h5 ">Entregues</div>
+                            <div class="stat-panel-number h5 ">Listar todos os Processos</div>
                           </div>
                         </div>
-                        <a href="#" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{url("/listartodosprocessos")}}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
                       </div>
                     </div>
-                    <div class="col-md-3">
-                      <div class="panel panel-default">
-                        <div class="panel-body bk-danger text-light">
-                          <div class="stat-panel text-center">
-                            <div class="stat-panel-number h5 ">Atrasados</div>
-                          </div>
-                        </div>
-                        <a href="#" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
-                      </div>
-                    </div>
+
+
                   </div>
                 </div>
               </div>
               {{-- FIM SEGUNDO MENU--}}
 
-              {{--TERCEIRO MENU--}}
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    SISCAL DICIONARIOS
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="height: 0px;">
-                  <div class="panel-body">
-                    <div class="col-md-3">
-                      <div class="panel panel-default">
-                        <div class="panel-body bk-success text-light">
-                          <div class="stat-panel text-center">
-                            <div class="stat-panel-number h5 ">Abreviaturas</div>
-                          </div>
-                        </div>
-                        <a href="{{url("show-abreviaturas")}}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {{-- FIM DO TERCEIRO MENU--}}
+
 
             </div>
           </div>

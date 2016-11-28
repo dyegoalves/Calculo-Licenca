@@ -2,7 +2,7 @@
 @section('content')
 
       <div class="col-md-12">
-        <h2 class="page-title">Calculo da licenca</h2>
+        <h2 class="page-title">SISCAL: Processo e Cálculo da licenca</h2>
         <div class="panel panel-default">
           <div class="panel-heading">Formulário - Calculo da licenca.      <strong>  Atencao !</strong> È obrigatorio o preenchimento de todos os dados *.</div>
           <div class="panel-body">

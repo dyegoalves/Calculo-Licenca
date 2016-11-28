@@ -73,8 +73,7 @@
             <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Cadastro e Calculo</a></li>
             <li><a href="{{url("/consultarprocessoindex")}}"><i class="fa fa-clipboard"></i>Consultar processo</a></li>
              <li><a href="{{url("/listartodosprocessos")}}"><i class="fa fa-clipboard"></i>Listar todos os processos</a></li>
-            <li><a href="#">Atrasados</a></li>
-            <li><a href="#">Entregues</a></li>
+
           </ul>
         </li>
         <li>
@@ -83,12 +82,7 @@
             <li><a href="{{ url('/cadastro-usuario') }}"><i class="fa fa-users"></i>Usuários</a></li>
           </ul>
         </li>
-        <li>
-          <a href="#"><i class="fa fa-list"></i>Dicionario</a>
-          <ul>
-            <li><a href="{{ url('/show-abreviaturas') }}"><i class="fa fa-font" ></i>Abreviaturas</a></li>
-          </ul>
-        </li>
+
         <!-- Account from above -->
         <ul class="ts-profile-nav">
           <li class="ts-account">

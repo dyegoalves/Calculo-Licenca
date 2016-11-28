@@ -34,7 +34,7 @@
 
           {{--IMAGEM--}}
           <div class="col-md-4">
-            <img class="img-circle img-responsive" src="{{ URL::asset('img/logo30.png')}}" alt=""/>
+            <img class="img-circle img-responsive" src="{{ URL::asset('img/logo40.png')}}" alt=""/>
           </div>
           {{--FIM DA IMAGEM--}}
           {{--QUADRO DO FORMULARIO--}}
@@ -48,6 +48,13 @@
               <div class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <span class="input-group-addon"><i class=""><img src="{{URL::asset('img/Users-icon.png')}}" alt=""/></i></span>
                 <input placeholder="Digite seu e-mail" id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+
+                @if ($errors->has('email'))
+                <span class="help-block">
+                <strong>{{ $errors->first('email') }}</strong>
+                </span>
+                @endif
+
               </div>
                 <br/>
               <div class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -60,7 +67,7 @@
               </div>
                 <br/>
               <div class="input-group">
-               <a href="{{ url("/resetsenha") }}"><button type="button" class="btn btn-marrom">Perdeu sua senha?</button></a>
+               <a href="{{ url("/resetsenha") }}"><button type="button" class="btn btn-marrom">Recuperar senha</button></a>
               </div>
               {{-- MENSAGEM DE ERRO --}}
               <br/>

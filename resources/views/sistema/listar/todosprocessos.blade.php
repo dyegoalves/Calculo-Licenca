@@ -2,7 +2,7 @@
 @section('content')
 
       <div class="col-md-12">
-        <h2 class="page-title">Lista de todos os processo cadastrados</h2>
+        <h2 class="page-title">SISCAL: Lista de todos os processo cadastrados</h2>
         <div class="panel panel-default">
           <div class="panel-heading">Lista: </div>
           <div class="panel-body">
