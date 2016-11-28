@@ -18,7 +18,7 @@
                       <th class="sorting" tabindex="0" aria-controls="zctb" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 17%;">Data de Entrada</th>
                       <th class="sorting" tabindex="0" aria-controls="zctb" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width:14%;">Responsavel</th>
                       <th class="sorting" tabindex="0" aria-controls="zctb" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width:10%;">Situação</th>
-                      <th class="sorting" tabindex="0" aria-controls="zctb" rowspan="1" colspan="1" aria-label="Acao: activate to sort column ascending" style="width: 25%;">Ação</th>
+                   {{--   <th class="sorting" tabindex="0" aria-controls="zctb" rowspan="1" colspan="1" aria-label="Acao: activate to sort column ascending" style="width: 25%;">Ação</th>--}}
 
                   </thead>
                     {{--<tfoot>
@@ -40,8 +40,8 @@
                       <td>{{date("d/m/Y H:i:s", strtotime($processo->created_at))}}</td>
                        <td>{{$processo->user->name}}</td>
                       <td>{{$processo->situacao}}</td>
-                      <td><button class="btn btn-primary btn-xs" type="submit">Editar</button>  <button class="btn btn-danger btn-xs" type="submit">Deletar</button>  </td>
-                    </tr>
+                      {{--<td><button class="btn btn-primary btn-xs" type="submit">Editar</button>  <button class="btn btn-danger btn-xs" type="submit">Deletar</button>  </td>
+                    --}}</tr>
                     @endforeach
 
                    {{--@for($i = 0 ; $i < 100 ; $i ++)
