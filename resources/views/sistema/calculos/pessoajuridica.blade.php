@@ -6,7 +6,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">Formulário - Cálculo da licenca.      <strong>  Atencao !</strong> È obrigatorio o preenchimento de todos os dados *.</div>
           <div class="panel-body">
-            <form class="form-horizontal" action="{{url("/fazerCálculos")}}" method="post" role="form">
+            <form class="form-horizontal" action="{{url("/fazercalculos")}}" method="post" role="form">
             {{csrf_field()}}
 
             @if(session()->has('sucessocadastro'))
