@@ -3,7 +3,6 @@ Route::auth();
 
 Route::group(['middleware' => ['auth']], function () {
 
-
     /*-------------------------------------------------------------------------/
      *    Rotas do controller Admin
      *------------------------------------------------------------------------*/
@@ -46,51 +45,43 @@ Route::group(['middleware' => ['auth']], function () {
      *-------------------------------------------------------------------------*/
         Route::get("/calculo-porte" , "CalculosController@calculo_porte");
         Route::get('/listarsubatividade/{idatividade}' , 'CalculosController@listarsubatividade');
-
 				Route::get('/calculos' , ['as' => 'calculos', 'uses' => 'CalculosController@index'])
 									->middleware('PermisaoRotas');;
-
 				Route::post('/fazercalculos' , 'CalculosController@fazercalculos');
         Route::post('/calcularporte' , ['as' => 'calcularporte', 'uses' => 'CalculosController@calcularporte']);
         Route::get('/testes' , 'CalculosController@testes');
     /*-------------------------------------------------------------------------*/
 
-    /*--------------------------------------------------------------------------
-     *    Rotas do controller Ferramentas
-     *-------------------------------------------------------------------------*/
-        Route::get('/criarativiades' , 'FerramentasController@criarativiades');
-        Route::get('/criarportes', 'FerramentasController@criarportes');
-        Route::get('/criarppds', 'FerramentasController@criarppds');
-        Route::get('/criartipoprecos', 'FerramentasController@criartipoprecos');
-        Route::get('/criarsubatividades' , 'FerramentasController@criarsubatividades');
-        Route::get('/showdadosmodels/{model}', 'FerramentasController@showdadosmodels');
-        Route::get('/showdados', 'FerramentasController@showdados');
-    /*---------------------------------------------------------------------------*/
-
-    /*--------------------------------------------------------------------------
-    *    Rotas do controller Consultar
-    *-------------------------------------------------------------------------*/
-				Route::get('/consultarprocessoindex' , 'ConsultarController@index');
-				Route::post('/fazerconsultarprocesso' , 'ConsultarController@fazerconsultarprocesso');
-		/*---------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------
+		 *    Rotas do controller Ferramentas
+		 *-------------------------------------------------------------------------*/
+				Route::get('/criarativiades' , 'FerramentasController@criarativiades');
+				Route::get('/criarportes', 'FerramentasController@criarportes');
+				Route::get('/criarppds', 'FerramentasController@criarppds');
+				Route::get('/criartipoprecos', 'FerramentasController@criartipoprecos');
+				Route::get('/criarsubatividades' , 'FerramentasController@criarsubatividades');
+				Route::get('/showdadosmodels/{model}', 'FerramentasController@showdadosmodels');
+				Route::get('/showdados', 'FerramentasController@showdados');
+		/*-------------------------------------------------------------------------*/
 
 		/*--------------------------------------------------------------------------
-		*    Rotas do controller Listas
-		*-------------------------------------------------------------------------*/
-				Route::get('/listartodosprocessos' , 'ListasController@listartodosprocessos');
+		 *    Rotas do controller Consultar
+		 *-------------------------------------------------------------------------*/
+					Route::get('/consultarprocessoindex' , 'ConsultarController@index');
+					Route::post('/fazerconsultarprocesso' , 'ConsultarController@fazerconsultarprocesso');
+	  /*-------------------------------------------------------------------------*/
 
-	/*---------------------------------------------------------------------------*/
-
+	  /*--------------------------------------------------------------------------
+		 *    Rotas do controller Listas
+		 *-------------------------------------------------------------------------*/
+					Route::get('/listartodosprocessos' , 'ListasController@listartodosprocessos');
+	  /*-------------------------------------------------------------------------*/
 }) ;
 
-   /*------------------------------------------------------------------------------
-    *    Rotas do controller Ferramentas - Fora da restricao logado
-    *-----------------------------------------------------------------------------*/
+   	/*--------------------------------------------------------------------------
+		 *    Rotas do controller Ferramentas - Fora da restricao logado
+	   *-------------------------------------------------------------------------*/
         Route::get('/instalarbancodedados', 'FerramentasController@instalarbancodedados');
         Route::get('/comandocriarbanco', 'FerramentasController@comandocriarbanco');
 				Route::get('/resetsenha', "AdminController@resetsenha");
-
-   /*-----------------------------------------------------------------------------*/
-
-
-
+   	/*--------------------------------------------------------------------------*/
