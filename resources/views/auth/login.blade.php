@@ -76,7 +76,6 @@
                <a href="{{ url("/resetsenha") }}"><button type="button" class="btn btn-marrom">Recuperar senha</button></a>
               </div>
 
-
             </form>
             {{--FIM FORMULARIO DE LOGIN--}}
           </div>
