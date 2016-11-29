@@ -74,7 +74,6 @@
 <?php
     $funcao = [ " " => "Escolha a funcao" , 'Administrador' => 'Administrador', 'Gerente'=> 'Gerente' , 'Secretaria' => 'Secretaria', 'Analista' => 'Analista'  ]
 ?>
-
 <div class="col-md-6">
 
    {{ Form::select('funcao', $funcao , null , ['class' => 'form-control'] )}}
@@ -84,12 +83,9 @@
             <strong>{{ $errors->first('funcao') }}</strong>
         </span>
     @endif
-
 </div>
 
 </div>
-
-
 <div class="form-group">
 <div class="col-md-6 col-md-offset-4">
     <button type="submit" class="btn btn-primary">
