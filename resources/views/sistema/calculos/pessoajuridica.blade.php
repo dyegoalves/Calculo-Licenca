@@ -300,25 +300,25 @@
             </div>
 
 
-            <div name="basedeCálculo01" class="form-group{{ $errors->has('basedeCálculo01') ? ' has-error' : '' }}">
-              <label name= "basedeCálculo01" for="basedeCálculo01" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
+            <div name="basedecalculo01" class="form-group{{ $errors->has('basedecalculo01') ? ' has-error' : '' }}">
+              <label name= "basedecalculo01" for="basedecalculo01" class="col-md-2 control-label">Área Útil em ha (hectare)</label>
               <div class="col-md-4">
-                <input id="basedeCálculo01" type="text" class="form-control input-sm" name="basedeCálculo01" value="{{ old('basedeCálculo01') }}">
-                @if ($errors->has('basedeCálculo01'))
+                <input id="basedecalculo01" type="text" class="form-control input-sm" name="basedecalculo01" value="{{ old('basedecalculo01') }}">
+                @if ($errors->has('basedecalculo01'))
                 <span class="help-block">
-                <strong>{{ $errors->first('basedeCálculo01') }}</strong>
+                <strong>{{ $errors->first('basedecalculo01') }}</strong>
                 </span>
                 @endif
               </div>
             </div>
 
-            <div name="basedeCálculo02" class="form-group{{ $errors->has('basedeCálculo02') ? ' has-error' : '' }}">
-              <label name= "basedeCálculo02" for="basedeCálculo02" class="col-md-2 control-label">Nº de empregados: </label>
+            <div name="basedecalculo02" class="form-group{{ $errors->has('basedecalculo02') ? ' has-error' : '' }}">
+              <label name= "basedecalculo02" for="basedecalculo02" class="col-md-2 control-label">Nº de empregados: </label>
               <div class="col-md-4">
-                <input id="basedeCálculo02" type="text" class="form-control input-sm" name="basedeCálculo02" value="{{ old('basedeCálculo02') }}">
-                @if ($errors->has('basedeCálculo02'))
+                <input id="basedecalculo02" type="text" class="form-control input-sm" name="basedecalculo02" value="{{ old('basedecalculo02') }}">
+                @if ($errors->has('basedecalculo02'))
                 <span class="help-block">
-                <strong>{{ $errors->first('basedeCálculo02') }}</strong>
+                <strong>{{ $errors->first('basedecalculo02') }}</strong>
                 </span>
                 @endif
               </div>
