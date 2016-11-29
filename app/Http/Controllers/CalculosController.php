@@ -26,13 +26,7 @@ class CalculosController extends Controller
 			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
 			return view('sistema.calculos.pessoajuridica', compact("atividade"));
 	}
-	//Mostrar a pagina de calculo pessoa juridica
 
-	public function pessoajuridica(Atividade $atividade)
-	{
-			$atividade = $atividade->getQuery()->orderBy('codigo', 'ASC')->get();
-			return view('sistema.calculos.pessoajuridica', compact("atividade"));
-	}
 	//Usado da Requisicao AJAX. para obter uma lista de subatividade
 	/**
 	 * @param object Atividade $atividade

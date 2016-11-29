@@ -27,7 +27,7 @@ class CadastrosController extends Controller
 	 */
 	public function cadastro_usuario()
     {
-        return view("sistema.cadastros.usuarios", compact('titulo'));
+        return view("sistema.cadastros.usuarios");
     }
     //Acessa a view sistema ->cadastro->profile
     public function profile()
@@ -76,8 +76,8 @@ class CadastrosController extends Controller
 
         if($numprocessocount < 1){
 					  DB::statement('SET FOREIGN_KEY_CHECKS=0');
-  					  $processonumero = new Processo();
-                      $processonumero->num_processo = Input::get('num_processo');
+						$processonumero = new Processo();
+						$processonumero->num_processo = Input::get('num_processo');
 					  $processonumero->situacao =  Input::get('situacao');
 					  $processonumero->user_id  =  intval($this->distribuicaojusta());
 					  $processonumero->save();
@@ -179,6 +179,5 @@ class CadastrosController extends Controller
 			  $calculo->valor =  $valorlincenca ;
         $calculo->save();
     }
-
 
 }

@@ -72,7 +72,7 @@
 <div class="form-group{{ $errors->has('funcao') ? ' has-error' : '' }}">
 <label for="funcao" class="col-md-4 control-label">Funcao: </label>
 <?php
-    $funcao = [ " " => "Escolha a funcao" , 'Administrador' => 'Administrador', 'Gerente'=> 'Gerente' , 'Secretaria' => 'Secretaria', 'Analista' => 'Analista'  ]
+    $funcao = [ " " => "Escolha a funcao" , 'Administrador' => 'Administrador', 'Gerente' => 'Gerente' , 'Secretaria' => 'Secretaria', 'Analista' => 'Analista']
 ?>
 <div class="col-md-6">
 

@@ -22,5 +22,9 @@ class AdminController extends Controller
 		return view("sistema.admin.resetsenha");
 	}
 
+	public function permissaodeacessorota()
+	{
+		return view("sistema.admin.permissaodeacessorota");
+	}
 
 }

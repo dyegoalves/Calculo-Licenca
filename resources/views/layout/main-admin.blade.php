@@ -72,17 +72,25 @@
         <li>
           <a href="#"><i class="fa fa-list"></i>Processos | Cálculos</a>
           <ul>
-            <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Cadastro e Cálculo</a></li>
+             @if( Auth::user()->funcao != "Analista")
+               <li><a href="{{ url('/calculos') }}"><i class="fa fa-calculator"></i>Cadastro e Cálculo</a></li>
+             @endif
+
             <li><a href="{{url("/consultarprocessoindex")}}"><i class="fa fa-clipboard"></i>Consultar processo</a></li>
-             <li><a href="{{url("/listartodosprocessos")}}"><i class="fa fa-clipboard"></i>Listar todos os processos</a></li>
+            <li><a href="{{url("/listartodosprocessos")}}"><i class="fa fa-clipboard"></i>Listar todos os processos</a></li>
           </ul>
         </li>
-        <li>
-          <a href="#"><i class="fa fa-book"></i>Cadastros</a>
-          <ul>
-            <li><a href="{{ url('/cadastro-usuario') }}"><i class="fa fa-users"></i>Usuários</a></li>
-          </ul>
-        </li>
+
+         @if( Auth::user()->funcao != "Analista")
+            <li>
+              <a href="#"><i class="fa fa-book"></i>Cadastros</a>
+              <ul>
+                <li><a href="{{ url('/cadastro-usuario') }}"><i class="fa fa-users"></i>Usuários</a></li>
+              </ul>
+            </li>
+         @endif
+
+
 
         <!-- Account from above -->
         <ul class="ts-profile-nav">

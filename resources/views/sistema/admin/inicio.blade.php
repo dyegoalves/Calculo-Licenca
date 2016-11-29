@@ -12,6 +12,7 @@
           <div class="panel-body">
             <div class="panel" id="accordion" role="tablist" aria-multiselectable="true">
 
+              @if( Auth::user()->funcao != "Analista")
               {{--PRIMEIRO MENU--}}
               <div class="panel  panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
@@ -33,11 +34,11 @@
                         <a href="{{url("cadastro-usuario")}}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
               </div>
+
+              @endif
               {{-- FIM PRIMEIRO MENU--}}
 
               {{--SEGUNDO MENU--}}
@@ -51,6 +52,8 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px;">
                   <div class="panel-body">
+
+                    @if( Auth::user()->funcao != "Analista")
                     <div class="col-md-3">
                       <div class="panel panel-default">
                         <div class="panel-body bk-success text-light">
@@ -61,6 +64,7 @@
                         <a href="{{ url("/calculos") }}" class="block-anchor panel-footer">Acesse <i class="fa fa-arrow-right"></i></a>
                       </div>
                     </div>
+                    @endif
                     <div class="col-md-3">
                       <div class="panel panel-default">
                         <div class="panel-body bk-primary text-light">

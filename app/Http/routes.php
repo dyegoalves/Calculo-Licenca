@@ -3,26 +3,27 @@ Route::auth();
 
 Route::group(['middleware' => ['auth']], function () {
 
+
     /*-------------------------------------------------------------------------/
      *    Rotas do controller Admin
      *------------------------------------------------------------------------*/
-        Route::get("/sistema-inicio" ,"AdminController@sistema_inicio");
+	      Route::get("/sistema-inicio" ,"AdminController@sistema_inicio");
         Route::get('/', "AdminController@sistema_inicio");
-
+	      Route::get('/permissaodeacessorota' , ['as' => 'permissaodeacessorota', 'uses' => 'AdminController@permissaodeacessorota']);
 
     /*------------------------------------------------------------------------*/
 
     /*-------------------------------------------------------------------------/
      *   Rotas do controller Cadastro
      *------------------------------------------------------------------------*/
-        Route::get("/cadastro-usuario" ,"CadastrosController@cadastro_usuario");
         Route::get("/profile", ['as' => 'profile' , 'uses' => "CadastrosController@profile"]);
         Route::get('/atividade-subatividade' , ['as' => 'pag-atividade-sub', 'uses' => 'CadastrosController@atividade_subatividade']);
         Route::post("/profile", "CadastrosController@salvar_imagem");
         Route::post('/atividade' , 'CadastrosController@atividade');
         Route::post('/subatividade' , 'CadastrosController@subatividade');
-
-    /*-------------------------------------------------------------------------*/
+	      Route::get("/cadastro-usuario" ,"CadastrosController@cadastro_usuario")
+									->middleware('PermisaoRotas');
+		/*-------------------------------------------------------------------------*/
 
     /*--------------------------------------------------------------------------/
      *    Rotas do controller Home
@@ -45,9 +46,11 @@ Route::group(['middleware' => ['auth']], function () {
      *-------------------------------------------------------------------------*/
         Route::get("/calculo-porte" , "CalculosController@calculo_porte");
         Route::get('/listarsubatividade/{idatividade}' , 'CalculosController@listarsubatividade');
-        Route::get('/calculos' , ['as' => 'calculos', 'uses' => 'CalculosController@index']);
-        Route::post('/fazercalculos' , 'CalculosController@fazercalculos');
-        Route::get('/pessoajuridica' , ['as' => 'pessoajuridica', 'uses' => 'CalculosController@pessoajuridica']);
+
+				Route::get('/calculos' , ['as' => 'calculos', 'uses' => 'CalculosController@index'])
+									->middleware('PermisaoRotas');;
+
+				Route::post('/fazercalculos' , 'CalculosController@fazercalculos');
         Route::post('/calcularporte' , ['as' => 'calcularporte', 'uses' => 'CalculosController@calcularporte']);
         Route::get('/testes' , 'CalculosController@testes');
     /*-------------------------------------------------------------------------*/
@@ -67,17 +70,18 @@ Route::group(['middleware' => ['auth']], function () {
     /*--------------------------------------------------------------------------
     *    Rotas do controller Consultar
     *-------------------------------------------------------------------------*/
-    Route::get('/consultarprocessoindex' , 'ConsultarController@index');
-    Route::post('/fazerconsultarprocesso' , 'ConsultarController@fazerconsultarprocesso');
-    /*---------------------------------------------------------------------------*/
+				Route::get('/consultarprocessoindex' , 'ConsultarController@index');
+				Route::post('/fazerconsultarprocesso' , 'ConsultarController@fazerconsultarprocesso');
+		/*---------------------------------------------------------------------------*/
 
 		/*--------------------------------------------------------------------------
 		*    Rotas do controller Listas
 		*-------------------------------------------------------------------------*/
-		Route::get('/listartodosprocessos' , 'ListasController@listartodosprocessos');
+				Route::get('/listartodosprocessos' , 'ListasController@listartodosprocessos');
 
 	/*---------------------------------------------------------------------------*/
-});
+
+}) ;
 
    /*------------------------------------------------------------------------------
     *    Rotas do controller Ferramentas - Fora da restricao logado
