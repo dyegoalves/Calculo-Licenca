@@ -48,19 +48,25 @@
               <div class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <span class="input-group-addon"><i class=""><img src="{{URL::asset('img/Users-icon.png')}}" alt=""/></i></span>
                 <input placeholder="Digite seu e-mail" id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+              </div>
 
                 @if ($errors->has('email'))
-                <span class="help-block">
+                <span style="color: red" class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>
                 </span>
                 @endif
-
-              </div>
                 <br/>
               <div class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <span class="input-group-addon"><i class=""><img src="{{URL::asset('img/secrecy-icon.png')}}" alt=""/></i></span>
                 <input placeholder="Digite sua senha" id="password" type="password" class="form-control" name="password">
+
               </div>
+                @if ($errors->has('password'))
+                <span style="color: red" class="help-block">
+                <strong>{{ $errors->first('password') }}</strong>
+                </span>
+                @endif
+
               <br/>
               <div class="input-group">
                 <button type="submit" class="btn btn-marrom">Entrar</button>
@@ -69,23 +75,8 @@
               <div class="input-group">
                <a href="{{ url("/resetsenha") }}"><button type="button" class="btn btn-marrom">Recuperar senha</button></a>
               </div>
-              {{-- MENSAGEM DE ERRO --}}
-              <br/>
-              @if ($errors->has('email'))
-              <div id="alerta-login" class=" alert alert-danger">
-                <span class="help-block">
-                <strong>{{ $errors->first('email') }}</strong>
-                </span>
-              </div>
-              @endif
 
-              @if ($errors->has('password'))
-              <div  id="alerta-password" class="alert alert-danger">
-                <span class="help-block">
-                <strong>{{ $errors->first('password') }}</strong>
-                </span>
-              </div>
-              @endif
+
             </form>
             {{--FIM FORMULARIO DE LOGIN--}}
           </div>
