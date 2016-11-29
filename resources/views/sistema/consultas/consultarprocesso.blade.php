@@ -285,7 +285,7 @@
             </div>
             <div class="form-group{{ $errors->has('tipopreco') ? ' has-error' : '' }}">
               <label for="tipopreco" class="col-md-2 control-label">Tipo da lincenca: </label>
-              <div class="col-md-2">
+              <div class="col-md-4">
 
                  <input id="UF" type="text" class=" form-control input-sm" name="UF" name="tipodelicenca" value="{{session()->has('tipodelicenca') ? session("tipodelicenca")  : '' }}">
 

@@ -326,9 +326,11 @@
 
             <div class="form-group{{ $errors->has('tipopreco') ? ' has-error' : '' }}">
               <label for="tipopreco" class="col-md-2 control-label">Tipo da lincenca: </label>
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <?php
-                  $tipopreco = ['LP' => 'LP', 'LI' => 'LI','LO' =>'LO'];
+                  $tipopreco = ['LP' => 'LP  - Lincença Prévia',
+                                'LI' => 'LI   - Licença De Instalação',
+                                'LO' => 'LO - Licença de Operação'];
                   ?>
                 <select  autocomplete="off" name="tipopreco" id="inputID" class="form-control input-sm">
                   <option selected value=""> </option>

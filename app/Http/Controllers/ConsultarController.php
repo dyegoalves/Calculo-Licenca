@@ -54,13 +54,13 @@ class ConsultarController extends Controller
 												->orWhere	('LO' , $valordalicenca)
 												->get();
   		if($tipo[0]->LP == $valordalicenca ){
-				$tipodelicenca = "LP";
+				$tipodelicenca = "LP - Licença Prévia";
 			}
 			if($tipo[0]->LI == $valordalicenca ){
-				$tipodelicenca = "LI";
+				$tipodelicenca = "LI - Licença de Instalação";
 			}
 			if($tipo[0]->LO == $valordalicenca ){
-				$tipodelicenca = "LO";
+				$tipodelicenca = "LO - Licença de Operação";
 			}
 		 	return back()
 				     ->with(compact('processo' ,'empreendimento',
